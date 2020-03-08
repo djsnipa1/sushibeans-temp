@@ -4,15 +4,16 @@ var sbps_cost = 10;
 var sbpsps = 0;
 var sbpsps_cost = 500;
 var potential_prestige = 0;
-var prestige = 0;
+var prestiges = 0;
 
 document.getElementById("sushibeans").innerHTML = sushibeans;
 document.getElementById("sbps_cost").innerHTML = sbps_cost;
 document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
+document.getElementById("prestiges").innerHTML = prestiges;
 document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans + 1));
 
 function morebeans() {
-    sushibeans += 1;
+    sushibeans += Math.round(Math.pow(1.2, prestiges));
     document.getElementById("sushibeans").innerHTML = sushibeans;
     document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans + 1) / 3);
 };
@@ -20,11 +21,12 @@ function morebeans() {
 function moresbps() {
     if (sushibeans >= sbps_cost) {
         sushibeans -= sbps_cost;
-        sbps += 1;
+        sbps += Math.round(Math.pow(1.2, prestiges));
         sbps_cost = Math.round(sbps_cost * 1.1);
         document.getElementById("sushibeans").innerHTML = sushibeans;
         document.getElementById("sbps").innerHTML = sbps;
         document.getElementById("sbps_cost").innerHTML = sbps_cost;
+        document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans + 1) / 3);
     };
 };
 
@@ -32,7 +34,7 @@ function moresbps() {
 function moresbpsps() {
     if (sushibeans >= sbpsps_cost) {
         sushibeans -= sbpsps_cost;
-        sbpsps += 1;
+        sbpsps += Math.round(Math.pow(1.2, prestiges));
         sbpsps_cost = Math.round(sbpsps_cost * 1.2);
         document.getElementById("sushibeans").innerHTML = sushibeans;
         document.getElementById("sbpsps").innerHTML = sbpsps;
@@ -41,13 +43,13 @@ function moresbpsps() {
 };
 
 function prestige() {
-  if (sushibeans >= 10000) {
-    sushibean = 0;
+  if (potential_prestige >= 1) {
+    sushibeans = 0;
     sbps = 0;
     sbps_cost = 10;
     sbpsps = 0;
     sbpsps_cost = 500;
-    prestige += potential_prestige;
+    prestiges += potential_prestige;
     document.getElementById("sushibeans").innerHTML = sushibeans;
     document.getElementById("sbps").innerHTML = sbps;
     document.getElementById("sbps_cost").innerHTML = sbps_cost;
