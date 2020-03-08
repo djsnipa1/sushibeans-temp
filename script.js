@@ -10,12 +10,12 @@ document.getElementById("sushibeans").innerHTML = sushibeans;
 document.getElementById("sbps_cost").innerHTML = sbps_cost;
 document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
 document.getElementById("prestiges").innerHTML = prestiges;
-document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans + 1));
+document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans / 100 + 1));
 
 function morebeans() {
     sushibeans += Math.round(Math.pow(1.2, prestiges));
     document.getElementById("sushibeans").innerHTML = sushibeans;
-    document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans + 1) / 3);
+    document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans / 100 + 1));
 };
 
 function moresbps() {
@@ -26,7 +26,7 @@ function moresbps() {
         document.getElementById("sushibeans").innerHTML = sushibeans;
         document.getElementById("sbps").innerHTML = sbps;
         document.getElementById("sbps_cost").innerHTML = sbps_cost;
-        document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans + 1) / 3);
+        document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans / 100 + 1));
     };
 };
 
@@ -43,19 +43,20 @@ function moresbpsps() {
 };
 
 function prestige() {
-  if (potential_prestige >= 1) {
+  if (Math.round(Math.log10(sushibeans / 100 + 1)) > 0) {
+    prestiges += Math.round(Math.log10(sushibeans / 100 + 1));
     sushibeans = 0;
     sbps = 0;
     sbps_cost = 10;
     sbpsps = 0;
     sbpsps_cost = 500;
-    prestiges += potential_prestige;
     document.getElementById("sushibeans").innerHTML = sushibeans;
     document.getElementById("sbps").innerHTML = sbps;
     document.getElementById("sbps_cost").innerHTML = sbps_cost;
     document.getElementById("sbpsps").innerHTML = sbpsps;
     document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
-    document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans + 1) / 3);
+    document.getElementById("prestiges").innerHTML = prestiges;
+    document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans / 100 + 1));
   }
 }
 
