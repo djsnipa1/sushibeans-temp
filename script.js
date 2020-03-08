@@ -1,5 +1,5 @@
 var sushibeans = 0;
-var sbps = 2;
+var sbps = 0;
 
 function morebeans() {
     sushibeans += 1;
