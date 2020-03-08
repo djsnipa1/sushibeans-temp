@@ -13,7 +13,7 @@ function moresbps() {
     if (sushibeans >= sbps_cost) {
         sushibeans -= sbps_cost;
         sbps += 1;
-        sbps_cost += 5;
+        sbps_cost = Math.round(sbps_cost * 1.1);
         document.getElementById("sushibeans").innerHTML = sushibeans;
         document.getElementById("sbps").innerHTML = sbps;
         document.getElementById("sbps_cost").innerHTML = sbps_cost;

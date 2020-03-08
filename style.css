@@ -1,3 +1,7 @@
+body {
+  background-image: url('rice_loop.jpg');
+}
+
 hr {
     clear: both;
     visibility: hidden;
