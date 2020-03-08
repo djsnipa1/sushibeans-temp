@@ -1,5 +1,6 @@
-var sushibeans = 0
+var sushibeans = 0;
 
-function click() {
-  sushibeans += 1;
-}
+function morebeans() {
+    sushibeans += 1;
+    document.getElementById("sushibeans").innerHTML = sushibeans;
+};
