@@ -1,6 +1,8 @@
 var sushibeans = 0;
 var sbps = 0;
 var sbps_cost = 10;
+var sbpsps = 0;
+var sbpsps_cost = 500;
 
 document.getElementById("sbps_cost").innerHTML = sbps_cost;
 
@@ -20,6 +22,17 @@ function moresbps() {
     };
 };
 
+
+function moresbpsps() {
+    if (sushibeans >= sbpsps_cost) {
+        sushibeans -= sbpsps_cost;
+        sbpsps += 1;
+        sbpsps_cost = Math.round(sbps_cost * 1.2);
+        document.getElementById("sushibeans").innerHTML = sushibeans;
+        document.getElementById("sbpsps").innerHTML = sbpsps;
+        document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
+    };
+};
 
 
 
