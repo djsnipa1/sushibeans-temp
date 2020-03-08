@@ -5,6 +5,7 @@ var sbpsps = 0;
 var sbpsps_cost = 500;
 
 document.getElementById("sbps_cost").innerHTML = sbps_cost;
+document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
 
 function morebeans() {
     sushibeans += 1;
@@ -27,7 +28,7 @@ function moresbpsps() {
     if (sushibeans >= sbpsps_cost) {
         sushibeans -= sbpsps_cost;
         sbpsps += 1;
-        sbpsps_cost = Math.round(sbps_cost * 1.2);
+        sbpsps_cost = Math.round(sbpsps_cost * 1.2);
         document.getElementById("sushibeans").innerHTML = sushibeans;
         document.getElementById("sbpsps").innerHTML = sbpsps;
         document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
@@ -45,4 +46,10 @@ function incrementSeconds() {
     document.getElementById("sushibeans").innerHTML = sushibeans;
 }
 
+function incrementSeconds2() {
+    sbps += sbpsps;
+    document.getElementById("sbps").innerHTML = sbps;
+}
+
 var cancel = setInterval(incrementSeconds, 1000);
+var cancel = setInterval(incrementSeconds2, 1000);
