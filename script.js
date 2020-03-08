@@ -39,6 +39,7 @@ function moresbpsps() {
         document.getElementById("sushibeans").innerHTML = sushibeans;
         document.getElementById("sbpsps").innerHTML = sbpsps;
         document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
+        document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans / 100 + 1));
     };
 };
 
@@ -65,12 +66,12 @@ function prestige() {
 var el = document.getElementById('seconds-counter');
 
 function incrementSeconds() {
-    sushibeans += sbps;
+    sushibeans += sbps * Math.round(Math.log10(sushibeans / 100 + 1));
     document.getElementById("sushibeans").innerHTML = sushibeans;
 }
 
 function incrementSeconds2() {
-    sbps += sbpsps;
+    sbps += sbpsps * Math.round(Math.log10(sushibeans / 100 + 1));
     document.getElementById("sbps").innerHTML = sbps;
 }
 
