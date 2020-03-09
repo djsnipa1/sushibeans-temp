@@ -20,44 +20,53 @@
 
   <body>
     <center>
-      <hr size="100" />
+      <div id="maingame">
+        <hr size="100" />
 
-      <p style="font-size: 36px; color: #205920">
-        Sushi beans: <a id="sushibeans">0</a>
-      </p>
-      <button type="button" onclick="morebeans()">Make sushi beans</button>
-      <p>
-        Your goal is to get infinite (10^308) sushi beans!<br />Shouldn't take
-        too long.
-      </p>
-
-      <hr size="100" />
-
-      <button type="button" onclick="moresbps()">
-        +1 sushi beans per second<br />Cost: <a id="sbps_cost">0</a>
-      </button>
-      <p>You are earning <a id="sbps">0</a> sbps</p>
-
-      <br /><br />
-
-      <button type="button" onclick="moresbpsps()">
-        +1 sushi beans per second per second<br />Cost:
-        <a id="sbpsps_cost">0</a>
-      </button>
-      <p>You are earning <a id="sbpsps">0</a> sbpsps</p>
-
-      <hr size="100" />
-
-      <div id="prestigediv">
-        <button type="button" id="prestige" onclick="prestige()">
-          Prestige for <a id="potential_prestige">0</a> prestige points
-        </button>
-        <p>
-          You have <a id="prestiges">0</a> prestige points, giving you a
-          <a id="multiplier">0</a>x multiplier
+        <p style="font-size: 36px; color: #205920">
+          Sushi beans: <a id="sushibeans">0</a>
         </p>
-      </div>
+        <button type="button" onclick="morebeans()">Make sushi beans</button>
+        <p>
+          Your goal is to get infinite (10^308) sushi beans!<br />Shouldn't take
+          too long.
+        </p>
 
+        <hr size="100" />
+
+        <button type="button" onclick="moresbps()">
+          +1 sushi beans per second<br />Cost: <a id="sbps_cost">0</a>
+        </button>
+        <p>You are earning <a id="sbps">0</a> sbps</p>
+
+        <br /><br />
+
+        <button type="button" onclick="moresbpsps()">
+          +1 sushi beans per second per second<br />Cost:
+          <a id="sbpsps_cost">0</a>
+        </button>
+        <p>You are earning <a id="sbpsps">0</a> sbpsps</p>
+
+        <hr size="100" />
+
+        <div id="prestigediv">
+          <button type="button" id="prestige" onclick="prestige()">
+            Prestige for <a id="potential_prestige">0</a> prestige points
+          </button>
+          <p>
+            You have <a id="prestiges">0</a> prestige points, giving you a
+            <a id="multiplier">0</a>x multiplier
+          </p>
+        </div>
+      </div>
+      
+      <div id="infinity"><br>
+        <p style="color: purple; font-size: 16px"><b>Uh-oh spaghetti-o's, you've reached</b></p>
+        <p style="color: purple; font-size: 46px"><b>Infinity sushi beans</b></p>
+        <p style="color: purple; font-size: 16px"><b>You've filled the entire universe with nothing but sushi beans.<br>There's nothing to do but COLLAPSE your sushi beans into a sushi singularity.</b></p>
+        <button type="button" id="collapse" onclick="collapse()"><b>It's sushi all the way down</b></button>
+      <br></div>
+      
       <div id="options">
         <p style="font-size: 36px">Options</p>
         <br />
@@ -66,6 +75,7 @@
         </button>
         <hr size="20" />
       </div>
+      
     </center>
   </body>
 </html>

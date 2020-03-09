@@ -4,10 +4,13 @@ var sbps_cost = 10;
 var sbpsps = 0;
 var sbpsps_cost = 500;
 var potential_prestige = 0;
-var prestiges = 0;
+var prestiges = 500;
 
 var x = document.getElementById("prestigediv")
 x.style.display = "none"
+
+var y = document.getElementById("maingame")
+y.style.display = "block"
 
 function morebeans() {
     sushibeans += Math.round(Math.pow(1.2, prestiges));
@@ -68,6 +71,13 @@ function prestigecheck() {
     }
 }
 
+function infinitycheck() {
+    if (sushibeans >= 1e+308) {
+        y.style.display = "none"
+    }
+}
+
+
 function hardreset() {
     if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
         sushibeans = 0;
@@ -85,4 +95,5 @@ function hardreset() {
 var cancel = setInterval(incrementSeconds, 1000);
 var cancel = setInterval(incrementSeconds2, 1000);
 var cancel = setInterval(prestigecheck, 100);
+var cancel = setInterval(infinitycheck, 10);
 var cancel = setInterval(update, 10);
