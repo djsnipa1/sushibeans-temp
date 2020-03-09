@@ -3,6 +3,22 @@ body {
 }
 
 hr {
-    clear: both;
-    visibility: hidden;
+  clear: both;
+  visibility: hidden;
+}
+
+button {
+  background-color: white;
+  border: 3px solid #99896e;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#prestige {
+  background-color: white;
+  border: 3px solid #4987ab;
 }
