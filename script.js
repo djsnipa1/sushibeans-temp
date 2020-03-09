@@ -4,13 +4,16 @@ var sbps_cost = 10;
 var sbpsps = 0;
 var sbpsps_cost = 500;
 var potential_prestige = 0;
-var prestiges = 500;
+var prestiges = 3000;
 
 var x = document.getElementById("prestigediv")
 x.style.display = "none"
 
 var y = document.getElementById("maingame")
 y.style.display = "block"
+
+var z = document.getElementById("infinity")
+z.style.display = "none"
 
 function morebeans() {
     sushibeans += Math.round(Math.pow(1.2, prestiges));
@@ -44,6 +47,17 @@ function prestige() {
   }
 }
 
+function collapse() {
+  prestiges = 0
+  sushibeans = 0;
+  sbps = 0;
+  sbps_cost = 10;
+  sbpsps = 0;
+  sbpsps_cost = 500;
+  y.style.display = "block"
+  z.style.display = "none"
+}
+
 function update() {
   document.getElementById("sushibeans").innerHTML = sushibeans;
   document.getElementById("sbps").innerHTML = sbps;
@@ -74,6 +88,7 @@ function prestigecheck() {
 function infinitycheck() {
     if (sushibeans >= 1e+308) {
         y.style.display = "none"
+        z.style.display = "block"
     }
 }
 
