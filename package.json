@@ -1,14 +1,14 @@
 {
-  "name": "break_eternity.js",
-  "version": "1.0.2",
-  "description": "A Javascript numerical library to represent numbers as large as 10^^1e308 and as small as 10^-10^^1e308. Sequel to break_infinity.js, designed for incremental games.",
-  "main": "break_eternity.js",
+  "name": "omega_num.js",
+  "version": "0.3.0",
+  "description": "A JavaScript library that handles arithmetic for numbers as large as 10{1000}9e15.",
+  "main": "OmegaNum.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Patashu/break_eternity.js.git"
+    "url": "https://github.com/Naruyoko/OmegaNum.js.git"
   },
   "keywords": [
     "bignum",
@@ -17,10 +17,10 @@
     "number",
     "decimal"
   ],
-  "author": "Patashu",
-  "license": "UNLICENSED",
+  "author": "Naruyoko",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Patashu/break_eternity.js/issues"
+    "url": "https://github.com/Naruyoko/OmegaNum.js/issues"
   },
-  "homepage": "https://github.com/Patashu/break_eternity.js#readme"
+  "homepage": "https://github.com/Naruyoko/OmegaNum.js"
 }
