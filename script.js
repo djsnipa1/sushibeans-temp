@@ -17,8 +17,11 @@ y.style.display = "block"
 var z = document.getElementById("infinity")
 z.style.display = "none"
 
+var w = document.getElementById("singularity")
+w.style.display = "none"
+
 function morebeans() {
-    sushibeans += multiplier;
+    sushibeans += multiplier
 }
 
 function moresbps() {
@@ -50,7 +53,8 @@ function prestige() {
 }
 
 function collapse() {
-  prestiges = 
+  singularities += 1
+  prestiges = 0
   sushibeans = 0
   sbps = 0
   sbps_cost = 10
@@ -58,29 +62,31 @@ function collapse() {
   sbpsps_cost = 500
   y.style.display = "block"
   z.style.display = "none"
+  w.style.display = "block"
 }
 
 function update() {
   multiplier = Math.round(Math.pow(1.2, prestiges))
   potential_prestige = Math.round(Math.log2(sushibeans / 1000 + 1))
-  document.getElementById("sushibeans").innerHTML = sushibeans;
-  document.getElementById("sbps").innerHTML = sbps;
-  document.getElementById("sbps_cost").innerHTML = sbps_cost;
-  document.getElementById("sbpsps").innerHTML = sbpsps;
-  document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
-  document.getElementById("prestiges").innerHTML = prestiges;
-  document.getElementById("potential_prestige").innerHTML = potential_prestige;
-  document.getElementById("multiplier").multiplier;
+  document.getElementById("sushibeans").innerHTML = sushibeans
+  document.getElementById("sbps").innerHTML = sbps
+  document.getElementById("sbps_cost").innerHTML = sbps_cost
+  document.getElementById("sbpsps").innerHTML = sbpsps
+  document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost
+  document.getElementById("prestiges").innerHTML = prestiges
+  document.getElementById("potential_prestige").innerHTML = potential_prestige
+  document.getElementById("multiplier").innerHTML = multiplier
+  document.getElementById("singularities").innerHTML = singularities
 }
 
 function incrementSeconds() {
     sushibeans += sbps;
-    document.getElementById("sushibeans").innerHTML = sushibeans;
+    document.getElementById("sushibeans").innerHTML = sushibeans
 }
 
 function incrementSeconds2() {
     sbps += sbpsps;
-    document.getElementById("sbps").innerHTML = sbps;
+    document.getElementById("sbps").innerHTML = sbps
 }
 
 function prestigecheck() {
@@ -99,15 +105,16 @@ function infinitycheck() {
 
 function hardreset() {
     if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
-        sushibeans = 0
-        sbps = 0
-        sbps_cost = 10
-        sbpsps = 0
-        sbpsps_cost = 500
-        prestiges = 0
+      sushibeans = 0
+      sbps = 0
+      sbps_cost = 10
+      sbpsps = 0
+      sbpsps_cost = 500
+      prestiges = 0
+      singularities = 0
     }
     else {
-        alert("Thank goodness.")
+      alert("Thank goodness.")
     }
 }
 
