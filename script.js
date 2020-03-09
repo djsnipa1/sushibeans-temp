@@ -1,4 +1,4 @@
-var sushibeans = 0;
+var sushibeans = 10000;
 var sbps = 0;
 var sbps_cost = 10;
 var sbpsps = 0;
@@ -10,13 +10,13 @@ document.getElementById("sushibeans").innerHTML = sushibeans;
 document.getElementById("sbps_cost").innerHTML = sbps_cost;
 document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
 document.getElementById("prestiges").innerHTML = prestiges;
-document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans / 100 + 1));
+document.getElementById("potential_prestige").innerHTML = Math.round(Math.log(sushibeans / 1000 + 1));
 document.getElementById("multiplier").innerHTML = Math.round(Math.pow(1.2, prestiges))
 
 function morebeans() {
     sushibeans += Math.round(Math.pow(1.2, prestiges));
     document.getElementById("sushibeans").innerHTML = sushibeans;
-    document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans / 100 + 1));
+    document.getElementById("potential_prestige").innerHTML = Math.round(Math.log(sushibeans / 1000 + 1));
 };
 
 function moresbps() {
@@ -27,7 +27,7 @@ function moresbps() {
         document.getElementById("sushibeans").innerHTML = sushibeans;
         document.getElementById("sbps").innerHTML = sbps;
         document.getElementById("sbps_cost").innerHTML = sbps_cost;
-        document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans / 100 + 1));
+        document.getElementById("potential_prestige").innerHTML = Math.round(Math.log(sushibeans / 1000 + 1));
     };
 };
 
@@ -40,7 +40,7 @@ function moresbpsps() {
         document.getElementById("sushibeans").innerHTML = sushibeans;
         document.getElementById("sbpsps").innerHTML = sbpsps;
         document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
-        document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans / 100 + 1));
+        document.getElementById("potential_prestige").innerHTML = Math.round(Math.log(sushibeans / 1000 + 1));
     };
 };
 
@@ -58,7 +58,7 @@ function prestige() {
     document.getElementById("sbpsps").innerHTML = sbpsps;
     document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
     document.getElementById("prestiges").innerHTML = prestiges;
-    document.getElementById("potential_prestige").innerHTML = Math.round(Math.log10(sushibeans / 100 + 1));
+    document.getElementById("potential_prestige").innerHTML = Math.round(Math.log(sushibeans / 1000 + 1));
     document.getElementById("multiplier").innerHTML = Math.round(Math.pow(1.2, prestiges));
   }
 }
@@ -70,11 +70,13 @@ var el = document.getElementById('seconds-counter');
 function incrementSeconds() {
     sushibeans += sbps;
     document.getElementById("sushibeans").innerHTML = sushibeans;
+    document.getElementById("potential_prestige").innerHTML = Math.round(Math.log(sushibeans / 1000 + 1));
 }
 
 function incrementSeconds2() {
     sbps += sbpsps;
     document.getElementById("sbps").innerHTML = sbps;
+    document.getElementById("potential_prestige").innerHTML = Math.round(Math.log(sushibeans / 1000 + 1));
 }
 
 var cancel = setInterval(incrementSeconds, 1000);
