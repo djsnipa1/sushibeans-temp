@@ -1,4 +1,4 @@
-var sushibeans = 0;
+var sushibeans = 3000;
 var sbps = 0;
 var sbps_cost = 10;
 var sbpsps = 0;
@@ -32,7 +32,7 @@ function moresbpsps() {
 
 function prestige() {
   if (Math.round(Math.log(sushibeans / 1000 + 1)) > 0) {
-    prestiges += Math.round(Math.log10(sushibeans / 100 + 1));
+    prestiges += Math.round(Math.log(sushibeans / 1000 + 1));
     sushibeans = 0;
     sbps = 0;
     sbps_cost = 10;
@@ -63,17 +63,22 @@ function incrementSeconds2() {
 }
 
 function prestigecheck() {
-    if (Math.round(Math.log(sushibeans / 1000 + 1)) > 0) {
+    if (potential_prestige > 0) {
         x.style.display = "block"
     }
 }
 
 function hardreset() {
-    if (confirm("Press a button!")) {
-        
+    if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
+        sushibeans = 0;
+        sbps = 0;
+        sbps_cost = 10;
+        sbpsps = 0;
+        sbpsps_cost = 500;
+        prestiges = 0;
     }
     else {
-      
+        alert("Thank goodness.")
     }
 }
 
