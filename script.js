@@ -5,7 +5,6 @@ var sbpsps = 0;
 var sbpsps_cost = 500;
 var potential_prestige = 0;
 var prestiges = 0;
-var updaterate = document.getElementById("update_rate");
 
 var x = document.getElementById("prestigediv")
 x.style.display = "none"
@@ -42,8 +41,6 @@ function prestige() {
   }
 }
 
-
-
 function update() {
   document.getElementById("sushibeans").innerHTML = sushibeans;
   document.getElementById("sbps").innerHTML = sbps;
@@ -68,6 +65,15 @@ function incrementSeconds2() {
 function prestigecheck() {
     if (Math.round(Math.log(sushibeans / 1000 + 1)) > 0) {
         x.style.display = "block"
+    }
+}
+
+function hardreset() {
+    if (confirm("Press a button!")) {
+        
+    }
+    else {
+      
     }
 }
 
