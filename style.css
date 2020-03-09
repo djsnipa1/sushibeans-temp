@@ -23,3 +23,11 @@ p {
   border: 3px solid #4987ab;
   color: #003654
 }
+
+#options {
+  position: fixed;
+  width: 15%;
+  left: 0;
+  top: 0;
+  background-color: #d6cab6;
+}

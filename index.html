@@ -16,6 +16,7 @@
   
   <body>
     <center><hr size="100" />
+    
     <p style="font-size: 36px; color: #205920">Sushi beans: <a id="sushibeans">0</a></p>
     <button type="button" onclick="morebeans()">Make sushi beans</button>
     <p>Your goal is to get infinite (10^308) sushi beans!<br>Shouldn't take too long.</p>
@@ -37,6 +38,12 @@
       <p>You have <a id="prestiges">0</a> prestige points, giving you a <a id="multiplier">0</a>x multiplier</p>
     </div>
     
+    <div id="options">
+      <p style="font-size: 36px">Options</p><br>
+      <p>Update rate: <a id="multiplier">0</a></p>
+      <input type="range" min="10" max="1000" value="20" class="slider" id="update_rate">
+    </div>
+
     </center>
     </body>
 </html>
