@@ -1,4 +1,4 @@
-var sushibeans = 11110;
+var sushibeans = 0;
 var sbps = 0;
 var sbps_cost = 10;
 var sbpsps = 0;
