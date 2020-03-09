@@ -45,9 +45,17 @@ p {
   background-size: 100% 100%;
 }
 
+#singularity {
+  position: fixed;
+  width: 400px;
+  right: 0;
+  top: 0;
+  background-image: url("https://1-background.com/images/stars-1/beautiful-blue-stars-fill.jpg");
+}
+
 #options {
   position: fixed;
-  width: 15%;
+  width: 300px;
   left: 0;
   top: 0;
   background-color: #d6cab6;
