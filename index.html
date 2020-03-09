@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Makin' Sushi Beans</title>
+    <link rel="icon" href="https://www.shareicon.net/data/256x256/2016/06/09/585398_sushi_512x512.png">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+    <script src=""></script>
+  </head>  
+  
+  <body>
+    <center><hr size="100" />
+    
+    <p style="font-size: 36px; color: #205920">Sushi beans: <a id="sushibeans">0</a></p>
+    <button type="button" onclick="morebeans()">Make sushi beans</button>
+    <p>Your goal is to get infinite (10^308) sushi beans!<br>Shouldn't take too long.</p>
+    
+    <hr size="100" />
+      
+    <button type="button" onclick="moresbps()">+1 sushi beans per second<br>Cost: <a id="sbps_cost">0</a></button>
+    <p>You are earning <a id="sbps">0</a> sbps</p>
+      
+    <br><br>
+      
+    <button type="button" onclick="moresbpsps()">+1 sushi beans per second per second<br>Cost: <a id="sbpsps_cost">0</a></button>
+    <p>You are earning <a id="sbpsps">0</a> sbpsps</p>
+      
+    <hr size="100" />
+    
+    <div id="prestigediv">
+      <button type="button" id="prestige" onclick="prestige()">Prestige for <a id="potential_prestige">0</a> prestige points</button>
+      <p>You have <a id="prestiges">0</a> prestige points, giving you a <a id="multiplier">0</a>x multiplier</p>
+    </div>
+    
+    <div id="options">
+      <p style="font-size: 36px">Options</p><br>
+      <button type="button" id="hardreset" onclick="hardreset()">Hard reset</button>
+      <hr size="20" />
+    </div>
+
+    </center>
+    </body>
+</html>
