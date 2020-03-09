@@ -45,7 +45,7 @@ function moresbpsps() {
 };
 
 function prestige() {
-  if (Math.round(Math.log10(sushibeans / 100 + 1)) > 0) {
+  if (Math.round(Math.log(sushibeans / 1000 + 1)) > 0) {
     prestiges += Math.round(Math.log10(sushibeans / 100 + 1));
     sushibeans = 0;
     sbps = 0;
@@ -79,5 +79,13 @@ function incrementSeconds2() {
     document.getElementById("potential_prestige").innerHTML = Math.round(Math.log(sushibeans / 1000 + 1));
 }
 
+function prestigecheck() {
+    var x = document.getElementById("myDIV")
+    if (Math.round(Math.log(sushibeans / 1000 + 1) > 0) {
+        x.style.display = "block"
+    }
+}
+
 var cancel = setInterval(incrementSeconds, 1000);
 var cancel = setInterval(incrementSeconds2, 1000);
+var cancel = setInterval(prestigecheck, 100);
