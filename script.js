@@ -1,4 +1,4 @@
-var sushibeans = 3000;
+var sushibeans = 0;
 var sbps = 0;
 var sbps_cost = 10;
 var sbpsps = 0;
@@ -31,8 +31,8 @@ function moresbpsps() {
 };
 
 function prestige() {
-  if (Math.round(Math.log(sushibeans / 1000 + 1)) > 0) {
-    prestiges += Math.round(Math.log(sushibeans / 1000 + 1));
+  if (Math.round(Math.log2(sushibeans / 1000 + 1)) > 0) {
+    prestiges += Math.round(Math.log2(sushibeans / 1000 + 1));
     sushibeans = 0;
     sbps = 0;
     sbps_cost = 10;
@@ -48,7 +48,7 @@ function update() {
   document.getElementById("sbpsps").innerHTML = sbpsps;
   document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost;
   document.getElementById("prestiges").innerHTML = prestiges;
-  document.getElementById("potential_prestige").innerHTML = Math.round(Math.log(sushibeans / 1000 + 1));
+  document.getElementById("potential_prestige").innerHTML = Math.round(Math.log2(sushibeans / 1000 + 1));
   document.getElementById("multiplier").innerHTML = Math.round(Math.pow(1.2, prestiges));
 }
 
@@ -63,7 +63,7 @@ function incrementSeconds2() {
 }
 
 function prestigecheck() {
-    if (potential_prestige > 0) {
+    if (Math.round(Math.log2(sushibeans / 1000 + 1)) > 0) {
         x.style.display = "block"
     }
 }
