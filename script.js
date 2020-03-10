@@ -4,10 +4,11 @@ var sbps_cost = 10
 var sbpsps = 0
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 3000
+var prestiges = 0
 var multiplier = 1
 var multiplier2 = 1
-var singularities = 10
+var singularities = 0
+var total_singularities = 0
 var power = 1
 var powercost = 1
 
@@ -57,6 +58,7 @@ function prestige() {
 
 function collapse() {
   singularities += 1
+  total_singularities += 1
   prestiges = 0
   sushibeans = 0
   sbps = 0
@@ -97,6 +99,7 @@ function update() {
   document.getElementById("potential_prestige").innerHTML = potential_prestige
   document.getElementById("multiplier").innerHTML = multiplier2
   document.getElementById("singularities").innerHTML = singularities
+  document.getElementById("total_singularities").innerHTML = total_singularities
   document.getElementById("power").innerHTML = power
   document.getElementById("powernext").innerHTML = power + 1
   document.getElementById("powercost").innerHTML = powercost
