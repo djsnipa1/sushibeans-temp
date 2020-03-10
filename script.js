@@ -4,7 +4,7 @@ var sbps_cost = 10
 var sbpsps = 0
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 0
+var prestiges = 3000
 var multiplier = 1
 var singularities = 0
 
