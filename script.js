@@ -142,7 +142,6 @@ function hardreset() {
       sbpsps_cost = 500
       prestiges = 0
       singularities = 0
-      document.body.style.backgroundColor= "green"
     }
     else {
       alert("Thank goodness.")
