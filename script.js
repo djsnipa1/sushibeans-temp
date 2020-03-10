@@ -6,7 +6,10 @@ var sbpsps_cost = 500
 var potential_prestige = 0
 var prestiges = 3000
 var multiplier = 1
-var singularities = 0
+var multiplier2 = 1
+var singularities = 10
+var power = 1
+var powercost = 1
 
 var x = document.getElementById("prestigediv")
 x.style.display = "none"
@@ -21,13 +24,13 @@ var w = document.getElementById("singularity")
 w.style.display = "none"
 
 function morebeans() {
-    sushibeans += multiplier
+    sushibeans += multiplier2
 }
 
 function moresbps() {
     if (sushibeans >= sbps_cost) {
         sushibeans -= sbps_cost
-        sbps += multiplier
+        sbps += multiplier2
         sbps_cost = Math.round(sbps_cost * 1.1)
     };
 }
@@ -36,7 +39,7 @@ function moresbps() {
 function moresbpsps() {
     if (sushibeans >= sbpsps_cost) {
         sushibeans -= sbpsps_cost
-        sbpsps += multiplier
+        sbpsps += multiplier2
         sbpsps_cost = Math.round(sbpsps_cost * 1.2)
     };
 }
@@ -65,8 +68,25 @@ function collapse() {
   w.style.display = "block"
 }
 
+function increasepower() {
+  if (singularities >= powercost) {
+    singularities -= powercost
+    powercost = powercost * 2
+    power += 1
+  }
+}
+
+
+
+
+
+
+
+
+
 function update() {
   multiplier = Math.round(Math.pow(1.2, prestiges))
+  multiplier2 = Math.round(Math.pow(multiplier, power))
   potential_prestige = Math.round(Math.log2(sushibeans / 1000 + 1))
   document.getElementById("sushibeans").innerHTML = sushibeans
   document.getElementById("sbps").innerHTML = sbps
@@ -75,8 +95,11 @@ function update() {
   document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost
   document.getElementById("prestiges").innerHTML = prestiges
   document.getElementById("potential_prestige").innerHTML = potential_prestige
-  document.getElementById("multiplier").innerHTML = multiplier
+  document.getElementById("multiplier").innerHTML = multiplier2
   document.getElementById("singularities").innerHTML = singularities
+  document.getElementById("power").innerHTML = power
+  document.getElementById("powernext").innerHTML = power + 1
+  document.getElementById("powercost").innerHTML = powercost
 }
 
 function incrementSeconds() {
