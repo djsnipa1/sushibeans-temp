@@ -21,13 +21,19 @@ p {
 #prestige {
   background-color: #dfedf5;
   border: 3px solid #4987ab;
-  color: #003654
+  color: #003654;
 }
 
 #hardreset {
   background-color: #ff928a;
   border: 3px solid #ff0000;
-  color: #9c0a00
+  color: #9c0a00;
+}
+
+#disco {
+  background-color: #1a26c9;
+  border: 3px solid #3c0699;
+  color: #3a88e8;
 }
 
 #infinity {
@@ -75,4 +81,30 @@ p {
   text-align: left;
   vertical-align: top;
   padding-left: 7px;
+}
+
+@keyframes bgcolor {
+    0% {
+        background-color: #e06969
+    }
+
+    20% {
+        background-color: yellow
+    }
+
+    40% {
+        background-color: green
+    }
+
+    60% {
+        background-color: blue
+    }
+
+    80% {
+        background-color: purple
+    }
+  
+    100% {
+        background-color: #e06969
+    }
 }

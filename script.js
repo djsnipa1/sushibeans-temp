@@ -129,6 +129,13 @@ function infinitycheck() {
 }
 
 
+
+
+
+function disco() {
+  document.body.style.animation= "bgcolor 5s infinite"
+}
+
 function hardreset() {
     if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
       sushibeans = 0
