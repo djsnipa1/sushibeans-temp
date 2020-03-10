@@ -132,9 +132,6 @@ function infinitycheck() {
 
 
 
-function disco() {
-  document.body.style.animation= "bgcolor 5s infinite"
-}
 
 function hardreset() {
     if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
@@ -145,6 +142,7 @@ function hardreset() {
       sbpsps_cost = 500
       prestiges = 0
       singularities = 0
+      document.body.style.backgroundColor= "green"
     }
     else {
       alert("Thank goodness.")
