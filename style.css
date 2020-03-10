@@ -18,6 +18,16 @@ p {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+table {
+  background-color: #80735e;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+th, td {
+  background-color: white;
+  border: 1px solid #80735e;
+}
+
 #prestige {
   background-color: #dfedf5;
   border: 3px solid #4987ab;
@@ -65,7 +75,7 @@ p {
 
 #options {
   position: fixed;
-  width: 300px;
+  width: 400px;
   left: 0;
   top: 0;
   background-color: #d6cab6;
