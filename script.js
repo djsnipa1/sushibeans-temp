@@ -12,6 +12,10 @@ var total_singularities = 0
 var power = 1
 var powercost = 1
 
+var minutesLabel = document.getElementById("minutes")
+var secondsLabel = document.getElementById("seconds")
+var totalSeconds = 0
+
 var x = document.getElementById("prestigediv")
 x.style.display = "none"
 
@@ -148,8 +152,17 @@ function hardreset() {
     }
 }
 
-var cancel = setInterval(incrementSeconds, 1000)
-var cancel = setInterval(incrementSeconds2, 1000)
-var cancel = setInterval(prestigecheck, 100)
-var cancel = setInterval(infinitycheck, 10)
-var cancel = setInterval(update, 10)
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = totalSeconds % 60;
+  minutesLabel.innerHTML = parseInt(totalSeconds / 60);
+}
+
+
+
+setInterval(setTime, 1000)
+setInterval(incrementSeconds, 1000)
+setInterval(incrementSeconds2, 1000)
+setInterval(prestigecheck, 100)
+setInterval(infinitycheck, 10)
+setInterval(update, 10)
