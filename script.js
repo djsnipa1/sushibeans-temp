@@ -4,10 +4,10 @@ var sbps_cost = 10
 var sbpsps = 0
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 50000
+var prestiges = 5000
 var multiplier = 1
 var multiplier2 = 1
-var singularities = 0
+var singularities = 11111
 var total_singularities = 0
 var power = 1
 var powercost = 1
@@ -65,7 +65,7 @@ function prestige() {
 function collapse() {
   singularities += 1
   total_singularities += 1
-  prestiges = 0
+  prestiges = starting_prestiges
   sushibeans = 0
   sbps = 0
   sbps_cost = 10
@@ -84,7 +84,13 @@ function increasepower() {
   }
 }
 
-
+function startingprestiges() {
+  if (singularities >= starting_prestiges_next) {
+    singularities -= starting_prestiges_next
+    starting_prestiges = starting_prestiges_next
+    starting_prestiges_next = starting_prestiges_next * 10
+  }
+}
 
 
 
@@ -111,6 +117,7 @@ function update() {
   document.getElementById("powercost").innerHTML = powercost
   document.getElementById("starting_prestiges").innerHTML = starting_prestiges
   document.getElementById("starting_prestiges_next").innerHTML = starting_prestiges_next
+  document.getElementById("starting_prestiges_cost").innerHTML = starting_prestiges_next
 }
 
 function incrementSeconds() {
