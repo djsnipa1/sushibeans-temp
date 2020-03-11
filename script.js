@@ -1,4 +1,5 @@
 var sushibeans = 0
+var clicks = 0
 var sbps = 0
 var sbps_cost = 10
 var sbpsps = 0
@@ -30,7 +31,8 @@ var v = document.getElementById("startingprestiges")
 v.style.display = "block"
 
 function morebeans() {
-    sushibeans += multiplier2
+  sushibeans += multiplier2
+  clicks += 1
 }
 
 function moresbps() {
@@ -105,6 +107,7 @@ function update() {
   multiplier2 = Math.round(Math.pow(multiplier, power))
   potential_prestige = Math.round(Math.log2(sushibeans / 1000 + 1))
   document.getElementById("sushibeans").innerHTML = sushibeans
+  document.getElementById("clicks").innerHTML = clicks
   document.getElementById("sbps").innerHTML = sbps
   document.getElementById("sbps_cost").innerHTML = sbps_cost
   document.getElementById("sbpsps").innerHTML = sbpsps
@@ -161,6 +164,8 @@ function hardreset() {
       total_singularities = 0
       power = 1
       powercost = 1
+      starting_prestiges = 0
+      starting_prestiges_next = 3
       
       totalSeconds = 0
       
