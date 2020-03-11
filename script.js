@@ -4,13 +4,14 @@ var sbps_cost = 10
 var sbpsps = 0
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 5000
+var prestiges = 50000
 var multiplier = 1
 var multiplier2 = 1
-var singularities = 110
+var singularities = 0
 var total_singularities = 0
 var power = 1
 var powercost = 1
+var starting_prestiges = 0
 
 var minutesLabel = document.getElementById("minutes")
 var secondsLabel = document.getElementById("seconds")
@@ -146,6 +147,14 @@ function hardreset() {
       sbpsps_cost = 500
       prestiges = 0
       singularities = 0
+      total_singularities = 0
+      power = 1
+      powercost = 1
+      
+      totalSeconds = 0
+      
+      w.style.display = "none"
+      x.style.display = "none"
     }
     else {
       alert("Thank goodness.")
