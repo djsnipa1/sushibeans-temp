@@ -30,12 +30,6 @@ p {
   color: #9c0a00;
 }
 
-#disco {
-  background-color: #1a26c9;
-  border: 3px solid #3c0699;
-  color: #3a88e8;
-}
-
 #infinity {
   width: 600px;
   background-color: #151515;
@@ -87,36 +81,4 @@ p {
   left: 0;
   top: 0;
   background-color: #d6cab6;
-}
-
-#version {
-  text-align: left;
-  vertical-align: top;
-  padding-left: 7px;
-}
-
-@keyframes bgcolor {
-    0% {
-        background-color: #e06969
-    }
-
-    20% {
-        background-color: #dbd965
-    }
-
-    40% {
-        background-color: #65db6d
-    }
-
-    60% {
-        background-color: #65b4db
-    }
-
-    80% {
-        background-color: #ac65db
-    }
-  
-    100% {
-        background-color: #e06969
-    }
 }
