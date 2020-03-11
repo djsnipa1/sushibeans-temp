@@ -12,6 +12,7 @@ var total_singularities = 0
 var power = 1
 var powercost = 1
 var starting_prestiges = 0
+var starting_prestiges_next = 3
 
 var minutesLabel = document.getElementById("minutes")
 var secondsLabel = document.getElementById("seconds")
@@ -108,6 +109,8 @@ function update() {
   document.getElementById("power").innerHTML = power
   document.getElementById("powernext").innerHTML = power + 1
   document.getElementById("powercost").innerHTML = powercost
+  document.getElementById("starting_prestiges").innerHTML = starting_prestiges
+  document.getElementById("starting_prestiges_next").innerHTML = starting_prestiges_next
 }
 
 function incrementSeconds() {
