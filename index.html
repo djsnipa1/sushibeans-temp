@@ -72,11 +72,13 @@
         <p style="color: purple; font-size: 12px"><b>Total singularities: <a id="total_singularities">0</a></b></p>
         <hr size="50" />
         <button type="button" id="singularity_button" onclick="increasepower()"><b>Increase multiplier from (multiplier)^<a id="power">1</a> to (multiplier)^<a id="powernext">2</a><br><br>Cost: <a id="powercost">1</a></b></button>
-        <button type="button" id="singularity_button2" onclick="startingprestiges()"><b>Start with <a id="starting_prestiges_next">0</a> prestiges each collapse<br><br>Cost: <a id="starting_prestiges_cost">0</a></b></button>
-      <br></div>
+        <div id="startingprestiges">
+          <button type="button" id="singularity_button2" onclick="startingprestiges()"><b>Start with <a id="starting_prestiges_next">3</a> prestiges each collapse<br><br>Cost: <a id="starting_prestiges_cost">3</a></b></button>
+        </div>
+        <br></div>
       
       <div id="options">
-        <p id="version" style="font-size: 10px">  Sushi Beans v1.2.1 - The singularity update</p>
+        <p id="version" style="font-size: 10px">  Sushi Beans v1.2.2 - The singularity update</p>
         <p style="font-size: 36px">Options</p>
         <button type="button" id="hardreset" onclick="hardreset()">Hard reset</button>
         <hr size="50" />

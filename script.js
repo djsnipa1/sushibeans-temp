@@ -20,15 +20,14 @@ var totalSeconds = 0
 
 var x = document.getElementById("prestigediv")
 x.style.display = "none"
-
 var y = document.getElementById("maingame")
 y.style.display = "block"
-
 var z = document.getElementById("infinity")
 z.style.display = "none"
-
 var w = document.getElementById("singularity")
 w.style.display = "none"
+var v = document.getElementById("startingprestiges")
+v.style.display = "block"
 
 function morebeans() {
     sushibeans += multiplier2
@@ -89,6 +88,9 @@ function startingprestiges() {
     singularities -= starting_prestiges_next
     starting_prestiges = starting_prestiges_next
     starting_prestiges_next = starting_prestiges_next * 10
+    if (starting_prestiges_next > 300) {
+      v.style.display = "none"
+    }
   }
 }
 
@@ -115,7 +117,6 @@ function update() {
   document.getElementById("power").innerHTML = power
   document.getElementById("powernext").innerHTML = power + 1
   document.getElementById("powercost").innerHTML = powercost
-  document.getElementById("starting_prestiges").innerHTML = starting_prestiges
   document.getElementById("starting_prestiges_next").innerHTML = starting_prestiges_next
   document.getElementById("starting_prestiges_cost").innerHTML = starting_prestiges_next
 }
