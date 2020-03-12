@@ -1,6 +1,7 @@
 /* global Decimal*/
 
-x = new Decimal(11)
+x = new Decimal(11).multiply(2)
+x = x.multiply(2)
 document.getElementById("sushibeans").innerHTML = x
 
 var sushibeans = 0
@@ -36,10 +37,8 @@ var v = document.getElementById("startingprestiges")
 v.style.display = "block"
 
 function morebeans() {
-  sushibeans += multiplier2
-  clicks += 1
-  x = new Decimal(12)
-  document.getElementById("sushibeans").innerHTML = x
+  sushibeans += multiplier2;
+  clicks += 1;
 }
 
 function moresbps() {
