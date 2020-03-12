@@ -2740,3 +2740,5 @@ for (var i = 0; i < 10; ++i)
   return Decimal;
 
 }));
+
+var x = new Decimal (0)

@@ -1,4 +1,3 @@
-const EN = ExpantaNum
 var sushibeans = 0
 var clicks = 0
 var sbps = 0
