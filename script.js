@@ -1,8 +1,8 @@
 /* global Decimal*/
 
-var sushibeans = new Decimal(0)
-sushibeans = sushibeans.multiply(2)
-document.getElementById("sushibeans").innerHTML = g
+var sushibean = new Decimal(0)
+sushibean = sushibean.multiply(2)
+document.getElementById("sushibeans").innerHTML = sushibean
 
 var clicks = 0
 var sbps = 0
@@ -36,15 +36,14 @@ var v = document.getElementById("startingprestiges")
 v.style.display = "block"
 
 function morebeans() {
-  sushibeans += multiplier2
   clicks += 1
-  sushibeans = sushibeans.multiply(2)
-  document.getElementById("sushibeans").innerHTML = sushibeans
+  sushibean = sushibean.add(multiplier2)
+  document.getElementById("sushibeans").innerHTML = sushibean
 }
 
 function moresbps() {
-    if (sushibeans >= sbps_cost) {
-        sushibeans = sushibeans.subtract(sbps_cost)
+    if (sushibean >= sbps_cost) {
+        sushibean = sushibean.subtract(sbps_cost)
         sbps += multiplier2
         sbps_cost = Math.round(sbps_cost * 1.1)
     };
@@ -52,8 +51,8 @@ function moresbps() {
 
 
 function moresbpsps() {
-    if (sushibeans >= sbpsps_cost) {
-        sushibeans -= sbpsps_cost
+    if (sushibean >= sbpsps_cost) {
+        sushibean = sushibean.subtract(sbpsps_cost)
         sbpsps += multiplier2
         sbpsps_cost = Math.round(sbpsps_cost * 1.2)
     };
@@ -61,8 +60,8 @@ function moresbpsps() {
 
 function prestige() {
   if (potential_prestige > 0) {
-    prestiges += Math.round(Math.log2(sushibeans / 1000 + 1))
-    sushibeans = 0
+    prestiges += Math.round(sushibean.divide(1000).add(1))
+    sushibean = Decimal(0)
     sbps = 0
     sbps_cost = 10
     sbpsps = 0
@@ -74,7 +73,7 @@ function collapse() {
   singularities += 1
   total_singularities += 1
   prestiges = starting_prestiges
-  sushibeans = 0
+  sushibean = Decimal(0)
   sbps = 0
   sbps_cost = 10
   sbpsps = 0
@@ -112,8 +111,9 @@ function startingprestiges() {
 function update() {
   multiplier = Math.round(Math.pow(1.2, prestiges))
   multiplier2 = Math.round(Math.pow(multiplier, power))
-  potential_prestige = Math.round(Math.log2(sushibeans / 1000 + 1))
+  potential_prestige = Math.round(sushibean.divide(1000).add(1))
   
+  document.getElementById("sushibeans").innerHTML = sushibean
   document.getElementById("clicks").innerHTML = clicks
   document.getElementById("sbps").innerHTML = sbps
   document.getElementById("sbps_cost").innerHTML = sbps_cost
@@ -132,7 +132,7 @@ function update() {
 }
 
 function incrementSeconds() {
-    sushibeans += sbps;
+    sushibean = sushibean.add(sbps)
 }
 
 function incrementSeconds2() {
@@ -146,7 +146,7 @@ function prestigecheck() {
 }
 
 function infinitycheck() {
-    if (sushibeans >= 1e+308) {
+    if (sushibean >= 1e+308) {
         y.style.display = "none"
         z.style.display = "block"
     }
@@ -159,7 +159,7 @@ function infinitycheck() {
 
 function hardreset() {
     if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
-      sushibeans = 0
+      sushibean = Decimal(0)
       sbps = 0
       sbps_cost = 10
       sbpsps = 0
