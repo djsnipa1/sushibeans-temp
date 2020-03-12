@@ -1,10 +1,9 @@
 /* global Decimal*/
 
-x = new Decimal(11).multiply(2)
-x = x.multiply(2)
-document.getElementById("sushibeans").innerHTML = x
+var sushibeans = new Decimal(0)
+sushibeans = sushibeans.multiply(2)
+document.getElementById("sushibeans").innerHTML = g
 
-var sushibeans = 0
 var clicks = 0
 var sbps = 0
 var sbps_cost = 10
@@ -37,13 +36,15 @@ var v = document.getElementById("startingprestiges")
 v.style.display = "block"
 
 function morebeans() {
-  sushibeans += multiplier2;
-  clicks += 1;
+  sushibeans += multiplier2
+  clicks += 1
+  sushibeans = sushibeans.multiply(2)
+  document.getElementById("sushibeans").innerHTML = sushibeans
 }
 
 function moresbps() {
     if (sushibeans >= sbps_cost) {
-        sushibeans -= sbps_cost
+        sushibeans = sushibeans.subtract(sbps_cost)
         sbps += multiplier2
         sbps_cost = Math.round(sbps_cost * 1.1)
     };
