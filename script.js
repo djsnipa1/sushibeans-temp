@@ -5,13 +5,13 @@ document.getElementById("sushibeans").innerHTML = sushibean
 
 var clicks = 0
 var sbps = 0
-var sbps_cost = 10
+var sbps_cost = new Decimal(10)
 var sbpsps = 0
-var sbpsps_cost = 500
+var sbpsps_cost = new Decimal(500)
 var potential_prestige = 0
 var prestiges = 3000
 var multiplier = new Decimal(1)
-var singularities = 100
+var singularities = 0
 var total_singularities = 0
 var power = 1
 var powercost = 1
@@ -42,7 +42,7 @@ function morebeans() {
 function moresbps() {
     if (sushibean >= sbps_cost) {
         sushibean = sushibean.subtract(sbps_cost)
-        sbps += multiplier
+        sbps = sbps.add(multiplier)
         sbps_cost = Math.round(sbps_cost * 1.1)
     };
 }
@@ -51,7 +51,7 @@ function moresbps() {
 function moresbpsps() {
     if (sushibean >= sbpsps_cost) {
         sushibean = sushibean.subtract(sbpsps_cost)
-        sbpsps += multiplier
+        sbpsps = sbpsps.add(multiplier)
         sbpsps_cost = Math.round(sbpsps_cost * 1.2)
     };
 }
@@ -140,7 +140,7 @@ function incrementSeconds() {
 }
 
 function incrementSeconds2() {
-    sbps += sbpsps;
+    sbps = sbps.add(sbpsps)
 }
 
 function prestigecheck() {
