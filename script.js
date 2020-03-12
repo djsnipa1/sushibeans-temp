@@ -108,7 +108,7 @@ function startingprestiges() {
 
 function update() {
   if (multiplier < 1e+16) {
-    multiplier = Math.round(Decimal.pow(1.2, prestiges).pow(power))
+    multiplier = Math.round(Decimal.round(Decimal.pow(1.2, prestiges)).pow(power))
   }
   else {
     multiplier = Decimal.pow(1.2, prestiges).pow(power)
