@@ -4,12 +4,12 @@ var sushibean = new Decimal(0)
 document.getElementById("sushibeans").innerHTML = sushibean
 
 var clicks = 0
-var sbps = 0
-var sbps_cost = new Decimal(10)
-var sbpsps = 0
-var sbpsps_cost = new Decimal(500)
+var sbps = new Decimal(0)
+var sbps_cost = 10
+var sbpsps = new Decimal(0)
+var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 3000
+var prestiges = 0
 var multiplier = new Decimal(1)
 var singularities = 0
 var total_singularities = 0
@@ -60,9 +60,9 @@ function prestige() {
   if (potential_prestige > 0) {
     prestiges += Math.round(sushibean.divide(1000).add(1).log2(1))
     sushibean = new Decimal(0)
-    sbps = 0
+    sbps = new Decimal(0)
     sbps_cost = 10
-    sbpsps = 0
+    sbpsps = new Decimal(0)
     sbpsps_cost = 500
   }
 }
@@ -72,9 +72,9 @@ function collapse() {
   total_singularities += 1
   prestiges = starting_prestiges
   sushibean = new Decimal(0)
-  sbps = 0
+  sbps = new Decimal(0)
   sbps_cost = 10
-  sbpsps = 0
+  sbpsps = new Decimal(0)
   sbpsps_cost = 500
   y.style.display = "block"
   z.style.display = "none"
@@ -164,9 +164,9 @@ function infinitycheck() {
 function hardreset() {
     if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
       sushibean = Decimal(0)
-      sbps = 0
+      sbps = new Decimal(0)
       sbps_cost = 10
-      sbpsps = 0
+      sbpsps = new Decimal(0)
       sbpsps_cost = 500
       prestiges = 0
       singularities = 0
