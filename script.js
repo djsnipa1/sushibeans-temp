@@ -10,7 +10,7 @@ var sbpsps = 0
 var sbpsps_cost = 500
 var potential_prestige = 0
 var prestiges = 0
-var multiplier = new Decimal(22)
+var multiplier = new Decimal(1)
 var singularities = 0
 var total_singularities = 0
 var power = 1
@@ -107,7 +107,14 @@ function startingprestiges() {
 
 
 function update() {
-  multiplier = Math.round(Decimal.pow(1.2, prestiges))
+  if (multiplier < 1e+308) {
+    multiplier = Math.round(Decimal.pow(1.2, prestiges).pow(power))
+  }
+  else {
+    multiplier = Decimal.pow(1.2, prestiges).pow(power)
+  }
+  
+  
   potential_prestige = Math.round(sushibean.divide(1000).add(1).log2(1))
   
   document.getElementById("sushibeans").innerHTML = sushibean
