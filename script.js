@@ -1,4 +1,5 @@
-var sushibeans = new Decimal(0)
+const EN = ExpantaNum
+var sushibeans = ExpantaNum
 var clicks = 0
 var sbps = 0
 var sbps_cost = 10
