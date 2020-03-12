@@ -1,5 +1,5 @@
 const EN = ExpantaNum
-var sushibeans = ExpantaNum
+var sushibeans = 0
 var clicks = 0
 var sbps = 0
 var sbps_cost = 10
