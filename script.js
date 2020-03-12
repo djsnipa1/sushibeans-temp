@@ -10,8 +10,7 @@ var sbpsps = 0
 var sbpsps_cost = 500
 var potential_prestige = 0
 var prestiges = 0
-var multiplier = 0
-var multiplier2 = 0
+var multiplier = new Decimal(22)
 var singularities = 0
 var total_singularities = 0
 var power = 1
@@ -36,14 +35,14 @@ v.style.display = "block"
 
 function morebeans() {
   clicks += 1
-  sushibean = sushibean.add(multiplier2)
+  sushibean = sushibean.add(multiplier)
   document.getElementById("sushibeans").innerHTML = sushibean
 }
 
 function moresbps() {
     if (sushibean >= sbps_cost) {
         sushibean = sushibean.subtract(sbps_cost)
-        sbps += multiplier2
+        sbps += multiplier
         sbps_cost = Math.round(sbps_cost * 1.1)
     };
 }
@@ -52,7 +51,7 @@ function moresbps() {
 function moresbpsps() {
     if (sushibean >= sbpsps_cost) {
         sushibean = sushibean.subtract(sbpsps_cost)
-        sbpsps += multiplier2
+        sbpsps += multiplier
         sbpsps_cost = Math.round(sbpsps_cost * 1.2)
     };
 }
@@ -108,8 +107,7 @@ function startingprestiges() {
 
 
 function update() {
-  multiplier = Math.round(Math.pow(1.2, prestiges))
-  multiplier2 = Math.round(Math.pow(multiplier, power))
+  multiplier = Math.round(Decimal.pow(1.2, prestiges))
   potential_prestige = Math.round(sushibean.divide(1000).add(1).log2(1))
   
   document.getElementById("sushibeans").innerHTML = sushibean
@@ -120,7 +118,7 @@ function update() {
   document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost
   document.getElementById("prestiges").innerHTML = prestiges
   document.getElementById("potential_prestige").innerHTML = potential_prestige
-  document.getElementById("multiplier").innerHTML = multiplier2
+  document.getElementById("multiplier").innerHTML = multiplier
   document.getElementById("singularities").innerHTML = singularities
   document.getElementById("total_singularities").innerHTML = total_singularities
   document.getElementById("power").innerHTML = power
@@ -128,10 +126,6 @@ function update() {
   document.getElementById("powercost").innerHTML = powercost
   document.getElementById("starting_prestiges_next").innerHTML = starting_prestiges_next
   document.getElementById("starting_prestiges_cost").innerHTML = starting_prestiges_next
-  
-  if (multiplier2 = Infinity) {
-    multiplier2 = 1e+308
-  }
 }
 
 function incrementSeconds() {
