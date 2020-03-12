@@ -9,7 +9,7 @@ var sbps_cost = 10
 var sbpsps = 0
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 300
+var prestiges = 0
 var multiplier = 0
 var multiplier2 = 0
 var singularities = 0
@@ -128,6 +128,10 @@ function update() {
   document.getElementById("powercost").innerHTML = powercost
   document.getElementById("starting_prestiges_next").innerHTML = starting_prestiges_next
   document.getElementById("starting_prestiges_cost").innerHTML = starting_prestiges_next
+  
+  if (multiplier2 = Infinity) {
+    multiplier2 = 1e+308
+  }
 }
 
 function incrementSeconds() {
@@ -145,7 +149,7 @@ function prestigecheck() {
 }
 
 function infinitycheck() {
-    if (sushibean > 1e+208) {
+    if (sushibean > 1e+308) {
         y.style.display = "none"
         z.style.display = "block"
     }
