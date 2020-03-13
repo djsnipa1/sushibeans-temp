@@ -194,7 +194,10 @@ function sb_autoclicker() {
 }
 
 function sb_autoclick() {
-  morebeans()
+  var sb_autoclickertest -= 1
+  if (sb_autoclickers > 0) {
+    morebeans()
+  }
 }
 
 
@@ -253,7 +256,6 @@ setInterval(incrementSeconds2, 1000)
 setInterval(prestigecheck, 100)
 setInterval(infinitycheck, 10)
 setInterval(update, 10)
+setInterval(autoclick_update, 10)
+setInterval(sb_autoclick, 10)
 
-if (sb_autoclickers > 0) {
-  setInterval(sb_autoclick, 1000)
-}
