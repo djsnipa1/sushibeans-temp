@@ -9,9 +9,9 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 5000
+var prestiges = 0
 var multiplier = new Decimal(1)
-var singularities = 250
+var singularities = 0
 var total_singularities = 0
 var power = 1
 var powercost = 1
@@ -225,6 +225,7 @@ function sb_autoclick() {
 function hardreset() {
     if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
       sushibean = new Decimal(0)
+      clicks = 0
       sbps = new Decimal(0)
       sbps_cost = 10
       sbpsps = new Decimal(0)
