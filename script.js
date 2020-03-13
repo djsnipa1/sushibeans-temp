@@ -9,7 +9,7 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 5000
+var prestiges = 0
 var multiplier = new Decimal(1)
 var singularities = 0
 var total_singularities = 0
@@ -17,6 +17,7 @@ var power = 1
 var powercost = 1
 var starting_prestiges = 0
 var starting_prestiges_next = 3
+var can_hotkey = false
 
 var minutesLabel = document.getElementById("minutes")
 var secondsLabel = document.getElementById("seconds")
@@ -32,6 +33,8 @@ var w = document.getElementById("singularity")
 w.style.display = "none"
 var v = document.getElementById("startingprestiges")
 v.style.display = "block"
+var u = document.getElementById("hotkey")
+u.style.display = "block"
 
 function morebeans() {
   clicks += 1
@@ -100,6 +103,19 @@ function startingprestiges() {
   }
 }
 
+function prestige_hotkey() {
+  if (singularities >= 10) {
+    singularities -= 10
+    can_hotkey = true
+    u.style.display = "none"
+  }
+}
+
+document.onkeypress = function (e) {
+  if (can_hotkey == true) {
+    prestige()
+  }
+}
 
 
 
@@ -175,6 +191,7 @@ function hardreset() {
       powercost = 1
       starting_prestiges = 0
       starting_prestiges_next = 3
+      can_hotkey = false
       
       totalSeconds = 0
       
