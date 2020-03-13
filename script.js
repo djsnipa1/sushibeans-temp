@@ -9,7 +9,7 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 0
+var prestiges = 5000
 var multiplier = new Decimal(1)
 var singularities = 0
 var total_singularities = 0
@@ -20,6 +20,8 @@ var starting_prestiges_next = 3
 var can_hotkey = false
 var sb_autoclickers = 0
 var sb_autoclickercost = 25
+var prestige_autoclickers = 0
+var prestige_autoclickercost = 50
 
 var minutesLabel = document.getElementById("minutes")
 var secondsLabel = document.getElementById("seconds")
@@ -206,7 +208,13 @@ function sb_autoclick() {
   }
 }
 
-
+function prestige_autoclicker() {
+  if (singularities >= prestige_autoclickercost) {
+    singularities -= prestige_autoclickercost
+    prestige_autoclickers += 1
+    prestige_autoclickercost = Math.round(sb_autoclickercost * 1.5)
+  }
+}
 
 
 
@@ -238,6 +246,8 @@ function hardreset() {
       starting_prestiges = 0
       starting_prestiges_next = 3
       can_hotkey = false
+      sb_autoclickers = 0
+      sb_autoclickercost = 25
       sb_autoclickers = 0
       sb_autoclickercost = 25
       

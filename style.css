@@ -46,8 +46,8 @@ p {
 }
 
 #singularity {
-  position: fixed;
-  width: 300px;
+  position: absolute;
+  width: 15%;
   border: 3px solid #7100ad;
   right: 0;
   top: 0;
