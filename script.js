@@ -9,19 +9,22 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 0
+var prestiges = 5000
 var multiplier = new Decimal(1)
-var singularities = 0
+var hit_infinity = false
+var singularities = 9999
 var total_singularities = 0
 var power = 1
 var powercost = 1
-var starting_prestiges = 0
+var starting_prestiges = 3
 var starting_prestiges_next = 3
 var can_hotkey = false
 var sb_autoclickers = 0
 var sb_autoclickercost = 25
 var prestige_autoclickers = 0
 var prestige_autoclickercost = 50
+var collapse_autoclickers = 0
+var collapse_autoclickercost = 100
 
 var minutesLabel = document.getElementById("minutes")
 var secondsLabel = document.getElementById("seconds")
@@ -73,6 +76,8 @@ function update() {
   document.getElementById("sb_autoclickers").innerHTML = sb_autoclickers
   document.getElementById("prestige_autoclickercost").innerHTML = prestige_autoclickercost
   document.getElementById("prestige_autoclickers").innerHTML = prestige_autoclickers
+  document.getElementById("collapse_autoclickercost").innerHTML = collapse_autoclickercost
+  document.getElementById("collapse_autoclickers").innerHTML = collapse_autoclickers
   
 }
 
@@ -124,18 +129,21 @@ function prestige() {
 }
 
 function collapse() {
-  singularities += 1
-  total_singularities += 1
-  prestiges = starting_prestiges
-  sushibean = new Decimal(0)
-  sbps = new Decimal(0)
-  sbps_cost = 10
-  sbpsps = new Decimal(0)
-  sbpsps_cost = 500
-  y.style.display = "block"
-  z.style.display = "none"
-  w.style.display = "block"
-  t.style.display = "block"
+  if (hit_infinity = true) {
+    hit_infinity = false
+    singularities += 1
+    total_singularities += 1
+    prestiges = starting_prestiges
+    sushibean = new Decimal(0)
+    sbps = new Decimal(0)
+    sbps_cost = 10
+    sbpsps = new Decimal(0)
+    sbpsps_cost = 500
+    y.style.display = "block"
+    z.style.display = "none"
+    w.style.display = "block"
+    t.style.display = "block"
+  }
 }
 
 function increasepower() {
@@ -187,6 +195,7 @@ function prestigecheck() {
 
 function infinitycheck() {
     if (sushibean > 1e+308) {
+        hit_infinity = true
         y.style.display = "none"
         z.style.display = "block"
     }
@@ -228,6 +237,24 @@ function prestige_autoclick() {
   }
 }
 
+function collapse_autoclicker() {
+  if (singularities >= collapse_autoclickercost) {
+    singularities -= collapse_autoclickercost
+    collapse_autoclickers += 1
+    collapse_autoclickercost = Math.round(collapse_autoclickercost * 1.5)
+  }
+}
+
+function collapse_autoclick() {
+  if (collapse_autoclickers > 0) {
+    collapse()
+    setTimeout(collapse_autoclick, 10000 / collapse_autoclickers)
+  }
+  else {
+    setTimeout(collapse_autoclick, 10)
+  }
+}
+
 
 
 
@@ -261,7 +288,9 @@ function hardreset() {
       sb_autoclickers = 0
       sb_autoclickercost = 25
       prestige_autoclickers = 0
-      prestige_autoclickercost = 25
+      prestige_autoclickercost = 50
+      collapse_autoclickers = 0
+      collapse_autoclickercost = 100
       
       totalSeconds = 0
       
@@ -290,4 +319,4 @@ setInterval(infinitycheck, 10)
 setInterval(update, 10)
 setTimeout(sb_autoclick, 10)
 setTimeout(prestige_autoclick, 10)
-
+setTimeout(collapse_autoclick, 10)
