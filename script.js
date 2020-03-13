@@ -18,6 +18,7 @@ var powercost = 1
 var starting_prestiges = 0
 var starting_prestiges_next = 3
 var can_hotkey = false
+var sb_autoclickers = 0
 
 var minutesLabel = document.getElementById("minutes")
 var secondsLabel = document.getElementById("seconds")
@@ -172,6 +173,10 @@ function infinitycheck() {
     }
 }
 
+function sb_autoclick() {
+  morebeans()
+}
+
 
 
 
@@ -217,3 +222,7 @@ setInterval(incrementSeconds2, 1000)
 setInterval(prestigecheck, 100)
 setInterval(infinitycheck, 10)
 setInterval(update, 10)
+
+if (sb_autoclickers > 0) {
+  setInterval(sb_autoclick, 1000 / sb_autoclickers)
+}
