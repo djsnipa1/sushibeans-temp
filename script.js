@@ -9,14 +9,14 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 5000
+var prestiges = 0
 var multiplier = new Decimal(1)
 var hit_infinity = false
-var singularities = 9999
+var singularities = 0
 var total_singularities = 0
 var power = 1
 var powercost = 1
-var starting_prestiges = 3
+var starting_prestiges = 0
 var starting_prestiges_next = 3
 var can_hotkey = false
 var sb_autoclickers = 0
@@ -129,7 +129,7 @@ function prestige() {
 }
 
 function collapse() {
-  if (hit_infinity = true) {
+  if (hit_infinity == true) {
     hit_infinity = false
     singularities += 1
     total_singularities += 1
