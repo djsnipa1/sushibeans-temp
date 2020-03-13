@@ -9,9 +9,9 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 0
+var prestiges = 5000
 var multiplier = new Decimal(1)
-var singularities = 0
+var singularities = 250
 var total_singularities = 0
 var power = 1
 var powercost = 1
@@ -19,7 +19,7 @@ var starting_prestiges = 0
 var starting_prestiges_next = 3
 var can_hotkey = false
 var sb_autoclickers = 0
-var sb_autoclickers_cost = 25
+var sb_autoclickercost = 25
 
 var minutesLabel = document.getElementById("minutes")
 var secondsLabel = document.getElementById("seconds")
@@ -37,6 +37,51 @@ var v = document.getElementById("startingprestiges")
 v.style.display = "block"
 var u = document.getElementById("hotkey")
 u.style.display = "block"
+
+function update() {
+  if (multiplier < 1e+16) {
+    multiplier = Math.round(Decimal.round(Decimal.pow(1.2, prestiges)).pow(power))
+  }
+  else {
+    multiplier = Decimal.pow(1.2, prestiges).pow(power)
+  }
+  
+  
+  potential_prestige = Math.round(sushibean.divide(1000).add(1).log2(1))
+  
+  document.getElementById("sushibeans").innerHTML = sushibean
+  document.getElementById("clicks").innerHTML = clicks
+  document.getElementById("sbps").innerHTML = sbps
+  document.getElementById("sbps_cost").innerHTML = sbps_cost
+  document.getElementById("sbpsps").innerHTML = sbpsps
+  document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost
+  document.getElementById("prestiges").innerHTML = prestiges
+  document.getElementById("potential_prestige").innerHTML = potential_prestige
+  document.getElementById("multiplier").innerHTML = multiplier
+  document.getElementById("singularities").innerHTML = singularities
+  document.getElementById("total_singularities").innerHTML = total_singularities
+  document.getElementById("power").innerHTML = power
+  document.getElementById("powernext").innerHTML = power + 1
+  document.getElementById("powercost").innerHTML = powercost
+  document.getElementById("starting_prestiges_next").innerHTML = starting_prestiges_next
+  document.getElementById("starting_prestiges_cost").innerHTML = starting_prestiges_next
+  document.getElementById("sb_autoclickercost").innerHTML = sb_autoclickercost
+  document.getElementById("sb_autoclickers").innerHTML = sb_autoclickers
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function morebeans() {
   clicks += 1
@@ -119,40 +164,6 @@ document.onkeypress = function (e) {
   }
 }
 
-
-
-
-
-
-function update() {
-  if (multiplier < 1e+16) {
-    multiplier = Math.round(Decimal.round(Decimal.pow(1.2, prestiges)).pow(power))
-  }
-  else {
-    multiplier = Decimal.pow(1.2, prestiges).pow(power)
-  }
-  
-  
-  potential_prestige = Math.round(sushibean.divide(1000).add(1).log2(1))
-  
-  document.getElementById("sushibeans").innerHTML = sushibean
-  document.getElementById("clicks").innerHTML = clicks
-  document.getElementById("sbps").innerHTML = sbps
-  document.getElementById("sbps_cost").innerHTML = sbps_cost
-  document.getElementById("sbpsps").innerHTML = sbpsps
-  document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost
-  document.getElementById("prestiges").innerHTML = prestiges
-  document.getElementById("potential_prestige").innerHTML = potential_prestige
-  document.getElementById("multiplier").innerHTML = multiplier
-  document.getElementById("singularities").innerHTML = singularities
-  document.getElementById("total_singularities").innerHTML = total_singularities
-  document.getElementById("power").innerHTML = power
-  document.getElementById("powernext").innerHTML = power + 1
-  document.getElementById("powercost").innerHTML = powercost
-  document.getElementById("starting_prestiges_next").innerHTML = starting_prestiges_next
-  document.getElementById("starting_prestiges_cost").innerHTML = starting_prestiges_next
-}
-
 function incrementSeconds() {
     sushibean = sushibean.add(sbps)
 }
@@ -175,10 +186,10 @@ function infinitycheck() {
 }
 
 function sb_autoclicker() {
-  if (singularities >= sb_autoclickers_cost) {
-    singularities -= sb_autoclickers_cost
+  if (singularities >= sb_autoclickercost) {
+    singularities -= sb_autoclickercost
     sb_autoclickers += 1
-    sb_autoclickers_cost = Math.round(sb_autoclickers_cost * 1.5)
+    sb_autoclickercost = Math.round(sb_autoclickercost * 1.5)
   }
 }
 
@@ -244,5 +255,5 @@ setInterval(infinitycheck, 10)
 setInterval(update, 10)
 
 if (sb_autoclickers > 0) {
-  setInterval(sb_autoclick, 1000 / sb_autoclickers)
+  setInterval(sb_autoclick, 1000)
 }
