@@ -37,6 +37,8 @@ var v = document.getElementById("startingprestiges")
 v.style.display = "block"
 var u = document.getElementById("hotkey")
 u.style.display = "block"
+var t = document.getElementById("singularity_info")
+t.style.display = "none"
 
 function update() {
   if (multiplier < 1e+16) {
@@ -129,6 +131,7 @@ function collapse() {
   y.style.display = "block"
   z.style.display = "none"
   w.style.display = "block"
+  t.style.display = "block"
 }
 
 function increasepower() {
@@ -194,9 +197,12 @@ function sb_autoclicker() {
 }
 
 function sb_autoclick() {
-  var sb_autoclickertest -= 1
   if (sb_autoclickers > 0) {
     morebeans()
+    setTimeout(sb_autoclick, 1000 / sb_autoclickers)
+  }
+  else {
+    setTimeout(sb_autoclick, 10)
   }
 }
 
@@ -218,7 +224,7 @@ function sb_autoclick() {
 
 function hardreset() {
     if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
-      sushibean = Decimal(0)
+      sushibean = new Decimal(0)
       sbps = new Decimal(0)
       sbps_cost = 10
       sbpsps = new Decimal(0)
@@ -231,11 +237,14 @@ function hardreset() {
       starting_prestiges = 0
       starting_prestiges_next = 3
       can_hotkey = false
+      sb_autoclickers = 0
+      sb_autoclickercost = 25
       
       totalSeconds = 0
       
       w.style.display = "none"
       x.style.display = "none"
+      t.style.display = "none"
     }
     else {
       alert("Thank goodness.")
@@ -256,6 +265,5 @@ setInterval(incrementSeconds2, 1000)
 setInterval(prestigecheck, 100)
 setInterval(infinitycheck, 10)
 setInterval(update, 10)
-setInterval(autoclick_update, 10)
-setInterval(sb_autoclick, 10)
+setTimeout(sb_autoclick, 10)
 
