@@ -19,6 +19,7 @@ var starting_prestiges = 0
 var starting_prestiges_next = 3
 var can_hotkey = false
 var sb_autoclickers = 0
+var sb_autoclickers_cost = 25
 
 var minutesLabel = document.getElementById("minutes")
 var secondsLabel = document.getElementById("seconds")
@@ -173,9 +174,28 @@ function infinitycheck() {
     }
 }
 
+function sb_autoclicker() {
+  if (singularities >= sb_autoclickers_cost) {
+    singularities -= sb_autoclickers_cost
+    sb_autoclickers += 1
+    sb_autoclickers_cost = Math.round(sb_autoclickers_cost * 1.5)
+  }
+}
+
 function sb_autoclick() {
   morebeans()
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
