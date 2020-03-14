@@ -91,24 +91,24 @@
         <br></div>
       
       <div id="options">
-        <p style="font-size: 10px; text-align: left; vertical-align: top; padding-left: 7px;">  Sushi Beans v1.6.0 - The style update<br>The game is currently under development, features may be broken!</p><br>
+        <p style="font-size: 10px; text-align: left; vertical-align: top; padding-left: 7px;">  Sushi Beans v1.6.1 - The style update<br>The game is currently under development, features may be broken!</p><br>
         <img src="https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Fsushibeansnoback.png?v=1583912523488" style="height: 64px">
         <p style="font-size: 36px">Options</p>
        <button type="button" onclick="setRandomColor()">Random background color</button>
         <button type="button" id="hardreset" onclick="hardreset()">Hard reset</button><br><br>
-        <label class="switch" onclick="sb_onoff()">
+        <label class="switch" id="switch1" onclick="sb_onoff()">
           <input type="checkbox" checked>
           <span class="slider round"></span>
         </label><br><br>
-        <label class="switch" onclick="prestige_onoff()">
+        <label class="switch" id="switch2" onclick="prestige_onoff()">
           <input type="checkbox" checked>
           <span class="slider round"></span>
         </label><br><br>
-        <label class="switch" onclick="collapse_onoff()">
+        <label class="switch" id="switch3" onclick="collapse_onoff()">
           <input type="checkbox" checked>
           <span class="slider round"></span>
         </label>
-        <hr size="50" />
+        <hr size="20" />
         
         <p style="font-size: 36px">Stats</p>
         <p>You've been playing for <label id="hours">0</label>h <label id="minutes">0</label>m <label id="seconds">0</label>s</p>

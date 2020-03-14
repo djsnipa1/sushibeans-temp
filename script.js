@@ -35,22 +35,28 @@ var minutesLabel = document.getElementById("minutes")
 var secondsLabel = document.getElementById("seconds")
 var totalSeconds = 0
 
-var x = document.getElementById("prestigediv")
-x.style.display = "none"
-var y = document.getElementById("maingame")
-y.style.display = "block"
-var z = document.getElementById("infinity")
-z.style.display = "none"
-var w = document.getElementById("singularity")
-w.style.display = "none"
-var v = document.getElementById("startingprestiges")
-v.style.display = "block"
-var u = document.getElementById("hotkey")
-u.style.display = "block"
-var t = document.getElementById("singularity_info")
-t.style.display = "none"
-var s = document.getElementById("wait")
-s.style.display = "none"
+var xx = document.getElementById("prestigediv")
+xx.style.display = "none"
+var xy = document.getElementById("maingame")
+xy.style.display = "block"
+var xz = document.getElementById("infinity")
+xz.style.display = "none"
+var xw = document.getElementById("singularity")
+xw.style.display = "none"
+var xv = document.getElementById("startingprestiges")
+xv.style.display = "block"
+var xu = document.getElementById("hotkey")
+xu.style.display = "block"
+var xt = document.getElementById("singularity_info")
+xt.style.display = "none"
+var xs = document.getElementById("wait")
+xs.style.display = "none"
+var xr = document.getElementById("switch1")
+xr.style.display = "none"
+var xq = document.getElementById("switch2")
+xq.style.display = "none"
+var xp = document.getElementById("switch3")
+xp.style.display = "none"
 
 function update() {
   if (multiplier < 1e+16) {
@@ -146,10 +152,10 @@ function collapse() {
     sbps_cost = 10
     sbpsps = new Decimal(0)
     sbpsps_cost = 500
-    y.style.display = "block"
-    z.style.display = "none"
-    w.style.display = "block"
-    t.style.display = "block"
+    xy.style.display = "block"
+    xz.style.display = "none"
+    xw.style.display = "block"
+    xt.style.display = "block"
   }
 }
 
@@ -167,7 +173,7 @@ function startingprestiges() {
     starting_prestiges = starting_prestiges_next
     starting_prestiges_next = starting_prestiges_next * 10
     if (starting_prestiges_next > 300) {
-      v.style.display = "none"
+      xv.style.display = "none"
     }
   }
 }
@@ -176,7 +182,7 @@ function prestige_hotkey() {
   if (singularities >= 10) {
     singularities -= 10
     can_hotkey = true
-    u.style.display = "none"
+    xu.style.display = "none"
   }
 }
 
@@ -196,15 +202,15 @@ function incrementSeconds2() {
 
 function prestigecheck() {
     if (potential_prestige > 0) {
-        x.style.display = "block"
+       xx.style.display = "block"
     }
 }
 
 function infinitycheck() {
     if (sushibean > 1e+308) {
         hit_infinity = true
-        y.style.display = "none"
-        z.style.display = "block"
+        xy.style.display = "none"
+        xz.style.display = "block"
     }
 }
 
@@ -213,6 +219,7 @@ function sb_autoclicker() {
     singularities -= sb_autoclickercost
     sb_autoclickers += 1
     sb_autoclickercost = Math.round(sb_autoclickercost * 1.5)
+    xr.style.display = "block"
   }
 }
 
@@ -233,6 +240,7 @@ function prestige_autoclicker() {
     singularities -= prestige_autoclickercost
     prestige_autoclickers += 1
     prestige_autoclickercost = Math.round(prestige_autoclickercost * 1.5)
+    xq.style.display = "block"
   }
 }
 
@@ -253,6 +261,7 @@ function collapse_autoclicker() {
     singularities -= collapse_autoclickercost
     collapse_autoclickers += 1
     collapse_autoclickercost = Math.round(collapse_autoclickercost * 1.5)
+    xp.style.display = "block"
   }
 }
 
@@ -374,9 +383,9 @@ function hardreset() {
       
       totalSeconds = 0
       
-      w.style.display = "none"
-      x.style.display = "none"
-      t.style.display = "none"
+      xw.style.display = "none"
+      xx.style.display = "none"
+      xt.style.display = "none"
     }
     else {
       alert("Thank goodness.")
