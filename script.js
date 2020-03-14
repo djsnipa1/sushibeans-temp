@@ -9,10 +9,10 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 0
+var prestiges = 5555
 var multiplier = new Decimal(1)
 var hit_infinity = false
-var singularities = 0
+var singularities = 5555
 var total_singularities = 0
 var power = 1
 var powercost = 1
@@ -25,6 +25,10 @@ var prestige_autoclickers = 0
 var prestige_autoclickercost = 50
 var collapse_autoclickers = 0
 var collapse_autoclickercost = 100
+var sb_on = true
+var prestige_on = true
+var collapse_on = true
+var cooldown = false
 
 var hoursLabel = document.getElementById("hours")
 var minutesLabel = document.getElementById("minutes")
@@ -214,7 +218,9 @@ function sb_autoclicker() {
 
 function sb_autoclick() {
   if (sb_autoclickers > 0) {
-    morebeans()
+    if (sb_on == true) {
+      morebeans()
+    }
     setTimeout(sb_autoclick, 1000 / sb_autoclickers)
   }
   else {
@@ -258,6 +264,25 @@ function collapse_autoclick() {
   }
 }
 
+function sb_onoff() {
+  if (cooldown = false) {
+    if (sb_on == true) {
+      sb_on = false
+      cooldown = true
+      setTimeout(cooldown_off, 10)
+    }
+    else {
+      sb_on = true
+      cooldown = true
+      setTimeout(cooldown_off, 10)
+    }
+  }
+}
+
+function cooldown_off() {
+  cooldown = false
+}
+
 function getRandomColor() {
   var letters = '6789ABCDEF';
   var color = '#';
@@ -266,8 +291,6 @@ function getRandomColor() {
   }
   return color;
 }
-
-
 
 function setRandomColor() {
   document.body.style.backgroundColor = ("background-color", getRandomColor())
