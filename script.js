@@ -9,10 +9,10 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 5555
+var prestiges = 0
 var multiplier = new Decimal(1)
 var hit_infinity = false
-var singularities = 5555
+var singularities = 0
 var total_singularities = 0
 var power = 1
 var powercost = 1
@@ -238,7 +238,9 @@ function prestige_autoclicker() {
 
 function prestige_autoclick() {
   if (prestige_autoclickers > 0) {
-    prestige()
+    if (prestige_on == true) {
+      prestige()
+    }
     setTimeout(prestige_autoclick, 1000 / prestige_autoclickers)
   }
   else {
@@ -256,7 +258,9 @@ function collapse_autoclicker() {
 
 function collapse_autoclick() {
   if (collapse_autoclickers > 0) {
-    collapse()
+    if (collapse_on == true) {
+      collapse()
+    }
     setTimeout(collapse_autoclick, 10000 / collapse_autoclickers)
   }
   else {
@@ -265,18 +269,54 @@ function collapse_autoclick() {
 }
 
 function sb_onoff() {
-  if (cooldown = false) {
     if (sb_on == true) {
-      sb_on = false
-      cooldown = true
-      setTimeout(cooldown_off, 10)
+      if (cooldown == false) {
+        sb_on = false
+        cooldown = true
+        setTimeout(cooldown_off, 10)
+        }
     }
     else {
-      sb_on = true
-      cooldown = true
-      setTimeout(cooldown_off, 10)
+      if (cooldown == false) {
+        sb_on = true
+        cooldown = true
+        setTimeout(cooldown_off, 10)
+      }
     }
-  }
+}
+
+function prestige_onoff() {
+    if (prestige_on == true) {
+      if (cooldown == false) {
+        prestige_on = false
+        cooldown = true
+        setTimeout(cooldown_off, 10)
+        }
+    }
+    else {
+      if (cooldown == false) {
+        prestige_on = true
+        cooldown = true
+        setTimeout(cooldown_off, 10)
+      }
+    }
+}
+
+function collapse_onoff() {
+    if (collapse_on == true) {
+      if (cooldown == false) {
+        collapse_on = false
+        cooldown = true
+        setTimeout(cooldown_off, 10)
+        }
+    }
+    else {
+      if (cooldown == false) {
+        collapse_on = true
+        cooldown = true
+        setTimeout(cooldown_off, 10)
+      }
+    }
 }
 
 function cooldown_off() {
