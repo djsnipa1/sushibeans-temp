@@ -9,7 +9,7 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 5000
+var prestiges = 0
 var multiplier = new Decimal(1)
 var hit_infinity = false
 var singularities = 0
@@ -45,7 +45,7 @@ u.style.display = "block"
 var t = document.getElementById("singularity_info")
 t.style.display = "none"
 var s = document.getElementById("wait")
-s.style.display = "block"
+s.style.display = "none"
 
 function update() {
   if (multiplier < 1e+16) {

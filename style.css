@@ -72,6 +72,14 @@ p {
   background-image: url("https://www.reasonablefaith.org/images/rf_podcasts/rf_detail_398_0.jpg");
 }
 
+.wait_button {
+  background-color: #d1d8ff;
+  border: 3px solid blue;
+  font-family: 'Geo';
+  color: #00006e;
+  font-size: 28px;
+}
+
 #options {
   position: fixed;
   width: 20%;
