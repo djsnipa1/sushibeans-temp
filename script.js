@@ -26,6 +26,7 @@ var prestige_autoclickercost = 50
 var collapse_autoclickers = 0
 var collapse_autoclickercost = 100
 
+var hoursLabel = document.getElementById("hours")
 var minutesLabel = document.getElementById("minutes")
 var secondsLabel = document.getElementById("seconds")
 var totalSeconds = 0
@@ -322,7 +323,8 @@ function hardreset() {
 function setTime() {
   ++totalSeconds;
   secondsLabel.innerHTML = totalSeconds % 60;
-  minutesLabel.innerHTML = parseInt(totalSeconds / 60);
+  minutesLabel.innerHTML = parseInt(totalSeconds / 60) % 60;
+  hoursLabel.innerHTML = parseInt(totalSeconds / 3600);
 }
 
 
