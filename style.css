@@ -31,7 +31,7 @@ p {
 }
 
 #infinity {
-  width: 600px;
+  width: 31%;
   background-image: url("https://wallpaperaccess.com/thumb/1788476.jpg");
   border: 3px solid black;
 }
@@ -62,6 +62,14 @@ p {
   border: 3px solid #7100ad;
   font-family: 'Geo';
   font-size: 16px;
+}
+
+#wait {
+  width: 30%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-image: url("https://www.crystalinks.com/multiverse220.jpg");
 }
 
 #options {
