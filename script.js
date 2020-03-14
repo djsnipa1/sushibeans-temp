@@ -44,6 +44,8 @@ var u = document.getElementById("hotkey")
 u.style.display = "block"
 var t = document.getElementById("singularity_info")
 t.style.display = "none"
+var s = document.getElementById("wait")
+s.style.display = "block"
 
 function update() {
   if (multiplier < 1e+16) {

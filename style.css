@@ -66,10 +66,10 @@ p {
 
 #wait {
   width: 30%;
-  height: 400px;
   background-size: cover;
   background-position: center;
-  background-image: url("https://www.crystalinks.com/multiverse220.jpg");
+  border: 5px solid blue;
+  background-image: url("https://www.reasonablefaith.org/images/rf_podcasts/rf_detail_398_0.jpg");
 }
 
 #options {
