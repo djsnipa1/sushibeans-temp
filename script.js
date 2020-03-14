@@ -258,10 +258,10 @@ function collapse_autoclick() {
 }
 
 function getRandomColor() {
-  var letters = '0123456789ABCDEF';
+  var letters = '6789ABCDEF';
   var color = '#';
   for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+    color += letters[Math.floor(Math.random() * 10)];
   }
   return color;
 }
@@ -270,7 +270,6 @@ function getRandomColor() {
 
 function setRandomColor() {
   document.body.style.backgroundColor = ("background-color", getRandomColor())
-  $("#maingame").css("background-color", getRandomColor())
 }
 
 
