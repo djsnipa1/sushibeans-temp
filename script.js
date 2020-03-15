@@ -57,6 +57,12 @@ var xq = document.getElementById("switch2")
 xq.style.display = "none"
 var xp = document.getElementById("switch3")
 xp.style.display = "none"
+var xo = document.getElementById("switch_text1")
+xo.style.display = "none"
+var xn = document.getElementById("switch_text2")
+xn.style.display = "none"
+var xm = document.getElementById("switch_text3")
+xm.style.display = "none"
 
 function update() {
   if (multiplier < 1e+16) {
@@ -220,6 +226,7 @@ function sb_autoclicker() {
     sb_autoclickers += 1
     sb_autoclickercost = Math.round(sb_autoclickercost * 1.5)
     xr.style.display = "block"
+    xo.style.display = "block"
   }
 }
 
@@ -241,6 +248,7 @@ function prestige_autoclicker() {
     prestige_autoclickers += 1
     prestige_autoclickercost = Math.round(prestige_autoclickercost * 1.5)
     xq.style.display = "block"
+    xn.style.display = "block"
   }
 }
 
@@ -262,6 +270,7 @@ function collapse_autoclicker() {
     collapse_autoclickers += 1
     collapse_autoclickercost = Math.round(collapse_autoclickercost * 1.5)
     xp.style.display = "block"
+    xm.style.display = "block"
   }
 }
 
@@ -380,12 +389,21 @@ function hardreset() {
       prestige_autoclickercost = 50
       collapse_autoclickers = 0
       collapse_autoclickercost = 100
+      sb_on = true
+      prestige_on = true
+      collapse_on = true
       
       totalSeconds = 0
       
       xw.style.display = "none"
       xx.style.display = "none"
       xt.style.display = "none"
+      xr.style.display = "none"
+      xq.style.display = "none"
+      xp.style.display = "none"
+      xo.style.display = "none"
+      xn.style.display = "none"
+      xm.style.display = "none"
     }
     else {
       alert("Thank goodness.")
