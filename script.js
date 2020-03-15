@@ -9,10 +9,10 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 5000
+var prestiges = 0
 var multiplier = new Decimal(1)
 var hit_infinity = false
-var singularities = 5000
+var singularities = 0
 var total_singularities = 0
 var power = 1
 var powercost = 1
@@ -63,6 +63,10 @@ var xn = document.getElementById("switch_text2")
 xn.style.display = "none"
 var xm = document.getElementById("switch_text3")
 xm.style.display = "none"
+var xl = document.getElementById("singularity_special")
+xl.style.display = "none"
+var xk = document.getElementById("singularity_special2")
+xk.style.display = "none"
 
 function update() {
   if (multiplier < 1e+16) {
@@ -271,6 +275,8 @@ function collapse_autoclicker() {
     collapse_autoclickercost = Math.round(collapse_autoclickercost * 1.5)
     xp.style.display = "block"
     xm.style.display = "block"
+    xl.style.display = "block"
+    xk.style.display = "block"
   }
 }
 
