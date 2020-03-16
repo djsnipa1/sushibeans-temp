@@ -1,112 +1,103 @@
 /* global Decimal*/
 
-var sushibean = new Decimal(0)
-document.getElementById("sushibeans").innerHTML = sushibean
+let game
 
-var clicks = 0
-var sbps = new Decimal(0)
-var sbps_cost = 10
-var sbpsps = new Decimal(0)
-var sbpsps_cost = 500
-var potential_prestige = 0
-var prestiges = 0
-var multiplier = new Decimal(1)
-var hit_infinity = false
-var singularities = new Decimal(0)
-var total_singularities = new Decimal(0)
-var singularity_multiplier = 1
-var power = 1
-var powercost = 1
-var starting_prestiges = 0
-var starting_prestiges_next = 3
-var can_hotkey = false
-var sb_autoclickers = 0
-var sb_autoclickercost = 25
-var prestige_autoclickers = 0
-var prestige_autoclickercost = 50
-var collapse_autoclickers = 0
-var collapse_autoclickercost = 100
-var sb_on = true
-var prestige_on = true
-var collapse_on = true
-var cooldown = false
-var waiting = false
+function reset() {
+  game = {
+    sushibean: new Decimal(0),
+    clicks: 0,
+    sbps: new Decimal(0),
+    sbps_cost: 10,
+    sbpsps: new Decimal(0),
+    sbpsps_cost: 500,
+    potential_prestige: 0,
+    prestiges: 0,
+    multiplier: new Decimal(1),
+    hit_infinity: false,
+    singularities: new Decimal(0),
+    total_singularities: new Decimal(0),
+    singularity_multiplier: 1,
+    power: 1,
+    powercost: 1,
+    starting_prestiges: 0,
+    starting_prestiges_next:3,
+    can_hotkey: false,
+    sb_autoclickers: 0,
+    sb_autoclickercost: 25,
+    prestige_autoclickers: 0,
+    prestige_autoclickercost: 50,
+    collapse_autoclickers: 0,
+    collapse_autoclickercost: 100,
+    sb_on: true,
+    prestige_on: true,
+    collapse_on: true,
+    cooldown: false,
+    waiting: false,
 
-var surpassed_infinity = false
+    surpassed_infinity: false,
 
-var hoursLabel = document.getElementById("hours")
-var minutesLabel = document.getElementById("minutes")
-var secondsLabel = document.getElementById("seconds")
-var totalSeconds = 0
+    hoursLabel: document.getElementById("hours"),
+    minutesLabel: document.getElementById("minutes"),
+    secondsLabel: document.getElementById("seconds"),
+    totalSeconds: 0,
+   }  
+  
+  document.getElementById("prestigediv").style.display = "none"
+  document.getElementById("maingame").style.display = "block"
+  document.getElementById("infinity").style.display = "none"
+  document.getElementById("singularity").style.display = "none"
+  document.getElementById("startingprestiges").style.display = "block"
+  document.getElementById("hotkey").style.display = "block"
+  document.getElementById("singularity_info").style.display = "none"
+  document.getElementById("wait").style.display = "none"
+  document.getElementById("switch1").style.display = "none"
+  document.getElementById("switch2").style.display = "none"
+  document.getElementById("switch3").style.display = "none"
+  document.getElementById("switch_text1").style.display = "none"
+  document.getElementById("switch_text2").style.display = "none"
+  document.getElementById("switch_text3").style.display = "none"
+  document.getElementById("singularity_special").style.display = "none"
+  document.getElementById("singularity_special2").style.display = "none"
+  document.getElementById("sushiverse").style.display = "none"
+  
+  document.body.style.backgroundColor = "#f0e7d8"
+}
 
-var xx = document.getElementById("prestigediv")
-xx.style.display = "none"
-var xy = document.getElementById("maingame")
-xy.style.display = "block"
-var xz = document.getElementById("infinity")
-xz.style.display = "none"
-var xw = document.getElementById("singularity")
-xw.style.display = "none"
-var xv = document.getElementById("startingprestiges")
-xv.style.display = "block"
-var xu = document.getElementById("hotkey")
-xu.style.display = "block"
-var xt = document.getElementById("singularity_info")
-xt.style.display = "none"
-var xs = document.getElementById("wait")
-xs.style.display = "none"
-var xr = document.getElementById("switch1")
-xr.style.display = "none"
-var xq = document.getElementById("switch2")
-xq.style.display = "none"
-var xp = document.getElementById("switch3")
-xp.style.display = "none"
-var xo = document.getElementById("switch_text1")
-xo.style.display = "none"
-var xn = document.getElementById("switch_text2")
-xn.style.display = "none"
-var xm = document.getElementById("switch_text3")
-xm.style.display = "none"
-var xl = document.getElementById("singularity_special")
-xl.style.display = "none"
-var xk = document.getElementById("singularity_special2")
-xk.style.display = "none"
-var xi = document.getElementById("sushiverse")
-xi.style.display = "none"
+reset()
 
 function update() {
-  if (multiplier < 1e+16) {
-    multiplier = Math.round(Decimal.round(Decimal.pow(1.2, prestiges)).pow(power))
+  if (game.multiplier < 1e+16) {
+    game.multiplier = Math.round(Decimal.round(Decimal.pow(1.2, game.prestiges)).pow(game.power))
   }
   else {
-    multiplier = Decimal.pow(1.2, prestiges).pow(power)
+    game.multiplier = Decimal.pow(1.2, game.prestiges).pow(game.power)
   }
   
   
-  potential_prestige = Math.round(sushibean.divide(1000).add(1).log2(1))
+  game.potential_prestige = Math.round(game.sushibean.divide(1000).add(1).log2(1))
   
-  document.getElementById("sushibeans").innerHTML = sushibean
-  document.getElementById("clicks").innerHTML = clicks
-  document.getElementById("sbps").innerHTML = sbps
-  document.getElementById("sbps_cost").innerHTML = sbps_cost
-  document.getElementById("sbpsps").innerHTML = sbpsps
-  document.getElementById("sbpsps_cost").innerHTML = sbpsps_cost
-  document.getElementById("prestiges").innerHTML = prestiges
-  document.getElementById("potential_prestige").innerHTML = potential_prestige
-  document.getElementById("multiplier").innerHTML = multiplier
-  document.getElementById("singularities").innerHTML = singularities
-  document.getElementById("total_singularities").innerHTML = total_singularities
-  document.getElementById("power").innerHTML = power
-  document.getElementById("powernext").innerHTML = power + 1
-  document.getElementById("powercost").innerHTML = powercost
-  document.getElementById("starting_prestiges_next").innerHTML = starting_prestiges_next
-  document.getElementById("starting_prestiges_cost").innerHTML = starting_prestiges_next
-  document.getElementById("sb_autoclickercost").innerHTML = sb_autoclickercost
-  document.getElementById("sb_autoclickers").innerHTML = sb_autoclickers
-  document.getElementById("prestige_autoclickercost").innerHTML = prestige_autoclickercost
-  document.getElementById("prestige_autoclickers").innerHTML = prestige_autoclickers
-  document.getElementById("collapse_autoclickercost").innerHTML = collapse_autoclickercost
-  document.getElementById("collapse_autoclickers").innerHTML = collapse_autoclickers
+  document.getElementById("sushibeans").innerHTML = game.sushibean
+  document.getElementById("clicks").innerHTML = game.clicks
+  document.getElementById("sbps").innerHTML = game.sbps
+  document.getElementById("sbps_cost").innerHTML = game.sbps_cost
+  document.getElementById("sbpsps").innerHTML = game.sbpsps
+  document.getElementById("sbpsps_cost").innerHTML = game.sbpsps_cost
+  document.getElementById("prestiges").innerHTML = game.prestiges
+  document.getElementById("potential_prestige").innerHTML = game.potential_prestige
+  document.getElementById("multiplier").innerHTML = game.multiplier
+  document.getElementById("singularities").innerHTML = game.singularities
+  document.getElementById("total_singularities").innerHTML = game.total_singularities
+  document.getElementById("power").innerHTML = game.power
+  document.getElementById("powernext").innerHTML = game.power + 1
+  document.getElementById("powercost").innerHTML = game.powercost
+  document.getElementById("starting_prestiges_next").innerHTML = game.starting_prestiges_next
+  document.getElementById("starting_prestiges_cost").innerHTML = game.starting_prestiges_next
+  document.getElementById("sb_autoclickercost").innerHTML = game.sb_autoclickercost
+  document.getElementById("sb_autoclickers").innerHTML = game.sb_autoclickers
+  document.getElementById("prestige_autoclickercost").innerHTML = game.prestige_autoclickercost
+  document.getElementById("prestige_autoclickers").innerHTML = game.prestige_autoclickers
+  document.getElementById("collapse_autoclickercost").innerHTML = game.collapse_autoclickercost
+  document.getElementById("collapse_autoclickers").innerHTML = game.collapse_autoclickers
   
 }
 
@@ -124,132 +115,132 @@ function update() {
 
 
 function morebeans() {
-  clicks += 1
-  sushibean = sushibean.add(multiplier)
-  document.getElementById("sushibeans").innerHTML = sushibean
+  game.clicks += 1
+  game.sushibean = game.sushibean.add(game.multiplier)
+  document.getElementById("sushibeans").innerHTML = game.sushibean
 }
 
 function moresbps() {
-    if (sushibean >= sbps_cost) {
-        sushibean = sushibean.subtract(sbps_cost)
-        sbps = sbps.add(multiplier)
-        sbps_cost = Math.round(sbps_cost * 1.1)
+    if (game.sushibean >= game.sbps_cost) {
+        game.sushibean = game.sushibean.subtract(game.sbps_cost)
+        game.sbps = game.sbps.add(game.multiplier)
+        game.sbps_cost = Math.round(game.sbps_cost * 1.1)
     };
 }
 
 
 function moresbpsps() {
-    if (sushibean >= sbpsps_cost) {
-        sushibean = sushibean.subtract(sbpsps_cost)
-        sbpsps = sbpsps.add(multiplier)
-        sbpsps_cost = Math.round(sbpsps_cost * 1.2)
+    if (game.sushibean >= game.sbpsps_cost) {
+        game.sushibean = game.sushibean.subtract(game.sbpsps_cost)
+        game.sbpsps = game.sbpsps.add(game.multiplier)
+        game.sbpsps_cost = Math.round(game.sbpsps_cost * 1.2)
     };
 }
 
 function prestige() {
-  if (potential_prestige > 0) {
-    prestiges += Math.round(sushibean.divide(1000).add(1).log2(1))
-    sushibean = new Decimal(0)
-    sbps = new Decimal(0)
-    sbps_cost = 10
-    sbpsps = new Decimal(0)
-    sbpsps_cost = 500
+  if (game.potential_prestige > 0) {
+    game.prestiges += Math.round(game.sushibean.divide(1000).add(1).log2(1))
+    game.sushibean = new Decimal(0)
+    game.sbps = new Decimal(0)
+    game.sbps_cost = 10
+    game.sbpsps = new Decimal(0)
+    game.sbpsps_cost = 500
   }
 }
 
 function collapse() {
-  if (hit_infinity == true) {
-    hit_infinity = false
-    singularities = singularities.add(singularity_multiplier)
-    total_singularities = singularities.add(singularity_multiplier)
-    prestiges = starting_prestiges
-    sushibean = new Decimal(0)
-    sbps = new Decimal(0)
-    sbps_cost = 10
-    sbpsps = new Decimal(0)
-    sbpsps_cost = 500
-    xy.style.display = "block"
-    xz.style.display = "none"
-    xw.style.display = "block"
-    xt.style.display = "block"
+  if (game.hit_infinity == true) {
+    game.hit_infinity = false
+    game.singularities = game.singularities.add(game.singularity_multiplier)
+    game.total_singularities = game.singularities.add(game.singularity_multiplier)
+    game.prestiges = game.starting_prestiges
+    game.sushibean = new Decimal(0)
+    game.sbps = new Decimal(0)
+    game.sbps_cost = 10
+    game.sbpsps = new Decimal(0)
+    game.sbpsps_cost = 500
+    document.getElementById("maingame").style.display = "block"
+    document.getElementById("infinity").style.display = "none"
+    document.getElementById("singularity").style.display = "block"
+    document.getElementById("singularity_info").style.display = "block"
   }
 }
 
 function increasepower() {
-  if (singularities >= powercost) {
-    singularities = singularities.subtract(powercost)
-    powercost = powercost * 2
-    power += 1
+  if (game.singularities >= game.powercost) {
+    game.singularities = game.singularities.subtract(game.powercost)
+    game.powercost = game.powercost * 2
+    game.power += 1
   }
 }
 
 function startingprestiges() {
-  if (singularities >= starting_prestiges_next) {
-    singularities = singularities.subtract(starting_prestiges_next)
-    starting_prestiges = starting_prestiges_next
-    starting_prestiges_next = starting_prestiges_next * 10
-    if (starting_prestiges_next > 300) {
-      xv.style.display = "none"
+  if (game.singularities >= game.starting_prestiges_next) {
+    game.singularities = game.singularities.subtract(game.starting_prestiges_next)
+    game.starting_prestiges = game.starting_prestiges_next
+    game.starting_prestiges_next = game.starting_prestiges_next * 10
+    if (game.starting_prestiges_next > 300) {
+      document.getElementById("startingprestiges").style.display = "none"
     }
   }
 }
 
 function prestige_hotkey() {
-  if (singularities >= 10) {
-    singularities = singularities.subtract(10)
-    can_hotkey = true
-    xu.style.display = "none"
+  if (game.singularities >= 10) {
+    game.singularities = game.singularities.subtract(10)
+    game.can_hotkey = true
+    document.getElementById("hotkey").style.display = "none"
   }
 }
 
 document.onkeypress = function (e) {
-  if (can_hotkey == true) {
+  if (game.can_hotkey == true) {
     prestige()
   }
 }
 
 function incrementSeconds() {
-    sushibean = sushibean.add(sbps)
+    game.sushibean = game.sushibean.add(game.sbps)
 }
 
 function incrementSeconds2() {
-    sbps = sbps.add(sbpsps)
+    game.sbps = game.sbps.add(game.sbpsps)
 }
 
 function prestigecheck() {
-    if (potential_prestige > 0) {
-       xx.style.display = "block"
+    if (game.potential_prestige > 0) {
+       document.getElementById("prestigediv").style.display = "block"
     }
 }
 
 function infinitycheck() {
-  if (surpassed_infinity == false) {
-    if (sushibean > 1e+308) {
-        hit_infinity = true
-        xy.style.display = "none"
-        xz.style.display = "block"
+  if (game.surpassed_infinity == false) {
+    if (game.sushibean > 1e+308) {
+        game.hit_infinity = true
+        document.getElementById("maingame").style.display = "none"
+        document.getElementById("infinity").style.display = "block"
     }
   }
 }
 
 function sb_autoclicker() {
-  if (singularities >= sb_autoclickercost) {
-    singularities = singularities.subtract(sb_autoclickercost)
-    sb_autoclickers += 1
-    sb_autoclickercost = Math.round(sb_autoclickercost * 1.5)
-    xr.style.display = "block"
-    xo.style.display = "block"
+  if (game.singularities >= game.sb_autoclickercost) {
+    game.singularities = game.singularities.subtract(game.sb_autoclickercost)
+    game.sb_autoclickers += 1
+    game.sb_autoclickercost = Math.round(game.sb_autoclickercost * 1.5)
+    document.getElementById("switch1").style.display = "block"
+    document.getElementById("switch_text1").style.display = "block"
   }
 }
 
 function sb_autoclick() {
-  if (sb_autoclickers > 0) {
-    if (sb_on == true) {
-      if (waiting == false) {
+  if (game.sb_autoclickers > 0) {
+    if (game.sb_on == true) {
+      if (game.waiting == false) {
         morebeans()
       }
     }
-    setTimeout(sb_autoclick, 1000 / sb_autoclickers)
+    setTimeout(sb_autoclick, 1000 / game.sb_autoclickers)
   }
   else {
     setTimeout(sb_autoclick, 10)
@@ -257,23 +248,23 @@ function sb_autoclick() {
 }
 
 function prestige_autoclicker() {
-  if (singularities >= prestige_autoclickercost) {
-    singularities = singularities.subtract(prestige_autoclickercost)
-    prestige_autoclickers += 1
-    prestige_autoclickercost = Math.round(prestige_autoclickercost * 1.5)
-    xq.style.display = "block"
-    xn.style.display = "block"
+  if (game.singularities >= game.prestige_autoclickercost) {
+    game.singularities = game.singularities.subtract(game.prestige_autoclickercost)
+    game.prestige_autoclickers += 1
+    game.prestige_autoclickercost = Math.round(game.prestige_autoclickercost * 1.5)
+    document.getElementById("switch2").style.display = "block"
+    document.getElementById("switch_text2").style.display = "block"
   }
 }
 
 function prestige_autoclick() {
-  if (prestige_autoclickers > 0) {
-    if (prestige_on == true) {
-      if (waiting == false) {
+  if (game.prestige_autoclickers > 0) {
+    if (game.prestige_on == true) {
+      if (game.waiting == false) {
         prestige()
       }
     }
-    setTimeout(prestige_autoclick, 1000 / prestige_autoclickers)
+    setTimeout(prestige_autoclick, 1000 / game.prestige_autoclickers)
   }
   else {
     setTimeout(prestige_autoclick, 10)
@@ -281,25 +272,25 @@ function prestige_autoclick() {
 }
 
 function collapse_autoclicker() {
-  if (singularities >= collapse_autoclickercost) {
-    singularities = singularities.subtract(collapse_autoclickercost)
-    collapse_autoclickers += 1
-    collapse_autoclickercost = Math.round(collapse_autoclickercost * 1.5)
-    xp.style.display = "block"
-    xm.style.display = "block"
-    xl.style.display = "block"
-    xk.style.display = "block"
+  if (game.singularities >= game.collapse_autoclickercost) {
+    game.singularities = game.singularities.subtract(game.collapse_autoclickercost)
+    game.collapse_autoclickers += 1
+    game.collapse_autoclickercost = Math.round(game.collapse_autoclickercost * 1.5)
+    document.getElementById("switch3").style.display = "block"
+    document.getElementById("switch_text3").style.display = "block"
+    document.getElementById("singularity_special").style.display = "block"
+    document.getElementById("singularity_special2").style.display = "block"
   }
 }
 
 function collapse_autoclick() {
-  if (collapse_autoclickers > 0) {
-    if (collapse_on == true) {
-      if (waiting == false) {
+  if (game.collapse_autoclickers > 0) {
+    if (game.collapse_on == true) {
+      if (game.waiting == false) {
         collapse()
       }
     }
-    setTimeout(collapse_autoclick, 10000 / collapse_autoclickers)
+    setTimeout(collapse_autoclick, 10000 / game.collapse_autoclickers)
   }
   else {
     setTimeout(collapse_autoclick, 10)
@@ -307,122 +298,122 @@ function collapse_autoclick() {
 }
 
 function sb_onoff() {
-    if (sb_on == true) {
-      if (cooldown == false) {
-        sb_on = false
-        cooldown = true
+    if (game.sb_on == true) {
+      if (game.cooldown == false) {
+        game.sb_on = false
+        game.cooldown = true
         setTimeout(cooldown_off, 10)
         }
     }
     else {
-      if (cooldown == false) {
-        sb_on = true
-        cooldown = true
+      if (game.cooldown == false) {
+        game.sb_on = true
+        game.cooldown = true
         setTimeout(cooldown_off, 10)
       }
     }
 }
 
 function prestige_onoff() {
-    if (prestige_on == true) {
-      if (cooldown == false) {
-        prestige_on = false
-        cooldown = true
+    if (game.prestige_on == true) {
+      if (game.cooldown == false) {
+        game.prestige_on = false
+        game.cooldown = true
         setTimeout(cooldown_off, 10)
         }
     }
     else {
-      if (cooldown == false) {
-        prestige_on = true
-        cooldown = true
+      if (game.cooldown == false) {
+        game.prestige_on = true
+        game.cooldown = true
         setTimeout(cooldown_off, 10)
       }
     }
 }
 
 function collapse_onoff() {
-    if (collapse_on == true) {
-      if (cooldown == false) {
-        collapse_on = false
-        cooldown = true
+    if (game.collapse_on == true) {
+      if (game.cooldown == false) {
+        game.collapse_on = false
+        game.cooldown = true
         setTimeout(cooldown_off, 10)
         }
     }
     else {
-      if (cooldown == false) {
-        collapse_on = true
-        cooldown = true
+      if (game.cooldown == false) {
+        game.collapse_on = true
+        game.cooldown = true
         setTimeout(cooldown_off, 10)
       }
     }
 }
 
 function cooldown_off() {
-  cooldown = false
+  game.cooldown = false
 }
 
 function s_multiplier_hundred() {
-  if (singularities >= 1000) {
-    singularities = new Decimal(0)
-    singularity_multiplier = 100
-    power = 1
-    powercost = 1
-    starting_prestiges = 0
-    starting_prestiges_next = 3
-    can_hotkey = false
-    sb_autoclickers = 0
-    sb_autoclickercost = 25
-    prestige_autoclickers = 0
-    prestige_autoclickercost = 50
-    collapse_autoclickers = 0
-    collapse_autoclickercost = 100
+  if (game.singularities >= 1000) {
+    game.singularities = new Decimal(0)
+    game.singularity_multiplier = 100
+    game.power = 1
+    game.powercost = 1
+    game.starting_prestiges = 0
+    game.starting_prestiges_next = 3
+    game.can_hotkey = false
+    game.sb_autoclickers = 0
+    game.sb_autoclickercost = 25
+    game.prestige_autoclickers = 0
+    game.prestige_autoclickercost = 50
+    game.collapse_autoclickers = 0
+    game.collapse_autoclickercost = 100
     
-    xv.style.display = "block"
-    xu.style.display = "block"
-    xl.style.display = "none"
-    xk.style.display = "none"
-    xr.style.display = "none"
-    xq.style.display = "none"
-    xp.style.display = "none"
-    xo.style.display = "none"
-    xn.style.display = "none"
-    xm.style.display = "none"
+    document.getElementById("startingprestiges").style.display = "block"
+    document.getElementById("hotkey").style.display = "block"
+    document.getElementById("singularity_special").style.display = "none"
+    document.getElementById("singularity_special2").style.display = "none"
+    document.getElementById("switch1").style.display = "none"
+    document.getElementById("switch2").style.display = "none"
+    document.getElementById("switch3").style.display = "none"
+    document.getElementById("switch_text1").style.display = "none"
+    document.getElementById("switch_text2").style.display = "none"
+    document.getElementById("switch_text3").style.display = "none"
   }
 }
 
 function enter_sushiverse() {
-  if (singularities >= 1000000) {
-    waiting = true
-    sushibean = new Decimal(0)
-    hit_infinity = false
-    xs.style.display = "block"
-    xy.style.display = "none"
-    xz.style.display = "none"
+  if (game.singularities >= 1000000) {
+    game.waiting = true
+    game.sushibean = new Decimal(0)
+    game.hit_infinity = false
+    document.getElementById("wait").style.display = "block"
+    document.getElementById("maingame").style.display = "none"
+    document.getElementById("infinity").style.display = "none"
   }
 }
 
 function IDWTD() {
-  xs.style.display = "none"
-  waiting = false
-  if (sushibean > 1e+308) {
-    xz.style.display = "block"
+  document.getElementById("wait").style.display = "none"
+  game.waiting = false
+  if (game.sushibean > 1e+308) {
+    document.getElementById("infinity").style.display = "block"
   }
   else {
-    xy.style.display = "block"
+    document.getElementById("maingame").style.display = "block"
   }
 }
 
 function ready() {
-  waiting = false
-  xy.style.display = "block"
-  xi.style.display = "block"
-  xw.style.display = "none"
-  xs.style.display = "none"
-  surpassed_infinity = true
+  game.waiting = false
+  document.getElementById("maingame").style.display = "block"
+  document.getElementById("sushiverse").style.display = "block"
+  document.getElementById("singularity").style.display = "none"
+  document.getElementById("wait").style.display = "none"
+  game.surpassed_infinity = true
   document.body.style.backgroundImage = "url('https://cdnb.artstation.com/p/assets/images/images/005/829/317/large/devin-hansen-astrum-nebula-zoom2.jpg?1494052070')"
-  sb_autoclickers = 100
-  prestige_autoclickers = 100
-  collapse_autoclickers = 0
+  game.sb_autoclickers = 100
+  game.prestige_autoclickers = 100
+  game.collapse_autoclickers = 0
 }
 
 function getRandomColor() {
@@ -453,42 +444,7 @@ function setRandomColor() {
 
 function hardreset() {
     if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
-      sushibean = new Decimal(0)
-      clicks = 0
-      sbps = new Decimal(0)
-      sbps_cost = 10
-      sbpsps = new Decimal(0)
-      sbpsps_cost = 500
-      prestiges = 0
-      singularities = new Decimal(0)
-      total_singularities = new Decimal(0)
-      singularity_multiplier = 0
-      power = 1
-      powercost = 1
-      starting_prestiges = 0
-      starting_prestiges_next = 3
-      can_hotkey = false
-      sb_autoclickers = 0
-      sb_autoclickercost = 25
-      prestige_autoclickers = 0
-      prestige_autoclickercost = 50
-      collapse_autoclickers = 0
-      collapse_autoclickercost = 100
-      sb_on = true
-      prestige_on = true
-      collapse_on = true
-      
-      totalSeconds = 0
-      
-      xw.style.display = "none"
-      xx.style.display = "none"
-      xt.style.display = "none"
-      xr.style.display = "none"
-      xq.style.display = "none"
-      xp.style.display = "none"
-      xo.style.display = "none"
-      xn.style.display = "none"
-      xm.style.display = "none"
+      reset()
     }
     else {
       alert("Thank goodness.")
@@ -496,10 +452,10 @@ function hardreset() {
 }
 
 function setTime() {
-  ++totalSeconds;
-  secondsLabel.innerHTML = totalSeconds % 60;
-  minutesLabel.innerHTML = parseInt(totalSeconds / 60) % 60;
-  hoursLabel.innerHTML = parseInt(totalSeconds / 3600);
+  ++game.totalSeconds;
+  game.secondsLabel.innerHTML = game.totalSeconds % 60;
+  game.minutesLabel.innerHTML = parseInt(game.totalSeconds / 60) % 60;
+  game.hoursLabel.innerHTML = parseInt(game.totalSeconds / 3600);
 }
 
 
