@@ -9,11 +9,11 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 5000
+var prestiges = 0
 var multiplier = new Decimal(1)
 var hit_infinity = false
-var singularities = 999999999
-var total_singularities = 0
+var singularities = new Decimal(0)
+var total_singularities = new Decimal(0)
 var singularity_multiplier = 1
 var power = 1
 var powercost = 1
@@ -155,8 +155,8 @@ function prestige() {
 function collapse() {
   if (hit_infinity == true) {
     hit_infinity = false
-    singularities += singularity_multiplier
-    total_singularities += singularity_multiplier
+    singularities = singularities.add(singularity_multiplier)
+    total_singularities = singularities.add(singularity_multiplier)
     prestiges = starting_prestiges
     sushibean = new Decimal(0)
     sbps = new Decimal(0)
@@ -172,7 +172,7 @@ function collapse() {
 
 function increasepower() {
   if (singularities >= powercost) {
-    singularities -= powercost
+    singularities = singularities.subtract(powercost)
     powercost = powercost * 2
     power += 1
   }
@@ -180,7 +180,7 @@ function increasepower() {
 
 function startingprestiges() {
   if (singularities >= starting_prestiges_next) {
-    singularities -= starting_prestiges_next
+    singularities = singularities.subtract(starting_prestiges_next)
     starting_prestiges = starting_prestiges_next
     starting_prestiges_next = starting_prestiges_next * 10
     if (starting_prestiges_next > 300) {
@@ -191,7 +191,7 @@ function startingprestiges() {
 
 function prestige_hotkey() {
   if (singularities >= 10) {
-    singularities -= 10
+    singularities = singularities.subtract(10)
     can_hotkey = true
     xu.style.display = "none"
   }
@@ -227,7 +227,7 @@ function infinitycheck() {
 
 function sb_autoclicker() {
   if (singularities >= sb_autoclickercost) {
-    singularities -= sb_autoclickercost
+    singularities = singularities.subtract(sb_autoclickercost)
     sb_autoclickers += 1
     sb_autoclickercost = Math.round(sb_autoclickercost * 1.5)
     xr.style.display = "block"
@@ -249,7 +249,7 @@ function sb_autoclick() {
 
 function prestige_autoclicker() {
   if (singularities >= prestige_autoclickercost) {
-    singularities -= prestige_autoclickercost
+    singularities = singularities.subtract(prestige_autoclickercost)
     prestige_autoclickers += 1
     prestige_autoclickercost = Math.round(prestige_autoclickercost * 1.5)
     xq.style.display = "block"
@@ -271,7 +271,7 @@ function prestige_autoclick() {
 
 function collapse_autoclicker() {
   if (singularities >= collapse_autoclickercost) {
-    singularities -= collapse_autoclickercost
+    singularities = singularities.subtract(collapse_autoclickercost)
     collapse_autoclickers += 1
     collapse_autoclickercost = Math.round(collapse_autoclickercost * 1.5)
     xp.style.display = "block"
@@ -350,7 +350,7 @@ function cooldown_off() {
 
 function s_multiplier_hundred() {
   if (singularities >= 1000) {
-    singularities = 0
+    singularities = new Decimal(0)
     singularity_multiplier = 100
     power = 1
     powercost = 1
@@ -379,9 +379,21 @@ function s_multiplier_hundred() {
 
 function enter_sushiverse() {
   if (singularities >= 1000000) {
+    sushibean = new Decimal(0)
+    hit_infinity = false
     xs.style.display = "block"
     xy.style.display = "none"
     xz.style.display = "none"
+  }
+}
+
+function IDWTD() {
+  xs.style.display = "none"
+  if (sushibean > 1e+308) {
+    xz.style.display = "block"
+  }
+  else {
+    xy.style.display = "block"
   }
 }
 
@@ -420,8 +432,8 @@ function hardreset() {
       sbpsps = new Decimal(0)
       sbpsps_cost = 500
       prestiges = 0
-      singularities = 0
-      total_singularities = 0
+      singularities = new Decimal(0)
+      total_singularities = new Decimal(0)
       singularity_multiplier = 0
       power = 1
       powercost = 1
