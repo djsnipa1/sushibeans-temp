@@ -12,7 +12,7 @@ var potential_prestige = 0
 var prestiges = 5000
 var multiplier = new Decimal(1)
 var hit_infinity = false
-var singularities = 5000
+var singularities = 999999999
 var total_singularities = 0
 var singularity_multiplier = 1
 var power = 1
@@ -350,31 +350,39 @@ function cooldown_off() {
 
 function s_multiplier_hundred() {
   if (singularities >= 1000) {
-    singularities -= 1000
+    singularities = 0
     singularity_multiplier = 100
-    var power = 1
-    var powercost = 1
-    var starting_prestiges = 0
-    var starting_prestiges_next = 3
-    var can_hotkey = false
-    var sb_autoclickers = 0
-    var sb_autoclickercost = 25
-    var prestige_autoclickers = 0
-    var prestige_autoclickercost = 50
-    var collapse_autoclickers = 0
-    var collapse_autoclickercost = 100
+    power = 1
+    powercost = 1
+    starting_prestiges = 0
+    starting_prestiges_next = 3
+    can_hotkey = false
+    sb_autoclickers = 0
+    sb_autoclickercost = 25
+    prestige_autoclickers = 0
+    prestige_autoclickercost = 50
+    collapse_autoclickers = 0
+    collapse_autoclickercost = 100
     
     xv.style.display = "block"
     xu.style.display = "block"
-    xl.style.display = "block"
-    xk.style.display = "block"
+    xl.style.display = "none"
+    xk.style.display = "none"
     xr.style.display = "none"
     xq.style.display = "none"
     xp.style.display = "none"
     xo.style.display = "none"
     xn.style.display = "none"
     xm.style.display = "none"
+  }
 }
+
+function enter_sushiverse() {
+  if (singularities >= 1000000) {
+    xs.style.display = "block"
+    xy.style.display = "none"
+    xz.style.display = "none"
+  }
 }
 
 function getRandomColor() {
@@ -414,6 +422,7 @@ function hardreset() {
       prestiges = 0
       singularities = 0
       total_singularities = 0
+      singularity_multiplier = 0
       power = 1
       powercost = 1
       starting_prestiges = 0
