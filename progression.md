@@ -27,4 +27,5 @@ part III: Singularity
 You'll have recieved 1 singularity from collapsing, opening a new tab. At this point,
 the only thing to buy is "Increase multiplier from (multiplier)^1 to (multiplier)^2".
 This squares your multiplier, but unfortunately 1^2 is sill 1, meaning you have to
-start again just as slow as before.
+start again just as slow as before. However, you'll start racking up singularities
+faster and faster, eventually getting to start with 3 prestiges.

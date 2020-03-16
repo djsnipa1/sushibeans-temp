@@ -9,11 +9,12 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 0
+var prestiges = 5000
 var multiplier = new Decimal(1)
 var hit_infinity = false
-var singularities = 0
+var singularities = 5000
 var total_singularities = 0
+var singularity_multiplier = 1
 var power = 1
 var powercost = 1
 var starting_prestiges = 0
@@ -154,8 +155,8 @@ function prestige() {
 function collapse() {
   if (hit_infinity == true) {
     hit_infinity = false
-    singularities += 1
-    total_singularities += 1
+    singularities += singularity_multiplier
+    total_singularities += singularity_multiplier
     prestiges = starting_prestiges
     sushibean = new Decimal(0)
     sbps = new Decimal(0)
@@ -345,6 +346,35 @@ function collapse_onoff() {
 
 function cooldown_off() {
   cooldown = false
+}
+
+function s_multiplier_hundred() {
+  if (singularities >= 1000) {
+    singularities -= 1000
+    singularity_multiplier = 100
+    var power = 1
+    var powercost = 1
+    var starting_prestiges = 0
+    var starting_prestiges_next = 3
+    var can_hotkey = false
+    var sb_autoclickers = 0
+    var sb_autoclickercost = 25
+    var prestige_autoclickers = 0
+    var prestige_autoclickercost = 50
+    var collapse_autoclickers = 0
+    var collapse_autoclickercost = 100
+    
+    xv.style.display = "block"
+    xu.style.display = "block"
+    xl.style.display = "block"
+    xk.style.display = "block"
+    xr.style.display = "none"
+    xq.style.display = "none"
+    xp.style.display = "none"
+    xo.style.display = "none"
+    xn.style.display = "none"
+    xm.style.display = "none"
+}
 }
 
 function getRandomColor() {
