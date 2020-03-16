@@ -9,15 +9,15 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 5000
+var prestiges = 0
 var multiplier = new Decimal(1)
 var hit_infinity = false
-var singularities = new Decimal(999999990)
+var singularities = new Decimal(0)
 var total_singularities = new Decimal(0)
 var singularity_multiplier = 1
 var power = 1
 var powercost = 1
-var starting_prestiges = 300
+var starting_prestiges = 0
 var starting_prestiges_next = 3
 var can_hotkey = false
 var sb_autoclickers = 0
@@ -30,6 +30,7 @@ var sb_on = true
 var prestige_on = true
 var collapse_on = true
 var cooldown = false
+var waiting = false
 
 var surpassed_infinity = false
 
@@ -244,7 +245,9 @@ function sb_autoclicker() {
 function sb_autoclick() {
   if (sb_autoclickers > 0) {
     if (sb_on == true) {
-      morebeans()
+      if (waiting == false) {
+        morebeans()
+      }
     }
     setTimeout(sb_autoclick, 1000 / sb_autoclickers)
   }
@@ -266,7 +269,9 @@ function prestige_autoclicker() {
 function prestige_autoclick() {
   if (prestige_autoclickers > 0) {
     if (prestige_on == true) {
-      prestige()
+      if (waiting == false) {
+        prestige()
+      }
     }
     setTimeout(prestige_autoclick, 1000 / prestige_autoclickers)
   }
@@ -290,7 +295,9 @@ function collapse_autoclicker() {
 function collapse_autoclick() {
   if (collapse_autoclickers > 0) {
     if (collapse_on == true) {
-      collapse()
+      if (waiting == false) {
+        collapse()
+      }
     }
     setTimeout(collapse_autoclick, 10000 / collapse_autoclickers)
   }
@@ -385,6 +392,7 @@ function s_multiplier_hundred() {
 
 function enter_sushiverse() {
   if (singularities >= 1000000) {
+    waiting = true
     sushibean = new Decimal(0)
     hit_infinity = false
     xs.style.display = "block"
@@ -395,6 +403,7 @@ function enter_sushiverse() {
 
 function IDWTD() {
   xs.style.display = "none"
+  waiting = false
   if (sushibean > 1e+308) {
     xz.style.display = "block"
   }
@@ -404,8 +413,11 @@ function IDWTD() {
 }
 
 function ready() {
-  xs.style.display = "none"
+  waiting = false
+  xy.style.display = "block"
+  xi.style.display = "block"
   xw.style.display = "none"
+  xs.style.display = "none"
   surpassed_infinity = true
 }
 
