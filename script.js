@@ -419,6 +419,10 @@ function ready() {
   xw.style.display = "none"
   xs.style.display = "none"
   surpassed_infinity = true
+  document.body.style.backgroundImage = "url('https://cdnb.artstation.com/p/assets/images/images/005/829/317/large/devin-hansen-astrum-nebula-zoom2.jpg?1494052070')"
+  sb_autoclickers = 100
+  prestige_autoclickers = 100
+  collapse_autoclickers = 0
 }
 
 function getRandomColor() {
