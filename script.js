@@ -278,6 +278,7 @@ function collapse_autoclicker() {
     game.collapse_autoclickercost = Math.round(game.collapse_autoclickercost * 1.5)
     document.getElementById("switch3").style.display = "block"
     document.getElementById("switch_text3").style.display = "block"
+    
     document.getElementById("singularity_special").style.display = "block"
     document.getElementById("singularity_special2").style.display = "block"
   }
