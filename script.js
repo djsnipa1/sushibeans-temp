@@ -9,15 +9,15 @@ var sbps_cost = 10
 var sbpsps = new Decimal(0)
 var sbpsps_cost = 500
 var potential_prestige = 0
-var prestiges = 0
+var prestiges = 5000
 var multiplier = new Decimal(1)
 var hit_infinity = false
-var singularities = new Decimal(0)
+var singularities = new Decimal(999999990)
 var total_singularities = new Decimal(0)
 var singularity_multiplier = 1
 var power = 1
 var powercost = 1
-var starting_prestiges = 0
+var starting_prestiges = 300
 var starting_prestiges_next = 3
 var can_hotkey = false
 var sb_autoclickers = 0
@@ -30,6 +30,8 @@ var sb_on = true
 var prestige_on = true
 var collapse_on = true
 var cooldown = false
+
+var surpassed_infinity = false
 
 var hoursLabel = document.getElementById("hours")
 var minutesLabel = document.getElementById("minutes")
@@ -68,6 +70,8 @@ var xl = document.getElementById("singularity_special")
 xl.style.display = "none"
 var xk = document.getElementById("singularity_special2")
 xk.style.display = "none"
+var xi = document.getElementById("sushiverse")
+xi.style.display = "none"
 
 function update() {
   if (multiplier < 1e+16) {
@@ -218,11 +222,13 @@ function prestigecheck() {
 }
 
 function infinitycheck() {
+  if (surpassed_infinity == false) {
     if (sushibean > 1e+308) {
         hit_infinity = true
         xy.style.display = "none"
         xz.style.display = "block"
     }
+  }
 }
 
 function sb_autoclicker() {
@@ -395,6 +401,12 @@ function IDWTD() {
   else {
     xy.style.display = "block"
   }
+}
+
+function ready() {
+  xs.style.display = "none"
+  xw.style.display = "none"
+  surpassed_infinity = true
 }
 
 function getRandomColor() {

@@ -80,6 +80,17 @@ p {
   font-size: 28px;
 }
 
+#sushiverse {
+  position: absolute;
+  width: 15%;
+  height: 95%;
+  border: 3px solid #0300ad;
+  right: 0;
+  top: 0;
+  background-image: url("https://cdn.glitch.com/31b3cdd5-f8cb-4b36-a184-2d7b81018c29%2Fsushibeans_space.jpg?v=1584334070080");
+  background-position: center;
+}
+
 #options {
   position: fixed;
   width: 22%;
