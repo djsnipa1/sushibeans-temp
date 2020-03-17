@@ -283,6 +283,7 @@ function increasepower() {
 function startingprestiges() {
   if (game.singularities >= game.starting_prestiges_next) {
     game.singularities = game.singularities.subtract(game.starting_prestiges_next)
+    game.prestiges += game.starting_prestiges_next
     game.starting_prestiges = game.starting_prestiges_next
     game.starting_prestiges_next = game.starting_prestiges_next * 10
     if (game.starting_prestiges_next > 300) {
