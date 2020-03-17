@@ -40,9 +40,10 @@ p {
   width: 400px;
   height: 75px;
   background-image: url("https://maryshakshober.com/grid2.png");
+  background-position: center;
+  background-size: 100%;
   color: #d5f1f5;
   border: 3px solid purple;
-  background-size: 100% 100%;
 }
 
 #singularity {

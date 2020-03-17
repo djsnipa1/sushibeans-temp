@@ -139,6 +139,9 @@ function loadGame(loadgame) {
     if (game.starting_prestiges == 300) {
       document.getElementById("startingprestiges").style.display = "none"
     }
+    if (game.can_hotkey == true) {
+      document.getElementById("hotkey").style.display = "none"
+    }
     if (game.singularity_multiplier == 100) {
       document.getElementById("startingprestiges").style.display = "none"
     }
