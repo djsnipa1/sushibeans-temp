@@ -14,13 +14,14 @@ function reset() {
     prestiges: 0,
     multiplier: new Decimal(1),
     hit_infinity: false,
+    
     singularities: new Decimal(0),
     total_singularities: new Decimal(0),
     singularity_multiplier: 1,
     power: 1,
     powercost: 1,
     starting_prestiges: 0,
-    starting_prestiges_next:3,
+    starting_prestiges_next: 3,
     can_hotkey: false,
     sb_autoclickers: 0,
     sb_autoclickercost: 25,
@@ -65,6 +66,99 @@ function reset() {
 
 reset()
 
+function save() {
+  localStorage.setItem("SushibeansSave", JSON.stringify(game))
+}
+
+function load() {
+  let loadgame = JSON.parse(localStorage.getItem("SushibeansSave"))
+  if (loadgame != null) {
+    loadGame(loadgame)
+  }
+}
+
+function loadGame(loadgame) {
+  reset()
+  if (typeof loadgame.sushibean != "undefined") game.sushibean = new Decimal(loadgame.sushibean)
+  if (typeof loadgame.clicks != "undefined") game.clicks = loadgame.clicks
+  if (typeof loadgame.sbps != "undefined") game.sbps = new Decimal(loadgame.sbps)
+  if (typeof loadgame.sbps_cost != "undefined") game.sbps_cost = loadgame.sbps_cost
+  if (typeof loadgame.sbpsps != "undefined") game.sbpsps = new Decimal(loadgame.sbpsps)
+  if (typeof loadgame.sbpsps_cost != "undefined") game.sbpsps_cost = loadgame.sbpsps_cost
+  if (typeof loadgame.potential_prestige != "undefined") game.potential_prestige = loadgame.potential_prestige
+  if (typeof loadgame.prestiges != "undefined") game.prestiges = loadgame.prestiges
+  if (typeof loadgame.multiplier != "undefined") game.multiplier = new Decimal(loadgame.multiplier)
+  if (typeof loadgame.hit_infinity != "undefined") game.hit_infinity = loadgame.hit_infinity
+  if (typeof loadgame.singularities != "undefined") game.singularities = new Decimal(loadgame.singularities)
+  if (typeof loadgame.total_singularities != "undefined") game.total_singularities = new Decimal(loadgame.total_singularities)
+  if (typeof loadgame.singularity_multiplier != "undefined") game.singularity_multiplier = loadgame.singularity_multiplier
+  if (typeof loadgame.power != "undefined") game.power = loadgame.power
+  if (typeof loadgame.powercost != "undefined") game.powercost = loadgame.powercost
+  if (typeof loadgame.starting_prestiges != "undefined") game.starting_prestiges = loadgame.starting_prestiges
+  if (typeof loadgame.starting_prestiges_next != "undefined") game.starting_prestiges_next = loadgame.starting_prestiges_next
+  if (typeof loadgame.can_hotkey != "undefined") game.can_hotkey = loadgame.can_hotkey
+  if (typeof loadgame.sb_autoclickers != "undefined") game.sb_autoclickers = loadgame.sb_autoclickers
+  if (typeof loadgame.sb_autoclickercost != "undefined") game.sb_autoclickercost = loadgame.sb_autoclickercost
+  if (typeof loadgame.prestige_autoclickers != "undefined") game.prestige_autoclickers = loadgame.prestige_autoclickers
+  if (typeof loadgame.prestige_autoclickercost != "undefined") game.prestige_autoclickercost = loadgame.prestige_autoclickercost
+  if (typeof loadgame.collapse_autoclickers != "undefined") game.collapse_autoclickers = loadgame.collapse_autoclickers
+  if (typeof loadgame.collapse_autoclickercost != "undefined") game.collapse_autoclickercost = loadgame.collapse_autoclickercost
+  if (typeof loadgame.sb_on != "undefined") game.sb_on = loadgame.sb_on
+  if (typeof loadgame.prestige_on != "undefined") game.prestige_on = loadgame.prestige_on
+  if (typeof loadgame.collapse_on != "undefined") game.collapse_on = loadgame.collapse_on
+  if (typeof loadgame.cooldown != "undefined") game.cooldown = loadgame.cooldown
+  if (typeof loadgame.waiting != "undefined") game.waiting = loadgame.waiting
+  if (typeof loadgame.surpassed_infinity != "undefined") game.surpassed_infinity = loadgame.surpassed_infinity
+  if (typeof loadgame.totalSeconds != "undefined") game.totalSeconds = loadgame.totalSeconds
+  
+  
+  if (game.surpassed_infinity == true) {
+    document.getElementById("sushiverse").style.display = "block"
+    document.getElementById("switch1").style.display = "block"
+    document.getElementById("switch_text1").style.display = "block"
+    document.getElementById("switch2").style.display = "block"
+    document.getElementById("switch_text2").style.display = "block"
+    document.getElementById("switch3").style.display = "block"
+    document.getElementById("switch_text3").style.display = "block"
+  }
+  else if (game.total_singularities != 0) {
+    document.getElementById("singularity").style.display = "block"
+    document.getElementById("singularity_info").style.display = "block"
+    
+    if (game.sb_autoclickers > 0) {
+      document.getElementById("switch1").style.display = "block"
+      document.getElementById("switch_text1").style.display = "block"
+    }
+    if (game.prestige_autoclickers > 0) {
+      document.getElementById("switch2").style.display = "block"
+      document.getElementById("switch_text2").style.display = "block"
+    }
+    if (game.collapse_autoclickers > 0) {
+      document.getElementById("switch3").style.display = "block"
+      document.getElementById("switch_text3").style.display = "block"
+    }
+  }
+  
+  
+  if (game.waiting == 1) {
+    document.getElementById("wait").style.display = "block"
+    document.getElementById("maingame").style.display = "none"
+  }
+  else if (game.hit_infinity == 1) {
+    document.getElementById("infinity").style.display = "block"
+    document.getElementById("maingame").style.display = "none"
+  }
+  else {
+    document.getElementById("infinity").style.display = "none"
+    document.getElementById("wait").style.display = "none"
+    document.getElementById("maingame").style.display = "block"
+  }
+  
+}
+
+load()
+
+
 function update() {
   if (game.multiplier < 1e+16) {
     game.multiplier = Math.round(Decimal.round(Decimal.pow(1.2, game.prestiges)).pow(game.power))
@@ -98,7 +192,6 @@ function update() {
   document.getElementById("prestige_autoclickers").innerHTML = game.prestige_autoclickers
   document.getElementById("collapse_autoclickercost").innerHTML = game.collapse_autoclickercost
   document.getElementById("collapse_autoclickers").innerHTML = game.collapse_autoclickers
-  
 }
 
 
@@ -278,9 +371,7 @@ function collapse_autoclicker() {
     game.collapse_autoclickercost = Math.round(game.collapse_autoclickercost * 1.5)
     document.getElementById("switch3").style.display = "block"
     document.getElementById("switch_text3").style.display = "block"
-    if (game.singularity_multiplier == 1) {
-      document.getElementById("singularity_special").style.display = "block"
-    }
+    document.getElementById("singularity_special").style.display = "block"
     document.getElementById("singularity_special2").style.display = "block"
   }
 }
@@ -447,6 +538,7 @@ function setRandomColor() {
 function hardreset() {
     if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
       reset()
+      save()
     }
     else {
       alert("Thank goodness.")
@@ -460,8 +552,7 @@ function setTime() {
   game.hoursLabel.innerHTML = parseInt(game.totalSeconds / 3600);
 }
 
-
-
+setInterval(save, 1000)
 setInterval(setTime, 1000)
 setInterval(incrementSeconds, 1000)
 setInterval(incrementSeconds2, 1000)
