@@ -124,7 +124,6 @@ function loadGame(loadgame) {
   else if (game.total_singularities != 0) {
     document.getElementById("singularity").style.display = "block"
     document.getElementById("singularity_info").style.display = "block"
-    
     if (game.sb_autoclickers > 0) {
       document.getElementById("switch1").style.display = "block"
       document.getElementById("switch_text1").style.display = "block"
@@ -137,11 +136,15 @@ function loadGame(loadgame) {
       document.getElementById("switch3").style.display = "block"
       document.getElementById("switch_text3").style.display = "block"
     }
-    
-  if (game.potential_prestige > 0) {
-    
   }
+  
+  if (game.prestiges != 0) {
+    document.getElementById("prestigediv").style.display = "block"
   }
+  else if (game.potential_prestige > 0) {
+    document.getElementById("prestigediv").style.display = "block"
+  }
+  
   
   
   if (game.waiting == 1) {
@@ -157,8 +160,8 @@ function loadGame(loadgame) {
     document.getElementById("wait").style.display = "none"
     document.getElementById("maingame").style.display = "block"
   }
-  
 }
+
 
 load()
 
