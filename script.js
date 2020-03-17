@@ -89,6 +89,7 @@ function loadGame(loadgame) {
   if (typeof loadgame.prestiges != "undefined") game.prestiges = loadgame.prestiges
   if (typeof loadgame.multiplier != "undefined") game.multiplier = new Decimal(loadgame.multiplier)
   if (typeof loadgame.hit_infinity != "undefined") game.hit_infinity = loadgame.hit_infinity
+  if (typeof loadgame.current_goal != "undefined") game.current_goal = loadgame.current_goal
   if (typeof loadgame.singularities != "undefined") game.singularities = new Decimal(loadgame.singularities)
   if (typeof loadgame.total_singularities != "undefined") game.total_singularities = new Decimal(loadgame.total_singularities)
   if (typeof loadgame.singularity_multiplier != "undefined") game.singularity_multiplier = loadgame.singularity_multiplier
@@ -113,6 +114,7 @@ function loadGame(loadgame) {
   
   
   if (game.surpassed_infinity == true) {
+    document.body.style.backgroundImage = "url('https://cdnb.artstation.com/p/assets/images/images/005/829/317/large/devin-hansen-astrum-nebula-zoom2.jpg?1494052070')"
     document.getElementById("sushiverse").style.display = "block"
     document.getElementById("switch1").style.display = "block"
     document.getElementById("switch_text1").style.display = "block"
@@ -208,6 +210,19 @@ function update() {
   document.getElementById("prestige_autoclickers").innerHTML = game.prestige_autoclickers
   document.getElementById("collapse_autoclickercost").innerHTML = game.collapse_autoclickercost
   document.getElementById("collapse_autoclickers").innerHTML = game.collapse_autoclickers
+  
+  if (game.surpassed_infinity == true) {
+    document.getElementById("currentgoal").innerHTML = "to get as many sushi beans as possible"
+  }
+  else if (game.collapse_autoclickers > 0) {
+    document.getElementById("currentgoal").innerHTML = "to enter the sushiverse"
+  }
+  else if (game.total_singularities > 0) {
+    document.getElementById("currentgoal").innerHTML = "to gain a collapse autoclicker"
+  }
+  else {
+    document.getElementById("currentgoal").innerHTML = "to get infinite (10^308) sushi beans"
+  }
 }
 
 
