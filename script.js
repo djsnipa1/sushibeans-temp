@@ -137,6 +137,10 @@ function loadGame(loadgame) {
       document.getElementById("switch3").style.display = "block"
       document.getElementById("switch_text3").style.display = "block"
     }
+    
+  if (game.potential_prestige > 0) {
+    
+  }
   }
   
   
