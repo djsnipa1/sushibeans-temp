@@ -367,7 +367,7 @@ function prestigecheck() {
 
 function infinitycheck() {
   if (game.surpassed_infinity == false) {
-    if (game.sushibean > 1e+308) {
+    if (game.sushibean > 1e+308 || game.sushibean.max("1e308") == game.sushibean) {
         game.hit_infinity = true
         document.getElementById("maingame").style.display = "none"
         document.getElementById("infinity").style.display = "block"
