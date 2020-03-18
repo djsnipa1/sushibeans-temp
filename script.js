@@ -192,15 +192,18 @@ function update() {
   if (game.multiplier < 1e+16) {
     game.multiplier = Math.round(Decimal.round(Decimal.pow(1.2, game.prestiges)).pow(game.power))
     game.potential_multiplier = Math.round(Decimal.round(Decimal.pow(1.2, (game.prestiges.add(game.potential_prestige))).pow(game.power)))
-    game.potential_prestige = new Decimal(Math.round(game.sushibean.divide(1000).add(1).log2(1)))
   }
   else {
     game.multiplier = Decimal.pow(1.2, game.prestiges).pow(game.power)
     game.potential_multiplier = Decimal.round(Decimal.pow(1.2, (game.prestiges.add(game.potential_prestige)))).pow(game.power)
-    game.potential_prestige = new Decimal(game.sushibean.divide(1000).add(1).log2(1))
   }
   
-  
+  if (game.prestiges < 1e+16) {
+    game.potential_prestige = new Decimal(Math.round(game.sushibean.divide(1000).add(1).log2(1)))
+  }
+  else {
+    game.potential_prestige = new Decimal(game.sushibean.divide(1000).add(1).log2(1))
+  }
   
   
   document.getElementById("sushibeans").innerHTML = game.sushibean
@@ -279,7 +282,7 @@ function moresbpsps() {
 
 function prestige() {
   if (game.potential_prestige > 0) {
-    if (game.multiplier < 1e+16) {
+    if (game.prestiges < 1e+16) {
       game.prestiges = game.prestiges.add(Math.round(game.sushibean.divide(1000).add(1).log2(1)))
     }
     else {
