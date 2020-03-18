@@ -224,7 +224,7 @@ function update() {
   
   if (game.potential_prestige > 0) {
     document.getElementById("potential_text").style.display = "block"
-    if (game.potential_multiplier == game.multiplier) {
+    if (game.potential_multiplier == game.multiplier && game.potential_prestige > 0) {
       document.getElementById("prestige_hold_on").innerHTML = "Hold on! Prestiging now won't increase your multiplier. Try saving up some sushi beans!"
     }
     else {
@@ -549,9 +549,10 @@ function ready() {
   document.getElementById("wait").style.display = "none"
   game.surpassed_infinity = true
   document.body.style.backgroundImage = "url('https://cdnb.artstation.com/p/assets/images/images/005/829/317/large/devin-hansen-astrum-nebula-zoom2.jpg?1494052070')"
-  game.sb_autoclickers = 100
-  game.prestige_autoclickers = 100
+  game.sb_autoclickers = 10
+  game.prestige_autoclickers = 10
   game.collapse_autoclickers = 0
+  game.power = 100
 }
 
 function getRandomColor() {
