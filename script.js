@@ -1,6 +1,5 @@
 /* global Decimal*/
 /* global Mousetrap*/
-/*(e^NaN)NaN*/
 
 let game
 
@@ -12,8 +11,8 @@ function reset() {
     sbps_cost: 10,
     sbpsps: new Decimal(0),
     sbpsps_cost: 500,
-    potential_prestige: 0,
-    prestiges: 0,
+    potential_prestige: new Decimal(0),
+    prestiges: new Decimal(0),
     potential_multiplier: new Decimal(0),
     multiplier: new Decimal(1),
     hit_infinity: false,
@@ -84,13 +83,16 @@ function load() {
 function loadGame(loadgame) {
   reset()
   if (typeof loadgame.sushibean != "undefined") game.sushibean = new Decimal(loadgame.sushibean)
+  if (game.sushibean == "(e^NaN)NaN") {
+    reset()
+  }
   if (typeof loadgame.clicks != "undefined") game.clicks = loadgame.clicks
   if (typeof loadgame.sbps != "undefined") game.sbps = new Decimal(loadgame.sbps)
   if (typeof loadgame.sbps_cost != "undefined") game.sbps_cost = loadgame.sbps_cost
   if (typeof loadgame.sbpsps != "undefined") game.sbpsps = new Decimal(loadgame.sbpsps)
   if (typeof loadgame.sbpsps_cost != "undefined") game.sbpsps_cost = loadgame.sbpsps_cost
-  if (typeof loadgame.potential_prestige != "undefined") game.potential_prestige = loadgame.potential_prestige
-  if (typeof loadgame.prestiges != "undefined") game.prestiges = loadgame.prestiges
+  if (typeof loadgame.potential_prestige != "undefined") game.potential_prestige = new Decimal(loadgame.potential_prestige)
+  if (typeof loadgame.prestiges != "undefined") game.prestiges = new Decimal(loadgame.prestiges)
   if (typeof loadgame.potential_multiplier != "undefined") game.potential_multiplier = new Decimal(loadgame.potential_multiplier)
   if (typeof loadgame.multiplier != "undefined") game.multiplier = new Decimal(loadgame.multiplier)
   if (typeof loadgame.hit_infinity != "undefined") game.hit_infinity = loadgame.hit_infinity
@@ -108,9 +110,9 @@ function loadGame(loadgame) {
   if (typeof loadgame.prestige_autoclickercost != "undefined") game.prestige_autoclickercost = loadgame.prestige_autoclickercost
   if (typeof loadgame.collapse_autoclickers != "undefined") game.collapse_autoclickers = loadgame.collapse_autoclickers
   if (typeof loadgame.collapse_autoclickercost != "undefined") game.collapse_autoclickercost = loadgame.collapse_autoclickercost
-  if (typeof loadgame.sb_on != "undefined") game.sb_on = loadgame.sb_on
-  if (typeof loadgame.prestige_on != "undefined") game.prestige_on = loadgame.prestige_on
-  if (typeof loadgame.collapse_on != "undefined") game.collapse_on = loadgame.collapse_on
+  if (typeof loadgame.sb_on != "undefined") game.sb_on = true
+  if (typeof loadgame.prestige_on != "undefined") game.prestige_on = true
+  if (typeof loadgame.collapse_on != "undefined") game.collapse_on = true
   if (typeof loadgame.cooldown != "undefined") game.cooldown = loadgame.cooldown
   if (typeof loadgame.waiting != "undefined") game.waiting = loadgame.waiting
   if (typeof loadgame.surpassed_infinity != "undefined") game.surpassed_infinity = loadgame.surpassed_infinity
@@ -189,15 +191,17 @@ load()
 function update() {
   if (game.multiplier < 1e+16) {
     game.multiplier = Math.round(Decimal.round(Decimal.pow(1.2, game.prestiges)).pow(game.power))
-    game.potential_multiplier = Math.round(Decimal.round(Decimal.pow(1.2, (game.prestiges + game.potential_prestige))).pow(game.power))
+    game.potential_multiplier = Math.round(Decimal.round(Decimal.pow(1.2, (game.prestiges.add(game.potential_prestige))).pow(game.power)))
+    game.potential_prestige = new Decimal(Math.round(game.sushibean.divide(1000).add(1).log2(1)))
   }
   else {
     game.multiplier = Decimal.pow(1.2, game.prestiges).pow(game.power)
-    game.potential_multiplier = Decimal.round(Decimal.pow(1.2, (game.prestiges + game.potential_prestige))).pow(game.power)
+    game.potential_multiplier = Decimal.round(Decimal.pow(1.2, (game.prestiges.add(game.potential_prestige)))).pow(game.power)
+    game.potential_prestige = new Decimal(game.sushibean.divide(1000).add(1).log2(1))
   }
   
   
-  game.potential_prestige = Math.round(game.sushibean.divide(1000).add(1).log2(1))
+  
   
   document.getElementById("sushibeans").innerHTML = game.sushibean
   document.getElementById("clicks").innerHTML = game.clicks
@@ -275,7 +279,12 @@ function moresbpsps() {
 
 function prestige() {
   if (game.potential_prestige > 0) {
-    game.prestiges += Math.round(game.sushibean.divide(1000).add(1).log2(1))
+    if (game.multiplier < 1e+16) {
+      game.prestiges = game.prestiges.add(Math.round(game.sushibean.divide(1000).add(1).log2(1)))
+    }
+    else {
+      game.prestiges = game.prestiges.add(game.sushibean.divide(1000).add(1).log2(1))
+    }
     game.sushibean = new Decimal(0)
     game.sbps = new Decimal(0)
     game.sbps_cost = 10
@@ -289,7 +298,7 @@ function collapse() {
     game.hit_infinity = false
     game.singularities = game.singularities.add(game.singularity_multiplier)
     game.total_singularities = game.total_singularities.add(game.singularity_multiplier)
-    game.prestiges = game.starting_prestiges
+    game.prestiges = new Decimal(game.starting_prestiges)
     game.sushibean = new Decimal(0)
     game.sbps = new Decimal(0)
     game.sbps_cost = 10
@@ -313,7 +322,7 @@ function increasepower() {
 function startingprestiges() {
   if (game.singularities >= game.starting_prestiges_next) {
     game.singularities = game.singularities.subtract(game.starting_prestiges_next)
-    game.prestiges += game.starting_prestiges_next
+    game.prestiges = game.prestiges.add(game.starting_prestiges_next)
     game.starting_prestiges = game.starting_prestiges_next
     game.starting_prestiges_next = game.starting_prestiges_next * 10
     if (game.starting_prestiges_next > 300) {
@@ -551,6 +560,12 @@ function ready() {
   document.getElementById("sushiverse").style.display = "block"
   document.getElementById("singularity").style.display = "none"
   document.getElementById("wait").style.display = "none"
+  document.getElementById("switch1").style.display = "block"
+  document.getElementById("switch_text1").style.display = "block"
+  document.getElementById("switch2").style.display = "block"
+  document.getElementById("switch_text2").style.display = "block"
+  document.getElementById("switch3").style.display = "block"
+  document.getElementById("switch_text3").style.display = "block"
   game.surpassed_infinity = true
   document.body.style.backgroundImage = "url('https://cdnb.artstation.com/p/assets/images/images/005/829/317/large/devin-hansen-astrum-nebula-zoom2.jpg?1494052070')"
   game.sb_autoclickers = 10
