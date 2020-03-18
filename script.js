@@ -329,7 +329,9 @@ function prestige_hotkey() {
   }
 }
 
-document.onkeypress = function (e) {
+Mousetrap.bind('p', pressed_p())
+
+function pressed_p() {
   if (game.can_hotkey == true) {
     prestige()
   }
