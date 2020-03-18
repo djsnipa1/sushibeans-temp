@@ -191,7 +191,7 @@ load()
 function update() {
   if (game.multiplier < 1e+16) {
     game.multiplier = Math.round(Decimal.round(Decimal.pow(1.2, game.prestiges)).pow(game.power))
-    game.potential_multiplier = Math.round(Decimal.round(Decimal.pow(1.2, (game.prestiges.add(game.potential_prestige))).pow(game.power)))
+    game.potential_multiplier = Math.round(Decimal.round(Decimal.pow(1.2, (game.prestiges.add(game.potential_prestige)))).pow(game.power))
   }
   else {
     game.multiplier = Decimal.pow(1.2, game.prestiges).pow(game.power)
@@ -520,7 +520,7 @@ function s_multiplier_hundred() {
     game.prestige_autoclickers = 0
     game.prestige_autoclickercost = 40
     game.collapse_autoclickers = 0
-    game.collapse_autoclickercost = 800
+    game.collapse_autoclickercost = 80
     
     document.getElementById("startingprestiges").style.display = "block"
     document.getElementById("hotkey").style.display = "block"
@@ -536,7 +536,7 @@ function s_multiplier_hundred() {
 }
 
 function enter_sushiverse() {
-  if (game.singularities >= 1000000) {
+  if (game.singularities >= 500000) {
     game.waiting = true
     game.sushibean = new Decimal(0)
     game.hit_infinity = false
