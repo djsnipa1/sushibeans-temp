@@ -1,4 +1,5 @@
 /* global Decimal*/
+/* global bind*/
 /*(e^NaN)NaN*/
 
 let game
@@ -329,13 +330,13 @@ function prestige_hotkey() {
   }
 }
 
-Mousetrap.bind('p', pressed_p())
 
-function pressed_p() {
-  if (game.can_hotkey == true) {
-    prestige()
+document.onkeyup = function(e) {
+  if (e.which == 77) {
+    alert("e")
   }
 }
+  
 
 function incrementSeconds() {
     game.sushibean = game.sushibean.add(game.sbps)
