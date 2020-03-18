@@ -68,6 +68,7 @@ function reset() {
 }
 
 reset()
+console.log("I see you cheating in the console, you slimy bastard. Don't be a butt!")
 
 function save() {
   localStorage.setItem("SushibeansSave", JSON.stringify(game))
