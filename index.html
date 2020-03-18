@@ -30,7 +30,7 @@
         </p>
         <button type="button" onclick="morebeans()">Make sushi beans</button>
         <p>
-          Your current goal is <a id="currentgoal">to get infinite (10^308) sushi beans</a>!<br />Shouldn't take
+          Your current goal is to get infinite (10^308) sushi beans!<br />Shouldn't take
           too long.
         </p>
 
@@ -56,9 +56,11 @@
             Prestige for <a id="potential_prestige">0</a> prestige points
           </button>
           <p>
-            You have <a id="prestiges">0</a> prestige points, giving you a
-            <a id="multiplier">0</a>x multiplier
+            You have <a id="prestiges" style="color: #040085">0</a> prestige points, giving you a
+            <a id="multiplier" style="color: #00590b">0</a>x multiplier
           </p>
+          <p id="potential_text">If you prestige now, your multiplier will become <a id="potential_multiplier" style="color: #00590b">0</a>x</p>
+          <p><a id="prestige_hold_on" style="color: #661313"></a></p>
         </div>
       </div>
       
@@ -78,10 +80,10 @@
       </div>
       
       <div id="singularity">
-        <p style="color: purple; font-size: 52px; font-family: 'Geo'">Singularity</p>
+        <p style="color: purple; font-size: 52px; font-family: 'Geo'; text-shadow: 2px 2px #270545">Singularity</p>
         <img src="https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Fsushibeansnoback2.png?v=1583913241251" style="height: 192px">
-        <p style="color: purple; font-size: 22px; font-family: 'Geo'"><b>Singularities: <a id="singularities">0</a></b></p>
-        <p style="color: purple; font-size: 12px; font-family: 'Geo'"><b>Total singularities: <a id="total_singularities">0</a></b></p>
+        <p style="color: #a600ff; font-size: 22px; font-family: 'Geo'"><b>Singularities: <a id="singularities">0</a></b></p>
+        <p style="color: #a600ff; font-size: 14px; font-family: 'Geo'"><b>Total singularities: <a id="total_singularities">0</a></b></p>
         <hr size="50" />
         <button type="button" class="singularity_button" onclick="increasepower()"><b>Increase total multiplier from (multiplier)^<a id="power">1</a> to (multiplier)^<a id="powernext">2</a><br><br>Cost: <a id="powercost">1</a></b></button>
           <button type="button" id="startingprestiges" class="singularity_button" onclick="startingprestiges()"><b>Start with <a id="starting_prestiges_next">3</a> prestiges each collapse<br><br>Cost: <a id="starting_prestiges_cost">3</a></b></button>
@@ -100,11 +102,12 @@
       </div>
       
       <div id="options">
-        <p style="font-size: 10px; text-align: left; vertical-align: top; padding-left: 7px;">  Sushi Beans v2.0.1 - The infinity++ update<br>The game is currently under development, features may be broken!<br>
+        <p style="font-size: 10px; text-align: left; vertical-align: top; padding-left: 7px;">  Sushi Beans v2.1.0 - The discord update<br>The game is currently under development, features may be broken!<br>
         <a id="changelog" href="https://sushibeans-changelog.glitch.me/">Changelog</a></p><br>
         <img src="https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Fsushibeansnoback.png?v=1583912523488" style="height: 64px">
         <p style="font-size: 36px">Options</p>
-       <button type="button" onclick="setRandomColor()">Random background colour</button>
+        <button type="button" onclick="setRandomColor()">Random background colour</button>
+        <button type="button" onclick="save()">Save game</button>
         <button type="button" id="hardreset" onclick="hardreset()">Hard reset</button><br><br>
         <label class="switch" id="switch1" onclick="sb_onoff()">
           <input type="checkbox" checked>

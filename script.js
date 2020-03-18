@@ -1,4 +1,5 @@
 /* global Decimal*/
+/*(e^NaN)NaN*/
 
 let game
 
@@ -12,6 +13,7 @@ function reset() {
     sbpsps_cost: 500,
     potential_prestige: 0,
     prestiges: 0,
+    potential_multiplier: new Decimal(0),
     multiplier: new Decimal(1),
     hit_infinity: false,
     
@@ -24,11 +26,11 @@ function reset() {
     starting_prestiges_next: 3,
     can_hotkey: false,
     sb_autoclickers: 0,
-    sb_autoclickercost: 25,
+    sb_autoclickercost: 20,
     prestige_autoclickers: 0,
-    prestige_autoclickercost: 50,
+    prestige_autoclickercost: 40,
     collapse_autoclickers: 0,
-    collapse_autoclickercost: 100,
+    collapse_autoclickercost: 80,
     sb_on: true,
     prestige_on: true,
     collapse_on: true,
@@ -43,6 +45,7 @@ function reset() {
     totalSeconds: 0,
    }  
   
+  document.body.style.backgroundImage = "url('')"
   document.getElementById("prestigediv").style.display = "none"
   document.getElementById("maingame").style.display = "block"
   document.getElementById("infinity").style.display = "none"
@@ -87,9 +90,9 @@ function loadGame(loadgame) {
   if (typeof loadgame.sbpsps_cost != "undefined") game.sbpsps_cost = loadgame.sbpsps_cost
   if (typeof loadgame.potential_prestige != "undefined") game.potential_prestige = loadgame.potential_prestige
   if (typeof loadgame.prestiges != "undefined") game.prestiges = loadgame.prestiges
+  if (typeof loadgame.potential_multiplier != "undefined") game.potential_multiplier = new Decimal(loadgame.potential_multiplier)
   if (typeof loadgame.multiplier != "undefined") game.multiplier = new Decimal(loadgame.multiplier)
   if (typeof loadgame.hit_infinity != "undefined") game.hit_infinity = loadgame.hit_infinity
-  if (typeof loadgame.current_goal != "undefined") game.current_goal = loadgame.current_goal
   if (typeof loadgame.singularities != "undefined") game.singularities = new Decimal(loadgame.singularities)
   if (typeof loadgame.total_singularities != "undefined") game.total_singularities = new Decimal(loadgame.total_singularities)
   if (typeof loadgame.singularity_multiplier != "undefined") game.singularity_multiplier = loadgame.singularity_multiplier
@@ -122,6 +125,7 @@ function loadGame(loadgame) {
     document.getElementById("switch_text2").style.display = "block"
     document.getElementById("switch3").style.display = "block"
     document.getElementById("switch_text3").style.display = "block"
+    document.getElementById("singularity_info").style.display = "block"
   }
   else if (game.total_singularities != 0) {
     document.getElementById("singularity").style.display = "block"
@@ -137,6 +141,10 @@ function loadGame(loadgame) {
     if (game.collapse_autoclickers > 0) {
       document.getElementById("switch3").style.display = "block"
       document.getElementById("switch_text3").style.display = "block"
+      document.getElementById("singularity_special2").style.display = "block"
+      if (game.singularity_multiplier == 1) {
+        document.getElementById("singularity_special").style.display = "block"
+      }
     }
     if (game.starting_prestiges == 300) {
       document.getElementById("startingprestiges").style.display = "none"
@@ -180,9 +188,11 @@ load()
 function update() {
   if (game.multiplier < 1e+16) {
     game.multiplier = Math.round(Decimal.round(Decimal.pow(1.2, game.prestiges)).pow(game.power))
+    game.potential_multiplier = Math.round(Decimal.round(Decimal.pow(1.2, (game.prestiges + game.potential_prestige))).pow(game.power))
   }
   else {
     game.multiplier = Decimal.pow(1.2, game.prestiges).pow(game.power)
+    game.potential_multiplier = Decimal.round(Decimal.pow(1.2, (game.prestiges + game.potential_prestige))).pow(game.power)
   }
   
   
@@ -196,6 +206,7 @@ function update() {
   document.getElementById("sbpsps_cost").innerHTML = game.sbpsps_cost
   document.getElementById("prestiges").innerHTML = game.prestiges
   document.getElementById("potential_prestige").innerHTML = game.potential_prestige
+  document.getElementById("potential_multiplier").innerHTML = game.potential_multiplier
   document.getElementById("multiplier").innerHTML = game.multiplier
   document.getElementById("singularities").innerHTML = game.singularities
   document.getElementById("total_singularities").innerHTML = game.total_singularities
@@ -211,17 +222,17 @@ function update() {
   document.getElementById("collapse_autoclickercost").innerHTML = game.collapse_autoclickercost
   document.getElementById("collapse_autoclickers").innerHTML = game.collapse_autoclickers
   
-  if (game.surpassed_infinity == true) {
-    document.getElementById("currentgoal").innerHTML = "to get as many sushi beans as possible"
-  }
-  else if (game.collapse_autoclickers > 0) {
-    document.getElementById("currentgoal").innerHTML = "to enter the sushiverse"
-  }
-  else if (game.total_singularities > 0) {
-    document.getElementById("currentgoal").innerHTML = "to gain a collapse autoclicker"
+  if (game.potential_prestige > 0) {
+    document.getElementById("potential_text").style.display = "block"
+    if (game.potential_multiplier == game.multiplier) {
+      document.getElementById("prestige_hold_on").innerHTML = "Hold on! Prestiging now won't increase your multiplier. Try saving up some sushi beans!"
+    }
+    else {
+      document.getElementById("prestige_hold_on").innerHTML = ""
+    }
   }
   else {
-    document.getElementById("currentgoal").innerHTML = "to get infinite (10^308) sushi beans"
+    document.getElementById("potential_text").style.display = "none"
   }
 }
 
@@ -276,7 +287,7 @@ function collapse() {
   if (game.hit_infinity == true) {
     game.hit_infinity = false
     game.singularities = game.singularities.add(game.singularity_multiplier)
-    game.total_singularities = game.singularities.add(game.singularity_multiplier)
+    game.total_singularities = game.total_singularities.add(game.singularity_multiplier)
     game.prestiges = game.starting_prestiges
     game.sushibean = new Decimal(0)
     game.sbps = new Decimal(0)
@@ -403,7 +414,9 @@ function collapse_autoclicker() {
     game.collapse_autoclickercost = Math.round(game.collapse_autoclickercost * 1.5)
     document.getElementById("switch3").style.display = "block"
     document.getElementById("switch_text3").style.display = "block"
+    if (game.singularity_multiplier != 100) {
     document.getElementById("singularity_special").style.display = "block"
+    }
     document.getElementById("singularity_special2").style.display = "block"
   }
 }
@@ -487,11 +500,11 @@ function s_multiplier_hundred() {
     game.starting_prestiges_next = 3
     game.can_hotkey = false
     game.sb_autoclickers = 0
-    game.sb_autoclickercost = 25
+    game.sb_autoclickercost = 20
     game.prestige_autoclickers = 0
-    game.prestige_autoclickercost = 50
+    game.prestige_autoclickercost = 40
     game.collapse_autoclickers = 0
-    game.collapse_autoclickercost = 100
+    game.collapse_autoclickercost = 800
     
     document.getElementById("startingprestiges").style.display = "block"
     document.getElementById("hotkey").style.display = "block"
@@ -584,7 +597,7 @@ function setTime() {
   game.hoursLabel.innerHTML = parseInt(game.totalSeconds / 3600);
 }
 
-setInterval(save, 1000)
+setInterval(save, 10000)
 setInterval(setTime, 1000)
 setInterval(incrementSeconds, 1000)
 setInterval(incrementSeconds2, 1000)
