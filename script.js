@@ -247,6 +247,19 @@ function update() {
   document.getElementById("collapse_autoclickers").innerHTML = game.collapse_autoclickers
   document.getElementById("roll_countdown").innerHTML = game.roll_countdown
   
+  if (game.surpassed_infinity == true) {
+    document.getElementById("current_goal").innerHTML = "to get as many sushi beans as possible"
+  }
+  else if (game.collapse_autoclickers > 0) {
+    document.getElementById("current_goal").innerHTML = "to enter the sushiverse"
+  }
+  else if (game.total_singularities > 0) {
+    document.getElementById("current_goal").innerHTML = "to gain a 'collapse' autoclicker"
+  }
+  else {
+    document.getElementById("current_goal").innerHTML = "to get infinity (10^308) sushi beans"
+  }
+  
   if (game.potential_prestige > 0) {
     document.getElementById("potential_text").style.display = "block"
     if (game.potential_multiplier == game.multiplier && game.potential_prestige > 0) {
