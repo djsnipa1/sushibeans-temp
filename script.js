@@ -138,6 +138,7 @@ function loadGame(loadgame) {
     document.getElementById("switch_text3").style.display = "block"
     document.getElementById("singularity_info").style.display = "block"
     document.getElementById("sbps_and_sbpsps").style.display = "none"
+    document.getElementById("random_color").style.display = "none"
     if (game.heavenly_bought == true) {
       document.getElementById("heavenly_buy").style.display = "none"
       document.getElementById("heavenly_dice_div").style.display = "block"
