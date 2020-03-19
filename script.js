@@ -49,6 +49,7 @@ function reset() {
   
   document.body.style.backgroundImage = "url('')"
   document.getElementById("prestigediv").style.display = "none"
+  document.getElementById("sbps_and_sbpsps").style.display = "block"
   document.getElementById("maingame").style.display = "block"
   document.getElementById("infinity").style.display = "none"
   document.getElementById("singularity").style.display = "none"
