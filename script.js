@@ -20,7 +20,7 @@ function reset() {
     singularities: new Decimal(0),
     total_singularities: new Decimal(0),
     singularity_multiplier: 1,
-    power: 1,
+    power: new Decimal(1),
     powercost: 1,
     starting_prestiges: 0,
     starting_prestiges_next: 3,
@@ -105,7 +105,7 @@ function loadGame(loadgame) {
   if (typeof loadgame.singularities != "undefined") game.singularities = new Decimal(loadgame.singularities)
   if (typeof loadgame.total_singularities != "undefined") game.total_singularities = new Decimal(loadgame.total_singularities)
   if (typeof loadgame.singularity_multiplier != "undefined") game.singularity_multiplier = loadgame.singularity_multiplier
-  if (typeof loadgame.power != "undefined") game.power = loadgame.power
+  if (typeof loadgame.power != "undefined") game.power = new Decimal(loadgame.power)
   if (typeof loadgame.powercost != "undefined") game.powercost = loadgame.powercost
   if (typeof loadgame.starting_prestiges != "undefined") game.starting_prestiges = loadgame.starting_prestiges
   if (typeof loadgame.starting_prestiges_next != "undefined") game.starting_prestiges_next = loadgame.starting_prestiges_next
@@ -234,7 +234,7 @@ function update() {
   document.getElementById("total_singularities").innerHTML = game.total_singularities
   document.getElementById("power").innerHTML = game.power
   document.getElementById("power2").innerHTML = game.power
-  document.getElementById("powernext").innerHTML = game.power + 1
+  document.getElementById("powernext").innerHTML = game.power.add(1)
   document.getElementById("powercost").innerHTML = game.powercost
   document.getElementById("starting_prestiges_next").innerHTML = game.starting_prestiges_next
   document.getElementById("starting_prestiges_cost").innerHTML = game.starting_prestiges_next
@@ -334,7 +334,7 @@ function increasepower() {
   if (game.singularities >= game.powercost) {
     game.singularities = game.singularities.subtract(game.powercost)
     game.powercost = game.powercost * 2
-    game.power += 1
+    game.power = game.power.add(1)
   }
 }
 
@@ -526,7 +526,7 @@ function s_multiplier_hundred() {
   if (game.singularities >= 1000) {
     game.singularities = new Decimal(0)
     game.singularity_multiplier = 100
-    game.power = 1
+    game.power = new Decimal(1)
     game.powercost = 1
     game.starting_prestiges = 0
     game.starting_prestiges_next = 3
@@ -591,7 +591,7 @@ function ready() {
   game.sb_autoclickers = 10
   game.prestige_autoclickers = 10
   game.collapse_autoclickers = 0
-  game.power = 100
+  game.power = new Decimal(100)
   document.getElementById("sbps_and_sbpsps").style.display = "none"
 }
 
@@ -607,9 +607,7 @@ function roll() {
   if (game.roll_countdown == 0) {
     var dice_value = Math.ceil(Math.random() * 6)
     document.getElementById("roll_value").innerHTML = dice_value
-    if (game.power < 1e+307) {
-      game.power = game.power * dice_value
-    }
+    game.power = game.power.mul(dice_value)
     game.roll_countdown = 180
     setTimeout(roll_count, 1000)
   }
