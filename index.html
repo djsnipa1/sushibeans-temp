@@ -37,19 +37,21 @@
 
         <hr size="100" />
 
-        <button type="button" onclick="moresbps()">
-          +1 sushi beans per second<br>Cost: <a id="sbps_cost">0</a>sb
-        </button>
-        <p>You are earning <a id="sbps" style="color: #0600ad">0</a> sbps</p>
+        <div id="sbps_and_sbpsps">
+          <button type="button" onclick="moresbps()">
+            +1 sushi beans per second<br>Cost: <a id="sbps_cost">0</a>sb
+          </button>
+          <p>You are earning <a id="sbps" style="color: #0600ad">0</a> sbps</p>
 
-        <br /><br />
+          <br /><br />
 
-        <button type="button" onclick="moresbpsps()">
-          +1 sushi beans per second per second<br>Cost:
-          <a id="sbpsps_cost">0</a>sb
-        </button>
-        <p>You are earning <a id="sbpsps" style="color: #0600ad">0</a> sbpsps</p>
-
+          <button type="button" onclick="moresbpsps()">
+            +1 sushi beans per second per second<br>Cost:
+            <a id="sbpsps_cost">0</a>sb
+          </button>
+          <p>You are earning <a id="sbpsps" style="color: #0600ad">0</a> sbpsps</p>   
+        </div>
+          
         <hr size="100" />
 
         <div id="prestigediv">
@@ -100,10 +102,24 @@
       
       <div id="sushiverse">
         <p style="color: #9391ff; font-family: 'Nova Script'; font-size: 52px; text-shadow: 2px 2px #000000">Sushiverse</p>
+        <p style="color: #cac9ff; font-family: Arial, Helvetica, sans-serif; font-size: 20px; text-shadow: 2px 2px #000000">You've managed to bring with you:<br>10 sushi bean autoclickers<br>10 prestige autoclickers<br>Gun (for safety)</p>
+        <p style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 20px; text-shadow: 2px 2px #000000">Your power is <a id="power2">100</a></p><br><br>
+        <button type="button" id="heavenly_buy" onclick="heavenly_buy()"><b>Recieve a heavenly dice<br><br>Requires: (ee2000)sb</b></button>
+      </div>
+      
+      <div id="heavenly_dice_div">
+        <p style="color: #ffff63; font-size: 52px; font-family: 'Geo'; text-shadow: 2px 2px #000000; position: absolute; top: -50px; left: 5px">Heavenly Dice</p>
+        <p style="color: #ffff63; font-size: 22px; font-family: 'Geo'; text-shadow: 2px 2px #000000; position: absolute; top: 40px; left: 5px">The result of the dice will multipliy your power.</p>
+        <div id="dice">
+          <p id="roll_value" style="font-size: 34px; position: relative">?</p>
+        </div>
+        <button type="button" id="dice_roll" onclick="roll()"><b>Roll dice</b></button>
+        <hr size="305" />
+        <p style="color: #ffff63; font-size: 22px; font-family: 'Geo'; text-shadow: 2px 2px #000000; position: relative">You can roll again in <a id="roll_countdown">0</a> secs</p>
       </div>
       
       <div id="options">
-        <p style="font-size: 10px; text-align: left; vertical-align: top; padding-left: 7px;">  Sushi Beans v2.1.1 - The discord update<br>The game is currently under development, features may be broken!<br>
+        <p style="font-size: 10px; text-align: left; vertical-align: top; padding-left: 7px;">  Sushi Beans v2.2.0 - The Made in Heaven update<br>The game is currently under development, features may be broken!<br>
         If you encounter a bug, tell me! (With your version number)<br>
         <a id="changelog" href="https://sushibeans-changelog.glitch.me/">Changelog</a></p><br>
         <img src="https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Fsushibeansnoback.png?v=1583912523488" style="height: 64px">
