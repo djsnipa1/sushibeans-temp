@@ -576,6 +576,7 @@ function ready() {
   document.getElementById("maingame").style.display = "block"
   document.getElementById("sushiverse").style.display = "block"
   document.getElementById("singularity").style.display = "none"
+  document.getElementById("random_color").style.display = "none"
   document.getElementById("wait").style.display = "none"
   document.getElementById("switch1").style.display = "block"
   document.getElementById("switch_text1").style.display = "block"
