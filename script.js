@@ -55,6 +55,7 @@ function reset() {
   document.getElementById("startingprestiges").style.display = "block"
   document.getElementById("hotkey").style.display = "block"
   document.getElementById("singularity_info").style.display = "none"
+  document.getElementById("random_color").style.display = "block"
   document.getElementById("wait").style.display = "none"
   document.getElementById("switch1").style.display = "none"
   document.getElementById("switch2").style.display = "none"
