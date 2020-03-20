@@ -204,7 +204,7 @@ load()
 
 
 function update() {
-  if (game.multiplier < 1e+16 || game.prestiges.min("1e16") == game.prestiges) {
+  if (game.multiplier < 1e+16) {
     game.multiplier = Math.round(Decimal.round(Decimal.pow(1.2, game.prestiges)).pow(game.power))
     game.potential_multiplier = Math.round(Decimal.round(Decimal.pow(1.2, (game.prestiges.add(game.potential_prestige)))).pow(game.power))
   }
@@ -213,7 +213,7 @@ function update() {
     game.potential_multiplier = Decimal.round(Decimal.pow(1.2, (game.prestiges.add(game.potential_prestige)))).pow(game.power)
   }
   
-  if (game.prestiges < 1e+16 || game.prestiges.min("1e16") == game.prestiges) {
+  if (game.prestiges < 1e+16) {
     game.potential_prestige = new Decimal(Math.round(game.sushibean.divide(1000).add(1).log2(1)))
   }
   else {
