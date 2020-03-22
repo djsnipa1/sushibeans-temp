@@ -398,6 +398,12 @@ function pressed_p() {
   }
 }
 
+Mousetrap.bind('ctrl+shift+f', froggy_chair)
+
+function froggy_chair() {
+  document.body.style.backgroundImage = "url('https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Ffroggy_chair.jpg?v=1584847827810')"
+}
+
 function incrementSeconds() {
     game.sushibean = game.sushibean.add(game.sbps)
 }
