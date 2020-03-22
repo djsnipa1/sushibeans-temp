@@ -83,12 +83,20 @@ p {
 #sushiverse {
   position: absolute;
   width: 15%;
-  height: 95%;
   border: 3px solid #0300ad;
   right: 0;
   top: 0;
   background-image: url("https://cdn.glitch.com/31b3cdd5-f8cb-4b36-a184-2d7b81018c29%2Fsushibeans_space.jpg?v=1584334070080");
   background-position: center;
+}
+
+.sushiverse_button {
+  background-color: black;
+  color: #0000ff;
+  width: 100%;
+  border: 3px solid #0300ad;
+  font-family: 'Nova Script';
+  font-size: 1vw;
 }
 
 #heavenly_buy {
@@ -97,7 +105,16 @@ p {
   text-shadow: 2px 2px #000000;
   width: 100%;
   border: 3px solid #ffff63;
-  font-size: 22px;
+  font-size: 1vw;
+}
+
+#upgrade_dice {
+  background-image: url("https://cdn.glitch.com/31b3cdd5-f8cb-4b36-a184-2d7b81018c29%2Fsushibeansback2.jpg?v=1584608374081");
+  color: #b89f00;
+  text-shadow: 2px 2px #000000;
+  width: 100%;
+  border: 3px solid #ffff63;
+  font-size: 1vw;
 }
 
 #heavenly_dice_div {
@@ -127,6 +144,15 @@ p {
   border-radius: 15px;
   color: #b89f00;
   font-family: 'Geo';
+}
+
+#enter_omniverse {
+  background-color: black;
+  color: white;
+  width: 100%;
+  border: 3px solid white;
+  font-family: 'Nova Script';
+  font-size: 1vw;
 }
 
 #options {

@@ -39,7 +39,10 @@ function reset() {
 
     surpassed_infinity: false,
     heavenly_bought: false,
+    dice_size: 6,
     roll_countdown: 0,
+    prestige_boost_cost: new Decimal("ee500"),
+    power_doubling: false,
 
     hoursLabel: document.getElementById("hours"),
     minutesLabel: document.getElementById("minutes"),
@@ -69,6 +72,8 @@ function reset() {
   document.getElementById("sushiverse").style.display = "none"
   document.getElementById("heavenly_buy").style.display = "block"
   document.getElementById("heavenly_dice_div").style.display = "none"
+  document.getElementById("upgrade_dice").style.display = "none"
+  document.getElementById("power_double").style.display = "block"
   
   document.body.style.backgroundColor = "#f0e7d8"
 }
@@ -90,9 +95,6 @@ function load() {
 function loadGame(loadgame) {
   reset()
   if (typeof loadgame.sushibean != "undefined") game.sushibean = new Decimal(loadgame.sushibean)
-  if (game.sushibean == "(e^NaN)NaN") {
-    reset()
-  }
   if (typeof loadgame.clicks != "undefined") game.clicks = loadgame.clicks
   if (typeof loadgame.sbps != "undefined") game.sbps = new Decimal(loadgame.sbps)
   if (typeof loadgame.sbps_cost != "undefined") game.sbps_cost = loadgame.sbps_cost
@@ -123,9 +125,15 @@ function loadGame(loadgame) {
   if (typeof loadgame.cooldown != "undefined") game.cooldown = loadgame.cooldown
   if (typeof loadgame.waiting != "undefined") game.waiting = loadgame.waiting
   if (typeof loadgame.surpassed_infinity != "undefined") game.surpassed_infinity = loadgame.surpassed_infinity
+  if (typeof loadgame.prestige_boost_cost != "undefined") game.prestige_boost_cost = new Decimal(loadgame.prestige_boost_cost)
   if (typeof loadgame.heavenly_bought != "undefined") game.heavenly_bought = loadgame.heavenly_bought
+  if (typeof loadgame.dice_size != "undefined") game.dice_size = loadgame.dice_size
   if (typeof loadgame.roll_countdown != "undefined") game.roll_countdown = loadgame.roll_countdown
+  if (typeof loadgame.power_doubling != "undefined") game.power_doubling = loadgame.power_doubling
   if (typeof loadgame.totalSeconds != "undefined") game.totalSeconds = loadgame.totalSeconds
+  if (game.sushibean == "(e^NaN)NaN") {
+    reset()
+  }
   
   
   if (game.surpassed_infinity == true) {
@@ -143,6 +151,14 @@ function loadGame(loadgame) {
     if (game.heavenly_bought == true) {
       document.getElementById("heavenly_buy").style.display = "none"
       document.getElementById("heavenly_dice_div").style.display = "block"
+      document.getElementById("upgrade_dice").style.display = "block"
+      if (game.dice_size != 6) {
+        document.getElementById("upgrade_dice").style.display = "none"
+      }
+    }
+    if (game.power_doubling == true) {
+      document.getElementById("power_double").style.display = "none"
+      setTimeout(double, 1000)
     }
   }
   else if (game.total_singularities != 0) {
@@ -245,6 +261,7 @@ function update() {
   document.getElementById("prestige_autoclickers").innerHTML = game.prestige_autoclickers
   document.getElementById("collapse_autoclickercost").innerHTML = game.collapse_autoclickercost
   document.getElementById("collapse_autoclickers").innerHTML = game.collapse_autoclickers
+  document.getElementById("prestige_boost_cost").innerHTML = game.prestige_boost_cost
   document.getElementById("roll_countdown").innerHTML = game.roll_countdown
   
   if (game.surpassed_infinity == true) {
@@ -609,20 +626,43 @@ function ready() {
   document.getElementById("sbps_and_sbpsps").style.display = "none"
 }
 
+function prestige_boost() {
+  if (game.multiplier.max(game.prestige_boost_cost) == game.multiplier) {
+    game.prestige_boost_cost = game.prestige_boost_cost.pow(game.prestige_boost_cost.log10())
+    var prestige_boost_temp = game.prestiges.mag
+    game.prestiges.mag = prestige_boost_temp * 1.2
+  }
+}
+
 function heavenly_buy() {
   if (game.multiplier.max("ee2000") == game.multiplier) {
     game.heavenly_bought = true
     document.getElementById("heavenly_buy").style.display = "none"
     document.getElementById("heavenly_dice_div").style.display = "block"
+    document.getElementById("upgrade_dice").style.display = "block"
+  }
+}
+
+function upgrade_dice() {
+  if (game.multiplier.max("ee100000") == game.multiplier) {
+    game.heavenly_bought = true
+    document.getElementById("upgrade_dice").style.display = "none"
+    game.dice_size = 1000
+    game.roll_countdown = 0
   }
 }
 
 function roll() {
   if (game.roll_countdown == 0) {
-    var dice_value = Math.ceil(Math.random() * 6)
+    var dice_value = Math.ceil(Math.random() * game.dice_size)
     document.getElementById("roll_value").innerHTML = dice_value
     game.power = game.power.mul(dice_value)
-    game.roll_countdown = 180
+    if (game.dice_size == 6) {
+      game.roll_countdown = 180
+    }
+    else {
+      game.roll_countdown = 60
+    }
     setTimeout(roll_count, 1000)
   }
 }
@@ -635,6 +675,21 @@ function roll_count() {
 }
 
 roll_count()
+
+function power_double() {
+  if (game.multiplier.max("ee250000") == game.multiplier) {
+    game.power_doubling = true
+    document.getElementById("power_double").style.display = "none"
+    setTimeout(double, 1000)
+  }
+}
+
+function double() {
+  if (game.power_doubling == true) {
+    game.power = game.power.multiply(2)
+    setTimeout(double, 1000)
+  }
+}
 
 
 
