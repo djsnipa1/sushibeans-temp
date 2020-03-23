@@ -81,6 +81,19 @@ function reset() {
 reset()
 console.log("I see you cheating in the console, you slimy bastard. Don't be a butt!")
 
+function exporty() {
+  prompt("Copy and paste this save somewhere!",btoa(JSON.stringify(game)))
+}
+
+function importy() {
+  let loadgame=""
+  loadgame=JSON.parse(atob(prompt("Paste in your save here!")))
+  if (loadgame != "" && loadgame != null) {
+    loadGame(loadgame)
+  }
+}
+
+
 function save() {
   localStorage.setItem("SushibeansSave", JSON.stringify(game))
 }
