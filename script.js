@@ -645,6 +645,9 @@ function ready() {
   game.collapse_autoclickers = 0
   game.power = new Decimal(100)
   document.getElementById("sbps_and_sbpsps").style.display = "none"
+  game.sb_on = true
+  game.prestige_on = true
+  game.collapse_on = true
 }
 
 function prestige_boost() {
