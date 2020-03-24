@@ -200,7 +200,7 @@ function loadGame(loadgame) {
       document.getElementById("hotkey").style.display = "none"
     }
     if (game.singularity_multiplier == 100) {
-      document.getElementById("startingprestiges").style.display = "none"
+      document.getElementById("singularity_special").style.display = "none"
     }
   }
   
