@@ -574,6 +574,8 @@ function cooldown_off() {
 
 function s_multiplier_hundred() {
   if (game.singularities >= 1000) {
+    game.hit_infinity = true
+    collapse()
     game.singularities = new Decimal(0)
     game.singularity_multiplier = 100
     game.power = new Decimal(1)
