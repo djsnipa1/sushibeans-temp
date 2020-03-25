@@ -48,6 +48,8 @@ function reset() {
     minutesLabel: document.getElementById("minutes"),
     secondsLabel: document.getElementById("seconds"),
     totalSeconds: 0,
+    
+    is_firstgame: true,
    }  
   
   document.body.style.backgroundImage = "url('')"
