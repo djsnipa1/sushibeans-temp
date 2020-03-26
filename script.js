@@ -460,10 +460,16 @@ function prestige_hotkey() {
 
 Mousetrap.bind('p', pressed_p)
 
+Mousetrap.bind('ctrl+shift+f', froggy_chair)
+
 function pressed_p() {
   if (game.can_hotkey == true) {
     prestige()
   }
+}
+
+function froggy_chair() {
+  document.body.style.backgroundImage = "url('https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Ffroggy_chair.jpg?v=1584847827810')"
 }
 
 function incrementSeconds() {
