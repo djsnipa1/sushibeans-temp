@@ -771,6 +771,7 @@ function enter_omniverse() {
     document.getElementById("options").style.background = "rgba(255, 255, 255, 0.3)"
     game.entered_omniverse = true
     document.getElementById("sushiverse").style.display = "none"
+    document.getElementById("heavenly_dice_div").style.display = "none"
     document.getElementById("maingame").style.display = "none"
     document.getElementById("omniverse_sushibeans").style.display = "block"
     document.getElementById("omniverse").style.display = "block"
