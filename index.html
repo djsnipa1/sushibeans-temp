@@ -23,8 +23,35 @@
 
   <body>
     <center>
+      <div id="finish_div">
+        <div id="finish_info">
+          <hr size="80" />
+          <p style="font-size: 22px; color: #f0e7d8">Wow, you really did it.<br><br>
+          You filled the entire omniverse with nothing but sushi beans. You hit true infinity. I'd say that takes true dedication.<br>
+          You took <label id="hours2">0</label> hours, <label id="minutes2">0</label> minutes, and <label id="seconds2">0</label> seconds.<br><br>
+          I just want to thank you for supporting me by coming along on this journey with me.<br>
+          Thank you for playing this dumb game I made for a tournament (and for my friends!).<br>
+          Also, thank you to the people on discord for giving me feedback. You lot are fantastic.<br><br>
+          If you want to start again, you can press the button below. Who knows, try speedrunning the game!<br><br>
+          And for the last time, I really don't know what sushi beans are.</p>
+          <button type="button" onclick="newgame()">Reset</button><br><br>
+        </div>
+      </div>
       
       <hr size="80" />
+      
+      <div id="omniverse_sushibeans">
+      <p style="font-size: 62px; color: white; text-shadow: 2px 2px grey">
+          Sushi beans:<br><a id="omni_sushibeans">0</a>
+        </p>
+      </div>
+      
+      <div id="omniverse_sushibeans_fake">
+      <p style="font-size: 62px; color: white; text-shadow: 2px 2px grey">
+          Sushi beans: Infinity
+        </p>
+      </div>
+      
       <div id="maingame">
         <p style="font-size: 42px; color: #398a30; text-shadow: 2px 2px #000000">
           Sushi beans: <a id="sushibeans">0</a>
@@ -109,7 +136,7 @@
         <button type="button" id="upgrade_dice" onclick="upgrade_dice()"><b>Upgrade your heavenly dice<br><br>Requires: (ee100000)sb</b></button>
         <button type="button" class="sushiverse_button" onclick="prestige_boost()"><b>Gain a small prestige point boost<br><br>Requires: (<a id="prestige_boost_cost">ee1000</a>)sb</b></button>
         <button type="button" class="sushiverse_button" id="power_double" onclick="power_double()"><b>Your power doubles each second<br><br>Requires: (ee250000)sb</b></button>
-        <button type="button" id="enter_omniverse"><b>Ascend again, and enter the omniverse (DOESN'T WORK RIGHT NOW)<br><br>Requires: (ee1500000)sb</b></button>
+        <button type="button" id="enter_omniverse" onclick="enter_omniverse()"><b>Ascend again, and enter the omniverse<br><br>Requires: (ee1500000)sb</b></button>
       </div>
       
       <div id="heavenly_dice_div">
@@ -122,10 +149,17 @@
         <p style="color: #ffff63; font-size: 22px; font-family: 'Geo'; text-shadow: 2px 2px #000000">You can roll again in <a id="roll_countdown">0</a> secs</p>
       </div>
       
+      <div id="omniverse">
+        <p style="color: white; font-family: 'Nova Script'; font-size: 2.5vw; text-shadow: 2px 2px grey">Omniverse</p>
+        <p style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 20px; text-shadow: 2px 2px #000000">This is it. You've made so many sushi beans that they're now producing more of themselves.<br><br>
+        This is the beginning of the end.</p>
+        <button type="button" class="omniverse_button" id="power_power" onclick="power_power_up()"><b>Increase self-replication speed<br><br>Requires: <a id="power_power_cost">eee500</a></b></button>
+        <button type="button" class="omniverse_button" id="begin_tetrating" onclick="begin_tetrating()" style="border: 3px solid #ffc2c2; color: #ffc2c2"><b>Begin sushi bean tetration<br><br>Requires: eee10000</b></button>
+        <button type="button" class="omniverse_button" id="upgrade_tetrating" onclick="upgrade_tetrating()" style="border: 3px solid #ffc2c2; color: #ffc2c2"><b>Multiply tetration power by 10<br><br>Requires: <a id="tetrate_power_cost">eee500</a></b></button>
+      </div>
+      
       <div id="options">
-        <p style="font-size: 10px; text-align: left; vertical-align: top; padding-left: 7px;">  Sushi Beans v2.3.0 - The "Almost there" update<br>The game is currently under development, features may be broken!<br>
-        If you encounter a bug, tell me! (With your version number)<br>
-        <a id="changelog" href="https://sushibeans-changelog.glitch.me/">Changelog</a></p><br>
+        <p style="font-size: 10px; text-align: left; vertical-align: top; padding-left: 7px;">  Sushi Beans v2.4.0 - The final update<br><a id="changelog" href="https://sushibeans-changelog.glitch.me/">Changelog</a></p><br>
         <img src="https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Fsushibeansnoback.png?v=1583912523488" style="height: 64px">
         <p style="font-size: 36px">Options</p>
         <button type="button" id="random_color" onclick="setRandomColor()">Random background colour</button>

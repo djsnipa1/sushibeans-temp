@@ -43,17 +43,30 @@ function reset() {
     roll_countdown: 0,
     prestige_boost_cost: new Decimal("ee500"),
     power_doubling: false,
+    
+    entered_omniverse: false,
+    power_power: 1,
+    power_power_cost: new Decimal("eee500"),
+    tetrating: false,
+    tetrate_power: 2,
+    tetrate_power_cost: new Decimal("(e^100)10000000000"),
+    done: false,
 
     hoursLabel: document.getElementById("hours"),
     minutesLabel: document.getElementById("minutes"),
     secondsLabel: document.getElementById("seconds"),
+    hoursLabel2: document.getElementById("hours2"),
+    minutesLabel2: document.getElementById("minutes2"),
+    secondsLabel2: document.getElementById("seconds2"),
     totalSeconds: 0,
     
     is_firstgame: true,
    }  
   
+  document.getElementById("options").style.background = "rgba(0, 0, 0, 0.2)"
   document.body.style.backgroundImage = "url('')"
   document.getElementById("prestigediv").style.display = "none"
+  document.getElementById("options").style.display = "block"
   document.getElementById("sbps_and_sbpsps").style.display = "block"
   document.getElementById("maingame").style.display = "block"
   document.getElementById("infinity").style.display = "none"
@@ -76,6 +89,14 @@ function reset() {
   document.getElementById("heavenly_dice_div").style.display = "none"
   document.getElementById("upgrade_dice").style.display = "none"
   document.getElementById("power_double").style.display = "block"
+  document.getElementById("omniverse").style.display = "none"
+  document.getElementById("omniverse_sushibeans").style.display = "none"
+  document.getElementById("omniverse_sushibeans_fake").style.display = "none"
+  document.getElementById("upgrade_tetrating").style.display = "none"
+  document.getElementById("finish_div").style.opacity = "0"
+  document.getElementById("finish_info").style.display = "none"
+  document.getElementById("finish_div").style.width = "0%"
+  document.getElementById("finish_div").style.height = "0%"
   
   document.body.style.backgroundColor = "#f0e7d8"
 }
@@ -146,12 +167,42 @@ function loadGame(loadgame) {
   if (typeof loadgame.roll_countdown != "undefined") game.roll_countdown = loadgame.roll_countdown
   if (typeof loadgame.power_doubling != "undefined") game.power_doubling = loadgame.power_doubling
   if (typeof loadgame.totalSeconds != "undefined") game.totalSeconds = loadgame.totalSeconds
+  if (typeof loadgame.entered_omniverse != "undefined") game.entered_omniverse = loadgame.entered_omniverse
+  if (typeof loadgame.power_power != "undefined") game.power_power = loadgame.power_power
+  if (typeof loadgame.power_power_cost != "undefined") game.power_power_cost = new Decimal(loadgame.power_power_cost)
+  if (typeof loadgame.entered_omniverse != "undefined") game.entered_omniverse = loadgame.entered_omniverse
+  if (typeof loadgame.tetrating != "undefined") game.tetrating = loadgame.tetrating
+  if (typeof loadgame.tetrate_power != "undefined") game.tetrate_power = loadgame.tetrate_power
+  if (typeof loadgame.tetrate_power_cost != "undefined") game.tetrate_power_cost = new Decimal(loadgame.tetrate_power_cost)
   if (game.sushibean == "(e^NaN)NaN") {
     reset()
   }
   
+
   
-  if (game.surpassed_infinity == true) {
+  if (game.entered_omniverse == true) {
+    document.body.style.backgroundImage = "url('https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/447850/6a21d0150328351028a4c27d083221453d76c5a4.jpg')"
+    document.getElementById("options").style.background = "rgba(255, 255, 255, 0.3)"
+    document.getElementById("omniverse").style.display = "block"
+    document.getElementById("omniverse_sushibeans").style.display = "block"
+    document.getElementById("maingame").style.display = "none"
+    document.getElementById("prestigediv").style.display = "none"
+    document.getElementById("switch1").style.display = "none"
+    document.getElementById("switch2").style.display = "none"
+    document.getElementById("switch3").style.display = "none"
+    document.getElementById("switch_text1").style.display = "none"
+    document.getElementById("switch_text2").style.display = "none"
+    document.getElementById("switch_text3").style.display = "none"  
+    game.sb_autoclickers = 0
+    game.prestige_autoclickers = 0
+    game.collapse_autoclickers = 0
+    if (game.tetrating == true) {
+      document.getElementById("power_power").style.display = "none"
+      document.getElementById("begin_tetrating").style.display = "none"  
+      document.getElementById("upgrade_tetrating").style.display = "block" 
+    }
+  }
+  else if (game.surpassed_infinity == true) {
     document.body.style.backgroundImage = "url('https://cdnb.artstation.com/p/assets/images/images/005/829/317/large/devin-hansen-astrum-nebula-zoom2.jpg?1494052070')"
     document.getElementById("sushiverse").style.display = "block"
     document.getElementById("switch1").style.display = "block"
@@ -202,7 +253,7 @@ function loadGame(loadgame) {
       document.getElementById("hotkey").style.display = "none"
     }
     if (game.singularity_multiplier == 100) {
-      document.getElementById("singularity_special").style.display = "none"
+      document.getElementById("startingprestiges").style.display = "none"
     }
   }
   
@@ -226,7 +277,6 @@ function loadGame(loadgame) {
   else {
     document.getElementById("infinity").style.display = "none"
     document.getElementById("wait").style.display = "none"
-    document.getElementById("maingame").style.display = "block"
   }
 }
 
@@ -278,6 +328,9 @@ function update() {
   document.getElementById("collapse_autoclickers").innerHTML = game.collapse_autoclickers
   document.getElementById("prestige_boost_cost").innerHTML = game.prestige_boost_cost
   document.getElementById("roll_countdown").innerHTML = game.roll_countdown
+  document.getElementById("omni_sushibeans").innerHTML = game.sushibean
+  document.getElementById("power_power_cost").innerHTML = game.power_power_cost
+  document.getElementById("tetrate_power_cost").innerHTML = game.tetrate_power_cost
   
   if (game.surpassed_infinity == true) {
     document.getElementById("current_goal").innerHTML = "to get as many sushi beans as possible"
@@ -413,12 +466,6 @@ function pressed_p() {
   }
 }
 
-Mousetrap.bind('ctrl+shift+f', froggy_chair)
-
-function froggy_chair() {
-  document.body.style.backgroundImage = "url('https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Ffroggy_chair.jpg?v=1584847827810')"
-}
-
 function incrementSeconds() {
     game.sushibean = game.sushibean.add(game.sbps)
 }
@@ -435,7 +482,7 @@ function prestigecheck() {
 
 function infinitycheck() {
   if (game.surpassed_infinity == false) {
-    if (game.sushibean > 1e+308 || game.sushibean.max("1e308") == game.sushibean) {
+    if (game.sushibean > 1e+308 || Decimal.max(game.sushibean, "1e308") == game.sushibean) {
         game.hit_infinity = true
         document.getElementById("maingame").style.display = "none"
         document.getElementById("infinity").style.display = "block"
@@ -576,8 +623,6 @@ function cooldown_off() {
 
 function s_multiplier_hundred() {
   if (game.singularities >= 1000) {
-    game.hit_infinity = true
-    collapse()
     game.singularities = new Decimal(0)
     game.singularity_multiplier = 100
     game.power = new Decimal(1)
@@ -647,13 +692,10 @@ function ready() {
   game.collapse_autoclickers = 0
   game.power = new Decimal(100)
   document.getElementById("sbps_and_sbpsps").style.display = "none"
-  game.sb_on = true
-  game.prestige_on = true
-  game.collapse_on = true
 }
 
 function prestige_boost() {
-  if (game.multiplier.max(game.prestige_boost_cost) == game.multiplier) {
+  if (Decimal.max(game.multiplier, game.prestige_boost_cost) == game.multiplier) {
     game.prestige_boost_cost = game.prestige_boost_cost.pow(game.prestige_boost_cost.log10())
     var prestige_boost_temp = game.prestiges.mag
     game.prestiges.mag = prestige_boost_temp * 1.2
@@ -661,7 +703,7 @@ function prestige_boost() {
 }
 
 function heavenly_buy() {
-  if (game.multiplier.max("ee2000") == game.multiplier) {
+  if (Decimal.max(game.multiplier, "ee2000") == game.multiplier) {
     game.heavenly_bought = true
     document.getElementById("heavenly_buy").style.display = "none"
     document.getElementById("heavenly_dice_div").style.display = "block"
@@ -670,7 +712,7 @@ function heavenly_buy() {
 }
 
 function upgrade_dice() {
-  if (game.multiplier.max("ee100000") == game.multiplier) {
+  if (Decimal.max(game.multiplier, "ee100000") == game.multiplier) {
     game.heavenly_bought = true
     document.getElementById("upgrade_dice").style.display = "none"
     game.dice_size = 1000
@@ -703,7 +745,7 @@ function roll_count() {
 roll_count()
 
 function power_double() {
-  if (game.multiplier.max("ee250000") == game.multiplier) {
+  if (Decimal.max(game.multiplier, "ee250000") == game.multiplier) {
     game.power_doubling = true
     document.getElementById("power_double").style.display = "none"
     setTimeout(double, 1000)
@@ -716,6 +758,99 @@ function double() {
     setTimeout(double, 1000)
   }
 }
+
+function enter_omniverse() {
+  if (Decimal.max(game.multiplier, "ee1500000") == game.multiplier) {
+    game.sushibean = new Decimal(game.multiplier)
+    document.getElementById("options").style.background = "rgba(255, 255, 255, 0.3)"
+    game.entered_omniverse = true
+    document.getElementById("sushiverse").style.display = "none"
+    document.getElementById("maingame").style.display = "none"
+    document.getElementById("omniverse_sushibeans").style.display = "block"
+    document.getElementById("omniverse").style.display = "block"
+    document.getElementById("power_power").style.display = "block"
+    document.getElementById("begin_tetrating").style.display = "block"
+    document.getElementById("switch1").style.display = "none"
+    document.getElementById("switch2").style.display = "none"
+    document.getElementById("switch3").style.display = "none"
+    document.getElementById("switch_text1").style.display = "none"
+    document.getElementById("switch_text2").style.display = "none"
+    document.getElementById("switch_text3").style.display = "none"
+    game.sb_autoclickers = 0
+    game.prestige_autoclickers = 0
+    game.collapse_autoclickers = 0
+    document.body.style.backgroundImage = "url('https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/447850/6a21d0150328351028a4c27d083221453d76c5a4.jpg')"
+  }
+}
+
+function omniply() {
+  if (game.entered_omniverse == true) {
+    if (game.tetrating == true) {
+      game.sushibean = game.sushibean.tetrate(game.tetrate_power)
+      game.sushibean.mag = 10000000000
+    }
+    else {
+      game.sushibean = game.sushibean.pow(game.sushibean.log10().pow(game.power_power))
+    }
+  }
+}
+
+function power_power_up() {
+  if (Decimal.max(game.sushibean, game.power_power_cost) == game.sushibean) {
+    game.power_power = game.power_power * 2
+    var power_power_temp = game.power_power_cost.mag
+    game.power_power_cost.mag = power_power_temp * 1.8
+  }
+}
+
+function begin_tetrating() {
+  if (Decimal.max(game.sushibean, "eee10000") == game.sushibean) {
+    document.getElementById("power_power").style.display = "none"
+    document.getElementById("begin_tetrating").style.display = "none"
+    document.getElementById("upgrade_tetrating").style.display = "block"
+    game.tetrating = true
+  }
+}
+
+function upgrade_tetrating() {
+  if (Decimal.max(game.sushibean, game.tetrate_power_cost) == game.sushibean) {
+    game.tetrate_power = game.tetrate_power * 10
+    var tetrate_power_cost_temp = game.tetrate_power_cost.layer
+    game.tetrate_power_cost.layer = tetrate_power_cost_temp * 9
+  }
+}
+
+function trueinfinitycheck() {
+  if (game.sushibean.layer > 9e+15) {
+    document.getElementById("maingame").style.display = "none"
+    document.getElementById("omniverse").style.display = "none"
+    document.getElementById("options").style.display = "none"
+    document.getElementById("omniverse_sushibeans").style.display = "none"
+    document.getElementById("omniverse_sushibeans_fake").style.display = "block"
+    if (game.done == false) {
+      game.done == true
+      document.getElementById("finish_div").style.opacity = "1"
+      document.getElementById("finish_div").style.width = "100%"
+      document.getElementById("finish_div").style.height = "100%"
+      setTimeout(finishinfo, 5000)
+    }
+  }
+}
+  
+function finishinfo() {
+  document.getElementById("finish_info").style.display = "block"
+}
+
+function newgame() {
+  document.getElementById("finish_div").style.width = "0%"
+  document.getElementById("finish_div").style.height = "0%"
+  reset()
+  save()
+  game.beaten_game = true
+  document.getElementById("options").style.display = "block"
+}
+
+
 
 
 
@@ -759,10 +894,15 @@ function hardreset() {
 }
 
 function setTime() {
-  ++game.totalSeconds;
+  if (game.sushibean.layer < 9e+15) {
+    ++game.totalSeconds;
+  }
   game.secondsLabel.innerHTML = game.totalSeconds % 60;
   game.minutesLabel.innerHTML = parseInt(game.totalSeconds / 60) % 60;
   game.hoursLabel.innerHTML = parseInt(game.totalSeconds / 3600);
+  game.secondsLabel2.innerHTML = game.totalSeconds % 60;
+  game.minutesLabel2.innerHTML = parseInt(game.totalSeconds / 60) % 60;
+  game.hoursLabel2.innerHTML = parseInt(game.totalSeconds / 3600);
 }
 
 setInterval(save, 10000)
@@ -771,7 +911,9 @@ setInterval(incrementSeconds, 1000)
 setInterval(incrementSeconds2, 1000)
 setInterval(prestigecheck, 100)
 setInterval(infinitycheck, 10)
+setInterval(trueinfinitycheck, 10)
 setInterval(update, 10)
 setTimeout(sb_autoclick, 10)
 setTimeout(prestige_autoclick, 10)
 setTimeout(collapse_autoclick, 10)
+setInterval(omniply, 100)

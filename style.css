@@ -155,6 +155,24 @@ p {
   font-size: 1vw;
 }
 
+#omniverse {
+  position: absolute;
+  width: 15%;
+  border: 3px solid white;
+  right: 0;
+  top: 0;
+  background-color: black;
+}
+
+.omniverse_button {
+  background-color: black;
+  color: white;
+  width: 100%;
+  border: 3px solid white;
+  font-family: 'Nova Script';
+  font-size: 1vw;
+}
+
 #options {
   position: absolute;
   width: 22%;
@@ -234,4 +252,32 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+#finish_div {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+
+   -webkit-transition: opacity 4s ease-in;
+       -moz-transition: opacity 4s ease-in;
+        -ms-transition: opacity 4s ease-in;
+         -o-transition: opacity 4s ease-in;
+            transition: opacity 4s ease-in;
+}
+
+#finish_div p.load {
+    opacity: 1;
 }
