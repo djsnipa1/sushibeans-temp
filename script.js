@@ -119,9 +119,11 @@ function importy() {
 
 function save() {
   localStorage.setItem("SushibeansSave", JSON.stringify(game))
+  localStorage.setItem("BackColor", document.body.style.backgroundColor)
 }
 
 function load() {
+  document.body.style.backgroundColor = String(localStorage.getItem("BackColor"))
   let loadgame = JSON.parse(localStorage.getItem("SushibeansSave"))
   if (loadgame != null) {
     loadGame(loadgame)
@@ -879,7 +881,9 @@ function setRandomColor() {
   document.body.style.backgroundColor = ("background-color", getRandomColor())
 }
 
-
+function beige() {
+  document.body.style.backgroundColor = ("#f0e7d8")
+}
 
 
 

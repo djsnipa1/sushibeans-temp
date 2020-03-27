@@ -187,6 +187,9 @@ p {
   color: black
 }
 
+#random_color {
+  background-image: linear-gradient(to right, #ffbaba, #ffffba, #baffba);
+}
 
 
 
