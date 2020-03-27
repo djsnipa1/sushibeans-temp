@@ -123,7 +123,6 @@ function save() {
 }
 
 function load() {
-  document.body.style.backgroundColor = String(localStorage.getItem("BackColor"))
   let loadgame = JSON.parse(localStorage.getItem("SushibeansSave"))
   if (loadgame != null) {
     loadGame(loadgame)
@@ -893,9 +892,6 @@ function beige() {
 
 
 
-
-
-
 function hardreset() {
     if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
       reset()
@@ -930,3 +926,5 @@ setTimeout(sb_autoclick, 10)
 setTimeout(prestige_autoclick, 10)
 setTimeout(collapse_autoclick, 10)
 setInterval(omniply, 100)
+
+document.body.style.backgroundColor = (localStorage.getItem("BackColor"))
