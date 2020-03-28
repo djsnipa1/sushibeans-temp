@@ -75,6 +75,7 @@ function reset() {
   document.getElementById("hotkey").style.display = "block"
   document.getElementById("singularity_info").style.display = "none"
   document.getElementById("random_color").style.display = "block"
+  document.getElementById("boring_beige").style.display = "block"
   document.getElementById("wait").style.display = "none"
   document.getElementById("switch1").style.display = "none"
   document.getElementById("switch2").style.display = "none"
@@ -195,6 +196,8 @@ function loadGame(loadgame) {
     document.getElementById("switch_text1").style.display = "none"
     document.getElementById("switch_text2").style.display = "none"
     document.getElementById("switch_text3").style.display = "none"  
+    document.getElementById("random_color").style.display = "none"
+    document.getElementById("boring_beige").style.display = "none"
     game.sb_autoclickers = 0
     game.prestige_autoclickers = 0
     game.collapse_autoclickers = 0
@@ -216,6 +219,7 @@ function loadGame(loadgame) {
     document.getElementById("singularity_info").style.display = "block"
     document.getElementById("sbps_and_sbpsps").style.display = "none"
     document.getElementById("random_color").style.display = "none"
+    document.getElementById("boring_beige").style.display = "none"
     if (game.heavenly_bought == true) {
       document.getElementById("heavenly_buy").style.display = "none"
       document.getElementById("heavenly_dice_div").style.display = "block"
@@ -686,6 +690,7 @@ function ready() {
   document.getElementById("sushiverse").style.display = "block"
   document.getElementById("singularity").style.display = "none"
   document.getElementById("random_color").style.display = "none"
+  document.getElementById("boring_beige").style.display = "none"
   document.getElementById("wait").style.display = "none"
   document.getElementById("switch1").style.display = "block"
   document.getElementById("switch_text1").style.display = "block"
