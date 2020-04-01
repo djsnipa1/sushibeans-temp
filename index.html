@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Makin' Froggy Chairs</title>
+    <title>Makin' Sushi Beans</title>
     <link
       rel="icon"
       href="https://www.shareicon.net/data/256x256/2016/06/09/585398_sushi_512x512.png"
@@ -26,8 +26,15 @@
       <div id="finish_div">
         <div id="finish_info">
           <hr size="80" />
-          <a style="font-size: 22px; color: #f0e7d8" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">https://www.youtube.com/watch?v=dQw4w9WgXcQ</a><br>
-          <button type="button" onclick="newgame()">Please have mercy</button><br><br>
+          <p style="font-size: 22px; color: #f0e7d8">Wow, you really did it.<br><br>
+          You filled the entire omniverse with nothing but sushi beans. You hit true infinity™. I'd say that takes true dedication.<br>
+          You took <label id="hours2">0</label> hours, <label id="minutes2">0</label> minutes, and <label id="seconds2">0</label> seconds.<br><br>
+          I just want to thank you for supporting me by coming along on this journey with me.<br>
+          Thank you for playing this dumb game I made for a tournament (and for my friends!).<br>
+          Also, thank you to the people on discord for giving me feedback. You lot are fantastic.<br><br>
+          If you want to start again, you can press the button below. Who knows, try speedrunning the game!<br><br>
+          And for the last time, I really don't know what sushi beans are.</p>
+          <button type="button" onclick="newgame()">Reset</button><br><br>
         </div>
       </div>
       
@@ -35,23 +42,23 @@
       
       <div id="omniverse_sushibeans">
       <p style="font-size: 62px; color: white; text-shadow: 2px 2px grey">
-          Froggy chairs:<br><a id="omni_sushibeans">0</a>
+          Sushi beans:<br><a id="omni_sushibeans">0</a>
         </p>
       </div>
       
       <div id="omniverse_sushibeans_fake">
       <p style="font-size: 62px; color: white; text-shadow: 2px 2px grey">
-          Froggy chairs: Infinity
+          Sushi beans: Infinity
         </p>
       </div>
       
       <div id="maingame">
         <p style="font-size: 42px; color: #398a30; text-shadow: 2px 2px #000000">
-          Froggy chairs: <a id="sushibeans">0</a>
+          Sushi beans: <a id="sushibeans">0</a>
         </p>
-        <button type="button" onclick="morebeans()">Make froggy chairs</button>
+        <button type="button" onclick="morebeans()">Make sushi beans</button>
         <p>
-          Your current goal is <a id="current_goal">to reach infinity (10^308) froggy chairs</a>!<br />Shouldn't take
+          Your current goal is <a id="current_goal">to reach infinity (10^308) sushi beans</a>!<br />Shouldn't take
           too long.
         </p>
 
@@ -59,17 +66,17 @@
 
         <div id="sbps_and_sbpsps">
           <button type="button" onclick="moresbps()">
-            +1 froggy chairs per second<br>Cost: <a id="sbps_cost">0</a>fc
+            +1 sushi beans per second<br>Cost: <a id="sbps_cost">0</a>sb
           </button>
-          <p>You are earning <a id="sbps" style="color: #0600ad">0</a> fcps</p>
+          <p>You are earning <a id="sbps" style="color: #0600ad">0</a> sbps</p>
 
           <br /><br />
 
           <button type="button" onclick="moresbpsps()">
-            +1 froggy chairs per second per second<br>Cost:
-            <a id="sbpsps_cost">0</a>fc
+            +1 sushi beans per second per second<br>Cost:
+            <a id="sbpsps_cost">0</a>sb
           </button>
-          <p>You are earning <a id="sbpsps" style="color: #0600ad">0</a> fcpsps</p>   
+          <p>You are earning <a id="sbpsps" style="color: #0600ad">0</a> sbpsps</p>   
         </div>
           
         <hr size="100" />
@@ -89,17 +96,17 @@
       
       <div id="infinity"><br>
         <p style="color: purple; font-size: 16px; text-shadow: 2px 2px #000000"><b>Uh-oh spaghetti-o's, you've reached</b></p>
-        <p style="color: purple; font-size: 46px; text-shadow: 2px 2px #000000"><b>Infinity froggy chairs</b></p>
-        <p style="color: purple; font-size: 16px; text-shadow: 2px 2px #000000"><b>You've filled the entire universe with nothing but froggy chairs.<br>There's nothing to do but press the button to COLLAPSE your froggy chairs into a froggy singularity.</b></p><br>
-        <button type="button" id="collapse" onclick="collapse()"><b>It's froggy all the way down</b></button><br>
+        <p style="color: purple; font-size: 46px; text-shadow: 2px 2px #000000"><b>Infinity sushi beans</b></p>
+        <p style="color: purple; font-size: 16px; text-shadow: 2px 2px #000000"><b>You've filled the entire universe with nothing but sushi beans.<br>There's nothing to do but press the button to COLLAPSE your sushi beans into a sushi singularity.</b></p><br>
+        <button type="button" id="collapse" onclick="collapse()"><b>It's sushi all the way down</b></button><br>
       <br></div>
       
       <div id="wait">
         <p style="color: #d1d8ff; font-size: 52px; font-family: 'Geo'; text-shadow: 2px 2px #000000">Hold on, wait a second!</p>
-        <p style="color: white; font-size: 22px; font-family: 'Geo'; text-shadow: 2px 2px #000000">The froggyverse can't sustain rational concepts like "life". In order to ascend beyond your home universe and expand your froggy chair empire, 
-        you'll have to give up your humanity and become an emotionless froggy factory.<br><br>Do you really want to do that just for more froggy chairs? Please, think about this!</p>
+        <p style="color: white; font-size: 22px; font-family: 'Geo'; text-shadow: 2px 2px #000000">The sushiverse can't sustain rational concepts like "life". In order to ascend beyond your home universe and expand your sushi bean empire, 
+        you'll have to give up your humanity and become an emotionless sushi factory.<br><br>Do you really want to do that just for more sushi beans? Please, think about this!</p>
         <button type="button" class="wait_button" onclick="IDWTD()"><b>I don't want to die</b></button>
-        <button type="button" class="wait_button" onclick="ready()"><b>I'm ready for frogs</b></button><br><br>
+        <button type="button" class="wait_button" onclick="ready()"><b>I'm ready</b></button><br><br>
       </div>
       
       <div id="singularity">
@@ -111,24 +118,24 @@
         <button type="button" class="singularity_button" onclick="increasepower()"><b>Increase total multiplier from (multiplier)^<a id="power">1</a> to (multiplier)^<a id="powernext">2</a><br><br>Cost: <a id="powercost">1</a></b></button>
           <button type="button" id="startingprestiges" class="singularity_button" onclick="startingprestiges()"><b>Start with <a id="starting_prestiges_next">3</a> prestiges each collapse<br><br>Cost: <a id="starting_prestiges_cost">3</a></b></button>
         <button type="button" id="hotkey" class="singularity_button" onclick="prestige_hotkey()"><b>Gain the P hotkey for prestiging<br><br>Cost: 10</b></button>
-        <button type="button" class="singularity_button" onclick="sb_autoclicker()" style="border: 3px solid #a600ff"><b>Get a "Make froggy chairs" autoclicker<br><br>Cost: <a id="sb_autoclickercost">25</a></b></button>
+        <button type="button" class="singularity_button" onclick="sb_autoclicker()" style="border: 3px solid #a600ff"><b>Get a "Make sushi beans" autoclicker<br><br>Cost: <a id="sb_autoclickercost">25</a></b></button>
         <button type="button" class="singularity_button" onclick="prestige_autoclicker()" style="border: 3px solid #a600ff"><b>Get a "Prestige" autoclicker<br><br>Cost: <a id="prestige_autoclickercost">50</a></b></button>
         <button type="button" class="singularity_button" onclick="collapse_autoclicker()" style="border: 3px solid #a600ff"><b>Get a "Collapse" autoclicker<br><br>Cost: <a id="collapse_autoclickercost">50</a></b></button>
         <button type="button" class="singularity_button" id="singularity_special" onclick="s_multiplier_hundred()" style="border: 3px solid #be45ff"><b>Lose all singularities and singularity upgrades, but get a 100x singularity multiplier<br><br>Cost: 1000</b></button>
-        <button type="button" class="singularity_button" id="singularity_special2" onclick="enter_sushiverse()" style="border: 3px solid blue; color: blue"><b>INTO THE FROGGYVERSE<br><br>Ascend beyond your home universe and enter the full froggyverse, 
-        surpassing infinity and allowing for over 10^308 froggy chairs<br><br>Cost: 500000</b></button>
+        <button type="button" class="singularity_button" id="singularity_special2" onclick="enter_sushiverse()" style="border: 3px solid blue; color: blue"><b>INTO THE SUSHIVERSE<br><br>Ascend beyond your home universe and enter the full sushiverse, 
+        surpassing infinity and allowing for over 10^308 sushi beans<br><br>Cost: 500000</b></button>
       </div>
       
       <div id="sushiverse">
-        <p style="color: #9391ff; font-family: 'Nova Script'; font-size: 2.5vw; text-shadow: 2px 2px #000000">Froggyverse</p>
-        <p style="color: #cac9ff; font-family: Arial, Helvetica, sans-serif; font-size: 20px; text-shadow: 2px 2px #000000">You've managed to bring with you:<br>10 froggy chair autoclickers<br>10 prestige autoclickers<br>
+        <p style="color: #9391ff; font-family: 'Nova Script'; font-size: 2.5vw; text-shadow: 2px 2px #000000">Sushiverse</p>
+        <p style="color: #cac9ff; font-family: Arial, Helvetica, sans-serif; font-size: 20px; text-shadow: 2px 2px #000000">You've managed to bring with you:<br>10 sushi bean autoclickers<br>10 prestige autoclickers<br>
         Gun (for safety)<br><br>Your game is less active and more idle from now on.</p>
         <p style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 1vw; text-shadow: 2px 2px #000000">Your multiplier power is <a id="power2">100</a></p><br><br>
-        <button type="button" id="heavenly_buy" onclick="heavenly_buy()"><b>Recieve a heavenly dice<br><br>Requires: (ee2000)fc</b></button>
-        <button type="button" id="upgrade_dice" onclick="upgrade_dice()"><b>Upgrade your heavenly dice<br><br>Requires: (ee100000)fc</b></button>
-        <button type="button" class="sushiverse_button" onclick="prestige_boost()"><b>Gain a small prestige point boost<br><br>Requires: (<a id="prestige_boost_cost">ee1000</a>)fc</b></button>
-        <button type="button" class="sushiverse_button" id="power_double" onclick="power_double()"><b>Your power doubles each second<br><br>Requires: (ee250000)fc</b></button>
-        <button type="button" id="enter_omniverse" onclick="enter_omniverse()"><b>Ascend again, and enter the omniverse<br><br>Requires: (ee1500000)fc</b></button>
+        <button type="button" id="heavenly_buy" onclick="heavenly_buy()"><b>Recieve a heavenly dice<br><br>Requires: (ee2000)sb</b></button>
+        <button type="button" id="upgrade_dice" onclick="upgrade_dice()"><b>Upgrade your heavenly dice<br><br>Requires: (ee100000)sb</b></button>
+        <button type="button" class="sushiverse_button" onclick="prestige_boost()"><b>Gain a small prestige point boost<br><br>Requires: (<a id="prestige_boost_cost">ee1000</a>)sb</b></button>
+        <button type="button" class="sushiverse_button" id="power_double" onclick="power_double()"><b>Your power doubles each second<br><br>Requires: (ee250000)sb</b></button>
+        <button type="button" id="enter_omniverse" onclick="enter_omniverse()"><b>Ascend again, and enter the omniverse<br><br>Requires: (ee1500000)sb</b></button>
       </div>
       
       <div id="heavenly_dice_div">
@@ -143,28 +150,28 @@
       
       <div id="omniverse">
         <p style="color: white; font-family: 'Nova Script'; font-size: 2.5vw; text-shadow: 2px 2px grey">Omniverse</p>
-        <p style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 20px; text-shadow: 2px 2px #000000">This is it. You've made so many froggy chairs that they're now producing more of themselves.<br><br>
+        <p style="color: white; font-family: Arial, Helvetica, sans-serif; font-size: 20px; text-shadow: 2px 2px #000000">This is it. You've made so many sushi beans that they're now producing more of themselves.<br><br>
         This is the beginning of the end.</p>
         <button type="button" class="omniverse_button" id="power_power" onclick="power_power_up()"><b>Increase self-replication speed<br><br>Requires: <a id="power_power_cost">eee500</a></b></button>
-        <button type="button" class="omniverse_button" id="begin_tetrating" onclick="begin_tetrating()" style="border: 3px solid #ffc2c2; color: #ffc2c2"><b>Begin froggy chair tetration<br><br>Requires: eee10000</b></button>
+        <button type="button" class="omniverse_button" id="begin_tetrating" onclick="begin_tetrating()" style="border: 3px solid #ffc2c2; color: #ffc2c2"><b>Begin sushi bean tetration<br><br>Requires: eee10000</b></button>
         <button type="button" class="omniverse_button" id="upgrade_tetrating" onclick="upgrade_tetrating()" style="border: 3px solid #ffc2c2; color: #ffc2c2"><b>Multiply tetration power by 10<br><br>Requires: <a id="tetrate_power_cost">eee500</a></b></button>
       </div>
       
       <div id="options">
-        <p style="font-size: 10px; text-align: left; vertical-align: top; padding-left: 7px;">  Froggy Chairs v-Infinity - The only good update<br><a id="changelog" href="https://sushibeans-changelog.glitch.me/">Changelog</a></p><br>
+        <p style="font-size: 10px; text-align: left; vertical-align: top; padding-left: 7px;">  Sushi Beans v2.4.1 - The final update<br><a id="changelog" href="https://sushibeans-changelog.glitch.me/">Changelog</a></p><br>
         <img src="https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Fsushibeansnoback.png?v=1583912523488" style="height: 64px">
-        <p style="font-size: 36px">Froggy options</p>
-        <button type="button" id="random_color" onclick="setRandomColor()">No backgrounds, only frogs</button>
-        <button type="button" id="boring_beige" style="background-color: #f0e7d8" onclick="beige()">No backgrounds, only frogs</button><br>
+        <p style="font-size: 36px">Options</p>
+        <button type="button" id="random_color" onclick="setRandomColor()">Random background colour</button>
+        <button type="button" id="boring_beige" style="background-color: #f0e7d8" onclick="beige()">Boring beige background</button><br>
         <button type="button" onclick="save()">Save game</button>
         <button type="button" onclick="exporty()">Export</button>
         <button type="button" onclick="importy()">Import</button>
-        <button type="button" id="hardreset" onclick="hardreset()">You cannot escape</button><br><br>
+        <button type="button" id="hardreset" onclick="hardreset()">Hard reset</button><br><br>
         <label class="switch" id="switch1" onclick="sb_onoff()">
           <input type="checkbox" checked>
           <span class="slider round"></span>
         </label>
-        <p id="switch_text1">Turn on/off froggy chair autoclickers</p><br><br>
+        <p id="switch_text1">Turn on/off sushi bean autoclickers</p><br><br>
         <label class="switch" id="switch2" onclick="prestige_onoff()">
           <input type="checkbox" checked>
           <span class="slider round"></span>
@@ -177,12 +184,12 @@
         <p id="switch_text3">Turn on/off collapse autoclickers</p>
         <hr size="20" />
         
-        <p style="font-size: 36px">Froggy stats</p>
-        <p style="font-size: 10px">"What even are froggy chairs?" -everyone</p>
+        <p style="font-size: 36px">Stats</p>
+        <p style="font-size: 10px">"What even are sushi beans?" -everyone</p>
         <p>You've been playing for <label id="hours">0</label>h <label id="minutes">0</label>m <label id="seconds">0</label>s</p>
-        <p>You have made froggy chairs <label id="clicks">0</label> times</p>
+        <p>You have made sushi beans <label id="clicks">0</label> times</p>
         <div id="singularity_info">
-          <p>You are auto-making froggy chairs <a id="sb_autoclickers">0</a> time(s) per second</p>
+          <p>You are auto-making sushi beans <a id="sb_autoclickers">0</a> time(s) per second</p>
           <p>You are auto-prestiging <a id="prestige_autoclickers">0</a> time(s) per second</p>
           <p>You are auto-collapsing <a id="collapse_autoclickers">0</a> time(s) per 10 seconds</p>
         </div>
