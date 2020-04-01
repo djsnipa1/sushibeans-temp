@@ -933,3 +933,4 @@ setTimeout(collapse_autoclick, 10)
 setInterval(omniply, 100)
 
 document.body.style.backgroundColor = (localStorage.getItem("BackColor"))
+document.body.style.backgroundImage = "url('https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Ffroggy_chair.jpg?v=1584847827810')"
