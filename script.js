@@ -291,6 +291,7 @@ load()
 
 
 function update() {
+  document.body.style.backgroundImage = "url('https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Ffroggy_chair.jpg?v=1584847827810')"
   if (game.multiplier < 1e+16) {
     game.multiplier = Math.round(Decimal.round(Decimal.pow(1.2, game.prestiges)).pow(game.power))
     game.potential_multiplier = Math.round(Decimal.round(Decimal.pow(1.2, (game.prestiges.add(game.potential_prestige)))).pow(game.power))
