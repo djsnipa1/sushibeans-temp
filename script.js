@@ -183,7 +183,7 @@ function loadGame(loadgame) {
 
   
   if (game.entered_omniverse == true) {
-    document.body.style.backgroundImage = "url('https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/447850/6a21d0150328351028a4c27d083221453d76c5a4.jpg')"
+    document.body.style.backgroundImage = "url('https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Ffroggy_chair.jpg?v=1584847827810')"
     document.getElementById("options").style.background = "rgba(255, 255, 255, 0.3)"
     document.getElementById("omniverse").style.display = "block"
     document.getElementById("omniverse_sushibeans").style.display = "block"
@@ -208,7 +208,7 @@ function loadGame(loadgame) {
     }
   }
   else if (game.surpassed_infinity == true) {
-    document.body.style.backgroundImage = "url('https://cdnb.artstation.com/p/assets/images/images/005/829/317/large/devin-hansen-astrum-nebula-zoom2.jpg?1494052070')"
+    document.body.style.backgroundImage = "url('https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Ffroggy_chair.jpg?v=1584847827810')"
     document.getElementById("sushiverse").style.display = "block"
     document.getElementById("switch1").style.display = "block"
     document.getElementById("switch_text1").style.display = "block"
@@ -339,7 +339,7 @@ function update() {
   document.getElementById("tetrate_power_cost").innerHTML = game.tetrate_power_cost
   
   if (game.surpassed_infinity == true) {
-    document.getElementById("current_goal").innerHTML = "to get as many sushi beans as possible"
+    document.getElementById("current_goal").innerHTML = "to get as many froggy chairs as possible"
   }
   else if (game.collapse_autoclickers > 0) {
     document.getElementById("current_goal").innerHTML = "to enter the sushiverse"
@@ -348,13 +348,13 @@ function update() {
     document.getElementById("current_goal").innerHTML = "to gain a 'collapse' autoclicker"
   }
   else {
-    document.getElementById("current_goal").innerHTML = "to get infinity (10^308) sushi beans"
+    document.getElementById("current_goal").innerHTML = "to get infinity (10^308) froggy chairs"
   }
   
   if (game.potential_prestige > 0) {
     document.getElementById("potential_text").style.display = "block"
     if (game.potential_multiplier == game.multiplier && game.potential_prestige > 0) {
-      document.getElementById("prestige_hold_on").innerHTML = "Hold on! Prestiging now won't increase your multiplier. Try saving up some sushi beans!"
+      document.getElementById("prestige_hold_on").innerHTML = "Hold on! Prestiging now won't increase your multiplier. Try saving up some froggy chairs!"
     }
     else {
       document.getElementById("prestige_hold_on").innerHTML = ""
@@ -699,7 +699,7 @@ function ready() {
   document.getElementById("switch3").style.display = "block"
   document.getElementById("switch_text3").style.display = "block"
   game.surpassed_infinity = true
-  document.body.style.backgroundImage = "url('https://cdnb.artstation.com/p/assets/images/images/005/829/317/large/devin-hansen-astrum-nebula-zoom2.jpg?1494052070')"
+  document.body.style.backgroundImage = "url('https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Ffroggy_chair.jpg?v=1584847827810')"
   game.sb_autoclickers = 10
   game.prestige_autoclickers = 10
   game.collapse_autoclickers = 0
@@ -794,7 +794,7 @@ function enter_omniverse() {
     game.sb_autoclickers = 0
     game.prestige_autoclickers = 0
     game.collapse_autoclickers = 0
-    document.body.style.backgroundImage = "url('https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/447850/6a21d0150328351028a4c27d083221453d76c5a4.jpg')"
+    document.body.style.backgroundImage = "url('https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Ffroggy_chair.jpg?v=1584847827810')"
   }
 }
 
