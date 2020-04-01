@@ -64,7 +64,7 @@ function reset() {
    }  
   
   document.getElementById("options").style.background = "rgba(0, 0, 0, 0.2)"
-  document.body.style.backgroundImage = "url('')"
+  document.body.style.backgroundImage = "url('https://cdn.glitch.com/fa454442-2598-4fa6-a6d3-fc753ba7666a%2Ffroggy_chair.jpg?v=1584847827810')"
   document.getElementById("prestigediv").style.display = "none"
   document.getElementById("options").style.display = "block"
   document.getElementById("sbps_and_sbpsps").style.display = "block"
@@ -898,13 +898,7 @@ function beige() {
 
 
 function hardreset() {
-    if (confirm("Are you sure you want to hard reset? You will lose everything!")) {
-      reset()
-      save()
-    }
-    else {
-      alert("Thank goodness.")
-    }
+    alert("Yeah, nice try.")
 }
 
 function setTime() {
@@ -914,9 +908,6 @@ function setTime() {
   game.secondsLabel.innerHTML = game.totalSeconds % 60;
   game.minutesLabel.innerHTML = parseInt(game.totalSeconds / 60) % 60;
   game.hoursLabel.innerHTML = parseInt(game.totalSeconds / 3600);
-  game.secondsLabel2.innerHTML = game.totalSeconds % 60;
-  game.minutesLabel2.innerHTML = parseInt(game.totalSeconds / 60) % 60;
-  game.hoursLabel2.innerHTML = parseInt(game.totalSeconds / 3600);
 }
 
 setInterval(save, 10000)
