@@ -49,7 +49,7 @@ function reset() {
     power_power_cost: new Decimal("eee500"),
     tetrating: false,
     tetrate_power: 2,
-    tetrate_power_cost: new Decimal("(e^100)10000000000"),
+    tetrate_power_cost: new Decimal("(e^100)100"),
     done: false,
 
     hoursLabel: document.getElementById("hours"),
@@ -802,7 +802,7 @@ function omniply() {
   if (game.entered_omniverse == true) {
     if (game.tetrating == true) {
       game.sushibean = game.sushibean.tetrate(game.tetrate_power)
-      game.sushibean.mag = 10000000000
+      game.sushibean.mag = 100
     }
     else {
       game.sushibean = game.sushibean.pow(game.sushibean.log10().pow(game.power_power))
