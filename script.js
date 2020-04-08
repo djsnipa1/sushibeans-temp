@@ -307,6 +307,12 @@ function update() {
     game.potential_prestige = new Decimal(game.sushibean.divide(1000).add(1).log2(1))
   }
   
+  if (game.entered_omniverse == true) {
+    if (game.sushibean < 100) {
+      game.sushibean = new Decimal("ee1500000")
+    }
+  }
+  
   
   document.getElementById("sushibeans").innerHTML = game.sushibean
   document.getElementById("clicks").innerHTML = game.clicks
